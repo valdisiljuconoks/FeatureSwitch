@@ -12,7 +12,8 @@ namespace FeatureToggle
         private IContainer container;
         private readonly Dictionary<Type, Type> defaultReaders = new Dictionary<Type, Type>
         {
-            { typeof(AppSettingsStrategy), typeof(IAppSettingsReader) }
+            { typeof(AppSettingsStrategy), typeof(IAppSettingsReader) },
+            { typeof(AlwaysTrueStrategy), typeof(AlwaysTrueStrategyReader) }
         };
 
         public FeatureSetBuilder(IContainer container = null)
@@ -73,7 +74,7 @@ namespace FeatureToggle
                     // if registered reader is interface - most probably it's registered in via IoC registry already
 
                     // TODO: Add support for .ctor injections
-                    this.container.Inject(strategyReaderType, container.GetInstance(strategyReaderType));
+                    this.container.Inject(strategyReaderType, this.container.GetInstance(strategyReaderType));
                 }
             }
         }
@@ -126,8 +127,10 @@ namespace FeatureToggle
         private void DiscoverFeatures(FeatureContext context)
         {
             context.CheckNull("context");
-
-            // TODO: implement
+            foreach (var feature in TypeAttributeHelper.GetTypesChildOf<BaseFeature>())
+            {
+                context.AddFeature(feature);
+            }
         }
     }
 }

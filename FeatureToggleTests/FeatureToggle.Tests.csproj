@@ -57,6 +57,7 @@
     <Compile Include="FeatureSetBuilderWithDiscoveredFeatures.cs" />
     <Compile Include="FeatureSetBuilderWithoutDependencyContainerConfigured.cs" />
     <Compile Include="FeatureSetBuilderWithStrategiesTests.cs" />
+    <Compile Include="Features\MySampleDiscoveredFeature.cs" />
     <Compile Include="Features\MyFancyStrategySampleFeature.cs" />
     <Compile Include="Features\MySampleDisabledFeature.cs" />
     <Compile Include="Features\MySampleFeature.cs" />
