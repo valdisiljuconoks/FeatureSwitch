@@ -3,7 +3,6 @@ using FeatureToggle.Tests.Features;
 using FeatureToggle.Tests.Strategies;
 using StructureMap;
 using Xunit;
-using AlwaysTrueStrategyReader = FeatureToggle.Tests.Strategies.AlwaysTrueStrategyReader;
 
 namespace FeatureToggle.Tests
 {

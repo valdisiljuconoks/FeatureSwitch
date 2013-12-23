@@ -13,7 +13,8 @@ namespace FeatureToggle
         private readonly Dictionary<Type, Type> defaultReaders = new Dictionary<Type, Type>
         {
             { typeof(AppSettingsStrategy), typeof(IAppSettingsReader) },
-            { typeof(AlwaysTrueStrategy), typeof(AlwaysTrueStrategyReader) }
+            { typeof(AlwaysTrueStrategy), typeof(AlwaysTrueStrategyReader) },
+            { typeof(AlwaysFalseStrategy), typeof(AlwaysFalseStrategyReader) },
         };
 
         public FeatureSetBuilder(IContainer container = null)

@@ -53,6 +53,8 @@
     <Compile Include="FeatureStrategyAttribute.cs" />
     <Compile Include="IFeature.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Strategies\AlwaysFalseStrategy.cs" />
+    <Compile Include="Strategies\AlwaysFalseStrategyReader.cs" />
     <Compile Include="Strategies\AlwaysTrueStrategy.cs" />
     <Compile Include="Strategies\AlwaysTrueStrategyReader.cs" />
     <Compile Include="Strategies\ApplicationSettingsStrategyReader.cs" />

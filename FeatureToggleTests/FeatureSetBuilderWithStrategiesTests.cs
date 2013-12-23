@@ -3,7 +3,6 @@ using FeatureToggle.Tests.Features;
 using FeatureToggle.Tests.Strategies;
 using StructureMap;
 using Xunit;
-using AlwaysTrueStrategyReader = FeatureToggle.Tests.Strategies.AlwaysTrueStrategyReader;
 
 namespace FeatureToggle.Tests
 {
@@ -51,8 +50,7 @@ namespace FeatureToggle.Tests
                           {
                               ctx.AddFeature<MyFancyStrategySampleFeature>();
                               ctx.ForStrategy<UnitTestsAlwaysTrueStrategy>().Use<AlwaysTrueStrategyReader>();
-                          },
-                          expression => expression.AddRegistry<UnitTestDependencyRegistry>());
+                          });
 
             var isEnabled = FeatureContext.IsEnabled<MyFancyStrategySampleFeature>();
 
@@ -67,8 +65,7 @@ namespace FeatureToggle.Tests
                           {
                               ctx.AddFeature<MySampleFeature>();
                               ctx.ForStrategy<AppSettingsStrategy>().Use<AlwaysTrueStrategyReader>();
-                          },
-                          expression => expression.AddRegistry<UnitTestDependencyRegistry>());
+                          });
 
             var strategy = builder.GetStrategyReader<AppSettingsStrategy>();
             Assert.True(strategy.GetType().IsAssignableFrom(typeof(AlwaysTrueStrategyReader)));
@@ -82,8 +79,7 @@ namespace FeatureToggle.Tests
                           {
                               ctx.AddFeature<MySampleFeature>();
                               ctx.ForStrategy<AppSettingsStrategy>().Use<AlwaysTrueStrategyReader>();
-                          },
-                          expression => expression.AddRegistry<UnitTestDependencyRegistry>());
+                          });
 
             var isEnabled = FeatureContext.IsEnabled<MySampleFeature>();
 

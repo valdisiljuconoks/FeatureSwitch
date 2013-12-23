@@ -55,8 +55,10 @@
   <ItemGroup>
     <Compile Include="FeatureSetBuilderTests.cs" />
     <Compile Include="FeatureSetBuilderWithDiscoveredFeatures.cs" />
+    <Compile Include="FeatureSetBuilderWithMultipleStrategiesTests.cs" />
     <Compile Include="FeatureSetBuilderWithoutDependencyContainerConfigured.cs" />
     <Compile Include="FeatureSetBuilderWithStrategiesTests.cs" />
+    <Compile Include="Features\MyFeatureDisabledWithMultipleStrategies.cs" />
     <Compile Include="Features\MySampleDiscoveredFeature.cs" />
     <Compile Include="Features\MyFancyStrategySampleFeature.cs" />
     <Compile Include="Features\MySampleDisabledFeature.cs" />
@@ -66,7 +68,6 @@
     <Compile Include="Features\MySampleNonExistingKeyFeature.cs" />
     <Compile Include="ISampleInjectedInterface.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Strategies\AlwaysTrueStrategyReader.cs" />
     <Compile Include="Strategies\StrategyWithConstructorParameter.cs" />
     <Compile Include="Strategies\StrategyWithConstructorParameterReader.cs" />
     <Compile Include="Strategies\UnitTestAppSettingsStrategyReader.cs" />
