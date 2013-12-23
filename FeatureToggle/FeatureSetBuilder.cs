@@ -69,12 +69,11 @@ namespace FeatureToggle
                     this.defaultReaders.Add(strategyType, strategyReaderType);
                 }
 
+                // TODO: review this
                 if (!strategyReaderType.IsInterface)
                 {
                     // we can create implementation only for concrete types
                     // if registered reader is interface - most probably it's registered in via IoC registry already
-
-                    // TODO: Add support for .ctor injections
                     this.container.Inject(strategyReaderType, this.container.GetInstance(strategyReaderType));
                 }
             }
@@ -97,31 +96,42 @@ namespace FeatureToggle
             return context;
         }
 
-        internal IStrategyStorageReader GetStrategyReader(Type strategyType)
+        internal IStrategy GetStrategyImplementation(Type strategyType)
         {
             Type reader;
-            return !this.defaultReaders.TryGetValue(strategyType, out reader) ? null : (IStrategyStorageReader)this.container.TryGetInstance(reader);
+            return !this.defaultReaders.TryGetValue(strategyType, out reader) ? null : (IStrategy)this.container.TryGetInstance(reader);
         }
 
-        internal IStrategyStorageReader GetStrategyReader<T>()
+        internal IStrategy GetStrategyImplementation<T>()
         {
-            return GetStrategyReader(typeof(T));
+            return GetStrategyImplementation(typeof(T));
         }
 
         private void BuildFeatureSet(FeatureContext context)
         {
-            // configure and setup discovered features
-            foreach (var feature in context.Features)
+            // configure and setup features
+            foreach (var keyValuePair in context.Features)
             {
-                var strategies = feature.Value.Item1.GetType().GetCustomAttributes<FeatureStrategyAttribute>().OrderBy(a => a.Order);
-                var states =
-                    (from strategy in strategies
-                     let reader = GetStrategyReader(strategy.GetType())
-                     where reader != null
-                     select reader.Read(strategy.BuildConfigurationContext()));
+                // build list of strategies and corresponding implementations for this feature
+                var strategies = keyValuePair.Value.Item1.GetType().GetCustomAttributes<FeatureStrategyAttribute>().OrderBy(a => a.Order);
+                var strategyImplementations = strategies.Select(s => Tuple.Create(s, GetStrategyImplementation(s.GetType()))).Where(s => s != null).ToList();
+
+                keyValuePair.Value.Item2.Clear();
+                strategyImplementations.ForEach(i => keyValuePair.Value.Item2.Add(i.Item2));
+
+                strategyImplementations.ForEach(i => i.Item2.Initialize(i.Item1.BuildConfigurationContext()));
+                var states = strategyImplementations.Select(k =>
+                                                            {
+                                                                // test if strategy implementation is readable
+                                                                var reader = k.Item2 as IStrategyStorageReader;
+                                                                return reader != null && reader.Read();
+                                                            });
 
                 // feature is enabled if any of strategies is telling truth
-                feature.Value.Item1.ChangeState(states.Any(b => b));
+                keyValuePair.Value.Item1.ChangeEnabledState(states.Any(b => b));
+
+                // do we have any writer in da house?
+                keyValuePair.Value.Item1.ChangeModifiableState(strategyImplementations.Any(s => s.Item2 is IStrategyStorageWriter));
             }
         }
 

@@ -2,6 +2,7 @@
 {
     public class BaseFeature : IFeature
     {
+        private bool canModify;
         private bool isEnabled;
 
         public bool IsEnabled
@@ -11,10 +12,22 @@
                 return this.isEnabled;
             }
         }
+        public bool CanModify
+        {
+            get
+            {
+                return this.canModify;
+            }
+        }
 
-        internal void ChangeState(bool enabled)
+        internal void ChangeEnabledState(bool enabled)
         {
             this.isEnabled = enabled;
+        }
+
+        internal void ChangeModifiableState(bool modifiable)
+        {
+            this.canModify = modifiable;
         }
     }
 }

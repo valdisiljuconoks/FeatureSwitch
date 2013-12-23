@@ -2,7 +2,7 @@ using FeatureToggle.Strategies;
 
 namespace FeatureToggle.Tests.Strategies
 {
-    public class StrategyWithConstructorParameterReader : BaseStrategy
+    public class StrategyWithConstructorParameterReader : BaseStrategyReaderImpl
     {
         private readonly ISampleInjectedInterface sample;
 
@@ -20,7 +20,7 @@ namespace FeatureToggle.Tests.Strategies
             }
         }
 
-        public override bool Read(ConfigurationContext buildConfigurationContext)
+        public override bool Read()
         {
             return true;
         }

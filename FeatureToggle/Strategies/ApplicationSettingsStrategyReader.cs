@@ -2,11 +2,11 @@
 
 namespace FeatureToggle.Strategies
 {
-    public class ApplicationSettingsStrategyReader : BaseStrategy
+    public class ApplicationSettingsStrategyReader : BaseStrategyReaderImpl, IAppSettingsReader
     {
-        public override bool Read(ConfigurationContext buildConfigurationContext)
+        public override bool Read()
         {
-            var value = ConfigurationManager.AppSettings[buildConfigurationContext.Key];
+            var value = ConfigurationManager.AppSettings[Context.Key];
             bool result;
             bool.TryParse(value, out result);
             return result;

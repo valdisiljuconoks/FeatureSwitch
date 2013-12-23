@@ -4,12 +4,12 @@ namespace FeatureToggle.Tests.Strategies
 {
     public class UnitTestAppSettingsStrategyReader : IAppSettingsReader
     {
-        public bool Read(ConfigurationContext buildConfigurationContext)
+        public bool Read()
         {
             return true;
         }
 
-        public void Initialize()
+        public void Initialize(ConfigurationContext configurationContext)
         {
         }
     }

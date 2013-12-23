@@ -27,7 +27,7 @@ namespace FeatureToggle
         {
             try
             {
-                return assembly.GetTypes().Where(t => IsTypeChild(t, type) && !t.IsAbstract);
+                return assembly.GetTypes().Where(t => t.IsSubclassOf(type) && !t.IsAbstract);
             }
             catch (Exception)
             {
@@ -35,11 +35,6 @@ namespace FeatureToggle
                 // this may happen if we are visiting *all* loaded assemblies in application domain
                 return new List<Type>();
             }
-        }
-
-        private static bool IsTypeChild(Type target, Type baseClass)
-        {
-            return target.IsSubclassOf(baseClass);
         }
     }
 }

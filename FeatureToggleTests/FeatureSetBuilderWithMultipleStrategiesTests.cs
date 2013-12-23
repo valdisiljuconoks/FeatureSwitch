@@ -1,5 +1,4 @@
 ﻿using FeatureToggle.Strategies;
-using FeatureToggle.Tests.Features;
 using StructureMap;
 using Xunit;
 
@@ -21,5 +20,11 @@ namespace FeatureToggle.Tests
 
             Assert.False(feature.IsEnabled);
         }
+    }
+
+    [AppSettingsStrategy(Order = 0)]
+    [AlwaysFalseStrategy(Order = 1)]
+    public class MyFeatureDisabledWithMultipleStrategies : BaseFeature
+    {
     }
 }

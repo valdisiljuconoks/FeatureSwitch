@@ -2,6 +2,11 @@
 {
     public class ConfigurationContext
     {
-        public string Key { get; set; }
+        public ConfigurationContext(string key)
+        {
+            Key = key;
+        }
+
+        public string Key { get; private set; }
     }
 }

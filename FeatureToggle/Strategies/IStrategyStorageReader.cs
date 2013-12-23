@@ -2,6 +2,6 @@
 {
     public interface IStrategyStorageReader : IStrategy
     {
-        bool Read(ConfigurationContext buildConfigurationContext);
+        bool Read();
     }
 }

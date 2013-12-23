@@ -39,7 +39,7 @@ namespace FeatureToggle.Tests
             var feature = FeatureContext.GetFeature<MySampleFeatureWithConstructorParameterStrategy>();
 
             Assert.True(feature.IsEnabled);
-            Assert.NotNull(((StrategyWithConstructorParameterReader)builder.GetStrategyReader<StrategyWithConstructorParameter>()).Dependency);
+            Assert.NotNull(((StrategyWithConstructorParameterReader)builder.GetStrategyImplementation<StrategyWithConstructorParameter>()).Dependency);
         }
 
         [Fact]
@@ -67,8 +67,8 @@ namespace FeatureToggle.Tests
                               ctx.ForStrategy<AppSettingsStrategy>().Use<AlwaysTrueStrategyReader>();
                           });
 
-            var strategy = builder.GetStrategyReader<AppSettingsStrategy>();
-            Assert.True(strategy.GetType().IsAssignableFrom(typeof(AlwaysTrueStrategyReader)));
+            var strategy = builder.GetStrategyImplementation<AppSettingsStrategy>();
+            Assert.IsAssignableFrom(typeof(AlwaysTrueStrategyReader), strategy);
         }
 
         [Fact]

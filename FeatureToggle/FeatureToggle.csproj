@@ -59,10 +59,12 @@
     <Compile Include="Strategies\AlwaysTrueStrategyReader.cs" />
     <Compile Include="Strategies\ApplicationSettingsStrategyReader.cs" />
     <Compile Include="Strategies\AppSettingsStrategy.cs" />
-    <Compile Include="Strategies\BaseStrategy.cs" />
+    <Compile Include="Strategies\BaseStrategyImpl.cs" />
+    <Compile Include="Strategies\BaseStrategyReaderImpl.cs" />
     <Compile Include="Strategies\IAppSettingsReader.cs" />
     <Compile Include="Strategies\IStrategy.cs" />
     <Compile Include="Strategies\IStrategyStorageReader.cs" />
+    <Compile Include="Strategies\IStrategyStorageWriter.cs" />
     <Compile Include="StrategyConfigurationExpression.cs" />
     <Compile Include="TypeAttributeHelper.cs" />
   </ItemGroup>

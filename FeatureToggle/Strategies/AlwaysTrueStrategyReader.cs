@@ -1,8 +1,8 @@
 ﻿namespace FeatureToggle.Strategies
 {
-    public class AlwaysTrueStrategyReader : BaseStrategy
+    public class AlwaysTrueStrategyReader : BaseStrategyReaderImpl
     {
-        public override bool Read(ConfigurationContext buildConfigurationContext)
+        public override bool Read()
         {
             return true;
         }

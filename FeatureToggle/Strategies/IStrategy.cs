@@ -2,6 +2,6 @@
 {
     public interface IStrategy
     {
-        void Initialize();
+        void Initialize(ConfigurationContext configurationContext);
     }
 }

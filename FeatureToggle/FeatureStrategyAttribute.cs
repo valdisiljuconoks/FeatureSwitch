@@ -11,9 +11,11 @@ namespace FeatureToggle
 
         public int Order { get; set; }
 
-        public virtual ConfigurationContext BuildConfigurationContext()
+        public string Key { get; set; }
+
+        public ConfigurationContext BuildConfigurationContext()
         {
-            return new ConfigurationContext();
+            return new ConfigurationContext(Key);
         }
     }
 }
