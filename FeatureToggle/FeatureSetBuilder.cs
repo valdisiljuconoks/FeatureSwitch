@@ -37,6 +37,7 @@ namespace FeatureToggle
                 var context = SetupFeatureContext(action);
                 SetupDependencyContainer(dependencyConfiguration, context);
                 BuildFeatureSet(context);
+                DetectCollisions(context);
 
                 FeatureContext.SetInstance(context);
             }
@@ -133,6 +134,10 @@ namespace FeatureToggle
                 // do we have any writer in da house?
                 keyValuePair.Value.Item1.ChangeModifiableState(strategyImplementations.Any(s => s.Item2 is IStrategyStorageWriter));
             }
+        }
+
+        private void DetectCollisions(FeatureContext context)
+        {
         }
 
         private void DiscoverFeatures(FeatureContext context)

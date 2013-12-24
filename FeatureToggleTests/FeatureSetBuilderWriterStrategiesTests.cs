@@ -61,12 +61,36 @@ namespace FeatureToggle.Tests
         [Fact]
         public void BuilderTest_MultipleFeaturesSameStrategy_NoCollisionsInState()
         {
-            Assert.False(true);
+            var builder = new FeatureSetBuilder(new Container());
+            builder.Build(ctx =>
+                          {
+                              ctx.AddFeature<MyWritableFeatureSingleStrategy>();
+                              ctx.AddFeature<MyWritableAnotherFeatureSingleStrategy>();
+                              ctx.ForStrategy<WritableStrategy>().Use<WritableStrategyImpl>();
+                          });
+
+            var feature1 = FeatureContext.GetFeature<MyWritableFeatureSingleStrategy>();
+            var feature2 = FeatureContext.GetFeature<MyWritableAnotherFeatureSingleStrategy>();
+            FeatureContext.Enable<MyWritableAnotherFeatureSingleStrategy>();
+
+            Assert.False(feature1.IsEnabled);
+            Assert.True(feature2.IsEnabled);
+
+            FeatureContext.Enable<MyWritableFeatureSingleStrategy>();
+            FeatureContext.Disable<MyWritableAnotherFeatureSingleStrategy>();
+
+            Assert.True(FeatureContext.GetFeature<MyWritableFeatureSingleStrategy>().IsEnabled);
+            Assert.False(FeatureContext.GetFeature<MyWritableAnotherFeatureSingleStrategy>().IsEnabled);
         }
     }
 
     [WritableStrategy(Key = "SampleKey")]
     public class MyWritableFeatureSingleStrategy : BaseFeature
+    {
+    }
+
+    [WritableStrategy(Key = "SampleKey2")]
+    public class MyWritableAnotherFeatureSingleStrategy : BaseFeature
     {
     }
 
