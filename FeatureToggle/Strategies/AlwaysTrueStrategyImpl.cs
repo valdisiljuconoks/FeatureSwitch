@@ -1,10 +1,10 @@
 ﻿namespace FeatureToggle.Strategies
 {
-    public class AlwaysFalseStrategyReader : BaseStrategyReaderImpl
+    public class AlwaysTrueStrategyImpl : BaseStrategyReaderImpl
     {
         public override bool Read()
         {
-            return false;
+            return true;
         }
     }
 }

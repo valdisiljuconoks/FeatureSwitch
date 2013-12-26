@@ -18,8 +18,8 @@ namespace FeatureToggle.Tests
                               ctx.AddFeature<MySampleFeatureWithoutStrategy>();
                               ctx.AddFeature<MyFancyStrategySampleFeature>();
 
-                              ctx.ForStrategy<AppSettingsStrategy>().Use<AlwaysTrueStrategyReader>();
-                              ctx.ForStrategy<UnitTestsAlwaysTrueStrategy>().Use<AlwaysTrueStrategyReader>();
+                              ctx.ForStrategy<AppSettingsStrategy>().Use<AlwaysTrueStrategyImpl>();
+                              ctx.ForStrategy<UnitTestsAlwaysTrueStrategy>().Use<AlwaysTrueStrategyImpl>();
                           },
                           expression => expression.AddRegistry<UnitTestDependencyRegistry>());
 
@@ -37,7 +37,7 @@ namespace FeatureToggle.Tests
                               ctx.AddFeature<MySampleFeature>();
                               ctx.AddFeature<MySampleFeature>();
 
-                              ctx.ForStrategy<AppSettingsStrategy>().Use<AlwaysTrueStrategyReader>();
+                              ctx.ForStrategy<AppSettingsStrategy>().Use<AlwaysTrueStrategyImpl>();
                           },
                           expression => expression.AddRegistry<UnitTestDependencyRegistry>());
 
@@ -53,7 +53,7 @@ namespace FeatureToggle.Tests
             builder.Build(ctx =>
                           {
                               ctx.AddFeature<MySampleFeature>();
-                              ctx.ForStrategy<AppSettingsStrategy>().Use<AlwaysTrueStrategyReader>();
+                              ctx.ForStrategy<AppSettingsStrategy>().Use<AlwaysTrueStrategyImpl>();
                           });
 
             var isEnabled = FeatureContext.IsEnabled<MySampleFeature>();
@@ -68,7 +68,7 @@ namespace FeatureToggle.Tests
             builder.Build(ctx =>
                           {
                               ctx.AddFeature<MySampleFeature>();
-                              ctx.ForStrategy<AppSettingsStrategy>().Use<AlwaysTrueStrategyReader>();
+                              ctx.ForStrategy<AppSettingsStrategy>().Use<AlwaysTrueStrategyImpl>();
                           },
                           expression => expression.AddRegistry<UnitTestDependencyRegistry>());
 

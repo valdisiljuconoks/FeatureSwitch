@@ -15,8 +15,8 @@ namespace FeatureToggle.Tests
             builder.Build(ctx =>
                           {
                               ctx.AddFeature<MySampleFeature>();
-                              ctx.ForStrategy<UnitTestsAlwaysTrueStrategy>().Use<AlwaysTrueStrategyReader>();
-                              ctx.ForStrategy<UnitTestsAlwaysTrueStrategy>().Use<AlwaysTrueStrategyReader>();
+                              ctx.ForStrategy<UnitTestsAlwaysTrueStrategy>().Use<AlwaysTrueStrategyImpl>();
+                              ctx.ForStrategy<UnitTestsAlwaysTrueStrategy>().Use<AlwaysTrueStrategyImpl>();
                           },
                           expression => expression.AddRegistry<UnitTestDependencyRegistry>());
 
@@ -49,7 +49,7 @@ namespace FeatureToggle.Tests
             builder.Build(ctx =>
                           {
                               ctx.AddFeature<MyFancyStrategySampleFeature>();
-                              ctx.ForStrategy<UnitTestsAlwaysTrueStrategy>().Use<AlwaysTrueStrategyReader>();
+                              ctx.ForStrategy<UnitTestsAlwaysTrueStrategy>().Use<AlwaysTrueStrategyImpl>();
                           });
 
             var isEnabled = FeatureContext.IsEnabled<MyFancyStrategySampleFeature>();
@@ -64,11 +64,11 @@ namespace FeatureToggle.Tests
             builder.Build(ctx =>
                           {
                               ctx.AddFeature<MySampleFeature>();
-                              ctx.ForStrategy<AppSettingsStrategy>().Use<AlwaysTrueStrategyReader>();
+                              ctx.ForStrategy<AppSettingsStrategy>().Use<AlwaysTrueStrategyImpl>();
                           });
 
             var strategy = builder.GetStrategyImplementation<AppSettingsStrategy>();
-            Assert.IsAssignableFrom(typeof(AlwaysTrueStrategyReader), strategy);
+            Assert.IsAssignableFrom(typeof(AlwaysTrueStrategyImpl), strategy);
         }
 
         [Fact]
@@ -78,7 +78,7 @@ namespace FeatureToggle.Tests
             builder.Build(ctx =>
                           {
                               ctx.AddFeature<MySampleFeature>();
-                              ctx.ForStrategy<AppSettingsStrategy>().Use<AlwaysTrueStrategyReader>();
+                              ctx.ForStrategy<AppSettingsStrategy>().Use<AlwaysTrueStrategyImpl>();
                           });
 
             var isEnabled = FeatureContext.IsEnabled<MySampleFeature>();

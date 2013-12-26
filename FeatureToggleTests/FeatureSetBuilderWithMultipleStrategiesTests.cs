@@ -13,7 +13,7 @@ namespace FeatureToggle.Tests
             builder.Build(ctx =>
                           {
                               ctx.AddFeature<MyFeatureDisabledWithMultipleStrategies>();
-                              ctx.ForStrategy<AppSettingsStrategy>().Use<AlwaysFalseStrategyReader>();
+                              ctx.ForStrategy<AppSettingsStrategy>().Use<AlwaysFalseStrategyImpl>();
                           });
 
             var feature = FeatureContext.GetFeature<MyFeatureDisabledWithMultipleStrategies>();

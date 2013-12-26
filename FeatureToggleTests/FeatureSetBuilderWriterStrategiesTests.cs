@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using FeatureToggle.Strategies;
 using FeatureToggle.Tests.Features;
 using StructureMap;
@@ -82,6 +83,23 @@ namespace FeatureToggle.Tests
             Assert.True(FeatureContext.GetFeature<MyWritableFeatureSingleStrategy>().IsEnabled);
             Assert.False(FeatureContext.GetFeature<MyWritableAnotherFeatureSingleStrategy>().IsEnabled);
         }
+
+        [Fact]
+        public void BuilderTest_FeatureWithWritableStrategy_FailToWrite_FeatureDoesNotChangeState()
+        {
+            var builder = new FeatureSetBuilder(new Container());
+            builder.Build(ctx =>
+            {
+                ctx.AddFeature<MyWritableFeatureSingleStrategy>();
+                ctx.ForStrategy<WritableStrategy>().Use<WritableStrategyExceptionImpl>();
+            });
+
+            var feature1 = FeatureContext.GetFeature<MyWritableFeatureSingleStrategy>();
+
+            Assert.False(feature1.IsEnabled);
+            FeatureContext.Enable<MyWritableFeatureSingleStrategy>();
+            Assert.False(feature1.IsEnabled);
+        }
     }
 
     [WritableStrategy(Key = "SampleKey")]
@@ -112,4 +130,18 @@ namespace FeatureToggle.Tests
             this.isEnabled = state;
         }
     }
+
+    public class WritableStrategyExceptionImpl : BaseStrategyImpl
+    {
+        public override bool Read()
+        {
+            return false;
+        }
+
+        public override void Write(bool state)
+        {
+            throw new FileNotFoundException();
+        }
+    }
+    
 }

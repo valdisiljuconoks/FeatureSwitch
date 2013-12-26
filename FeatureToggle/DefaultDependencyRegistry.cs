@@ -7,7 +7,7 @@ namespace FeatureToggle
     {
         public DefaultDependencyRegistry()
         {
-            For<IAppSettingsReader>().Use<ApplicationSettingsStrategyReader>();
+            For<IAppSettingsReader>().Use<ApplicationSettingsStrategyImpl>();
         }
     }
 }

@@ -38,7 +38,8 @@ namespace FeatureToggle
             if (!this.features.ContainsKey(featureType))
             {
                 this.features.Add(featureType,
-                                  Tuple.Create<BaseFeature, IList<IStrategy>>((BaseFeature)Activator.CreateInstance(featureType), new List<IStrategy>()));
+                                  Tuple.Create<BaseFeature, IList<IStrategy>>((BaseFeature)Activator.CreateInstance(featureType),
+                                                                              new List<IStrategy>()));
             }
         }
 
@@ -110,8 +111,15 @@ namespace FeatureToggle
                 throw new InvalidOperationException("Feature of type " + typeof(T) + " is not modifiable");
             }
 
-            ((IStrategyStorageWriter)writer).Write(state);
-            item.Item1.ChangeEnabledState(state);
+            try
+            {
+                ((IStrategyStorageWriter)writer).Write(state);
+                item.Item1.ChangeEnabledState(state);
+            }
+            catch (Exception e)
+            {
+                // TODO: add extension point for logging
+            }
         }
 
         private static Tuple<BaseFeature, IList<IStrategy>> GetFeatureWithStrategies(Type feature)

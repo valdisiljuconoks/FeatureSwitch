@@ -13,8 +13,8 @@ namespace FeatureToggle
         private readonly Dictionary<Type, Type> defaultReaders = new Dictionary<Type, Type>
         {
             { typeof(AppSettingsStrategy), typeof(IAppSettingsReader) },
-            { typeof(AlwaysTrueStrategy), typeof(AlwaysTrueStrategyReader) },
-            { typeof(AlwaysFalseStrategy), typeof(AlwaysFalseStrategyReader) },
+            { typeof(AlwaysTrueStrategy), typeof(AlwaysTrueStrategyImpl) },
+            { typeof(AlwaysFalseStrategy), typeof(AlwaysFalseStrategyImpl) },
         };
 
         public FeatureSetBuilder(IContainer container = null)
@@ -100,7 +100,7 @@ namespace FeatureToggle
         internal IStrategy GetStrategyImplementation(Type strategyType)
         {
             Type reader;
-            return !this.defaultReaders.TryGetValue(strategyType, out reader) ? null : (IStrategy)this.container.TryGetInstance(reader);
+            return this.defaultReaders.TryGetValue(strategyType, out reader) ? (IStrategy)this.container.GetInstance(reader) : new EmptyStrategy();
         }
 
         internal IStrategy GetStrategyImplementation<T>()
@@ -115,7 +115,7 @@ namespace FeatureToggle
             {
                 // build list of strategies and corresponding implementations for this feature
                 var strategies = keyValuePair.Value.Item1.GetType().GetCustomAttributes<FeatureStrategyAttribute>().OrderBy(a => a.Order);
-                var strategyImplementations = strategies.Select(s => Tuple.Create(s, GetStrategyImplementation(s.GetType()))).Where(s => s != null).ToList();
+                var strategyImplementations = strategies.Select(s => Tuple.Create(s, GetStrategyImplementation(s.GetType()))).ToList();
 
                 keyValuePair.Value.Item2.Clear();
                 strategyImplementations.ForEach(i => keyValuePair.Value.Item2.Add(i.Item2));
@@ -138,6 +138,7 @@ namespace FeatureToggle
 
         private void DetectCollisions(FeatureContext context)
         {
+            // TODO: implement this
         }
 
         private void DiscoverFeatures(FeatureContext context)
