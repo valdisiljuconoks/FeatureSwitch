@@ -11,7 +11,7 @@ namespace FeatureToggle.AspNet.Mvc5
         public void Configuration(IAppBuilder app)
         {
             var builder = new FeatureSetBuilder();
-            builder.Build();
+            builder.Build().WithRoute("FeatureToggle");
         }
     }
 }

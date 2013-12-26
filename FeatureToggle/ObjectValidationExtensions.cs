@@ -2,7 +2,7 @@
 
 namespace FeatureToggle
 {
-    internal static class ObjectValidationExtensions
+    public static class ObjectValidationExtensions
     {
         public static void CheckNull(this object target, string parameterName)
         {

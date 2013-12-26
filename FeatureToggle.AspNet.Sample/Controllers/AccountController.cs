@@ -162,7 +162,7 @@ namespace FeatureToggle.AspNet.Sample.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "FeatureToggleHome");
         }
 
         [AllowAnonymous]
@@ -276,7 +276,7 @@ namespace FeatureToggle.AspNet.Sample.Controllers
                 if (result.Succeeded)
                 {
                     await SignInAsync(user, false);
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "FeatureToggleHome");
                 }
                 AddErrors(result);
             }
@@ -351,7 +351,7 @@ namespace FeatureToggle.AspNet.Sample.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "FeatureToggleHome");
         }
 
         private async Task SignInAsync(ApplicationUser user, bool isPersistent)

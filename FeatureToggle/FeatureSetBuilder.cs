@@ -30,7 +30,7 @@ namespace FeatureToggle
             }
         }
 
-        public void Build(Action<FeatureContext> action = null, Action<ConfigurationExpression> dependencyConfiguration = null)
+        public FeatureContext Build(Action<FeatureContext> action = null, Action<ConfigurationExpression> dependencyConfiguration = null)
         {
             lock (typeof(FeatureSetBuilder))
             {
@@ -40,6 +40,8 @@ namespace FeatureToggle
                 DetectCollisions(context);
 
                 FeatureContext.SetInstance(context);
+
+                return context;
             }
         }
 
