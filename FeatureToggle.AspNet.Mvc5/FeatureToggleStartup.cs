@@ -2,11 +2,11 @@
 using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartup("FeatureToggleStartup", typeof(Startup))]
+[assembly: OwinStartup("FeatureToggleStartup", typeof(FeatureToggleStartup))]
 
 namespace FeatureToggle.AspNet.Mvc5
 {
-    public class Startup
+    public class FeatureToggleStartup
     {
         public void Configuration(IAppBuilder app)
         {
