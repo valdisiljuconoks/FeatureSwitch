@@ -9,7 +9,8 @@ namespace FeatureToggle
     {
         private readonly Dictionary<Type, Type> additionalReaders = new Dictionary<Type, Type>();
         private readonly Dictionary<Type, Tuple<BaseFeature, IList<IStrategy>>> features = new Dictionary<Type, Tuple<BaseFeature, IList<IStrategy>>>();
-        private static FeatureContext instance;
+        private static FeatureContext instance = new FeatureContext();
+        private static bool initialized;
 
         public IReadOnlyDictionary<Type, Tuple<BaseFeature, IList<IStrategy>>> Features
         {
@@ -92,7 +93,11 @@ namespace FeatureToggle
 
         internal static void SetInstance(FeatureContext context)
         {
-            instance = context;
+            lock (typeof(FeatureContext))
+            {
+                instance = context;
+                initialized = true;
+            }
         }
 
         private static void ChangeEnabledState<T>(bool state) where T : IFeature
@@ -124,6 +129,10 @@ namespace FeatureToggle
 
         private static Tuple<BaseFeature, IList<IStrategy>> GetFeatureWithStrategies(Type feature)
         {
+            if (!initialized)
+            {
+                throw new InvalidOperationException("Feature context is not initialized. Create new instance of FeatureSetBuilder and call Build() method.");
+            }
             var featureEntry = instance.features.FirstOrDefault(f => f.Key != null && f.Key.IsAssignableFrom(feature));
             return featureEntry.Key != null ? featureEntry.Value : null;
         }

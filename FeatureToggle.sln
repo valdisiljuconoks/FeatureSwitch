@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeatureToggle", "FeatureTog
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeatureToggle.Tests", "FeatureToggleTests\FeatureToggle.Tests.csproj", "{B90FCCBB-9CAE-48E1-83B7-F5C30809EF88}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeatureToggle.AspNet.Sample", "FeatureToggle.AspNet.Sample\FeatureToggle.AspNet.Sample.csproj", "{D278DF54-B8D4-44BE-B630-75FF4C56BA26}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeatureToggle.AspNet.Mvc5", "FeatureToggle.AspNet.Mvc5\FeatureToggle.AspNet.Mvc5.csproj", "{47B28B12-59E0-493A-B0C7-1B5F808FFA53}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{B90FCCBB-9CAE-48E1-83B7-F5C30809EF88}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B90FCCBB-9CAE-48E1-83B7-F5C30809EF88}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B90FCCBB-9CAE-48E1-83B7-F5C30809EF88}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D278DF54-B8D4-44BE-B630-75FF4C56BA26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D278DF54-B8D4-44BE-B630-75FF4C56BA26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D278DF54-B8D4-44BE-B630-75FF4C56BA26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D278DF54-B8D4-44BE-B630-75FF4C56BA26}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47B28B12-59E0-493A-B0C7-1B5F808FFA53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47B28B12-59E0-493A-B0C7-1B5F808FFA53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47B28B12-59E0-493A-B0C7-1B5F808FFA53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47B28B12-59E0-493A-B0C7-1B5F808FFA53}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

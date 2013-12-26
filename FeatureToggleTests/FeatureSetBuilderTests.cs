@@ -1,4 +1,5 @@
-﻿using FeatureToggle.Strategies;
+﻿using System;
+using FeatureToggle.Strategies;
 using FeatureToggle.Tests.Features;
 using FeatureToggle.Tests.Strategies;
 using StructureMap;
@@ -8,6 +9,13 @@ namespace FeatureToggle.Tests
 {
     public class FeatureSetBuilderTests
     {
+        [Fact]
+        public void BuilderTest_CallContextWithoutSetup_Success()
+        {
+            Assert.Throws<InvalidOperationException>(() => FeatureContext.IsEnabled<MySampleFeature>());
+        }
+
+
         [Fact]
         public void BuilderTest_AddMoreFeature_Success()
         {
