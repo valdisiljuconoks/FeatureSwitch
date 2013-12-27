@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeatureToggle.AspNet.Sample
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeatureToggle.AspNet.Mvc5", "FeatureToggle.AspNet.Mvc5\FeatureToggle.AspNet.Mvc5.csproj", "{47B28B12-59E0-493A-B0C7-1B5F808FFA53}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeatureToggle.AspNet.Optimization", "FeatureToggle.AspNet.Optimization\FeatureToggle.AspNet.Optimization.csproj", "{029552DE-EA83-4E55-96F3-E65BCD7C2C19}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{47B28B12-59E0-493A-B0C7-1B5F808FFA53}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{47B28B12-59E0-493A-B0C7-1B5F808FFA53}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{47B28B12-59E0-493A-B0C7-1B5F808FFA53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{029552DE-EA83-4E55-96F3-E65BCD7C2C19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{029552DE-EA83-4E55-96F3-E65BCD7C2C19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{029552DE-EA83-4E55-96F3-E65BCD7C2C19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{029552DE-EA83-4E55-96F3-E65BCD7C2C19}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

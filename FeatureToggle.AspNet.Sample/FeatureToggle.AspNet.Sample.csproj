@@ -175,9 +175,10 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="MyFirstFeature.cs" />
+    <Compile Include="ScriptOptimizationDisabled.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="StyleOptimizationDisabled.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -241,6 +242,10 @@
     <ProjectReference Include="..\FeatureToggle.AspNet.Mvc5\FeatureToggle.AspNet.Mvc5.csproj">
       <Project>{47b28b12-59e0-493a-b0c7-1b5f808ffa53}</Project>
       <Name>FeatureToggle.AspNet.Mvc5</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FeatureToggle.AspNet.Optimization\FeatureToggle.AspNet.Optimization.csproj">
+      <Project>{029552de-ea83-4e55-96f3-e65bcd7c2c19}</Project>
+      <Name>FeatureToggle.AspNet.Optimization</Name>
     </ProjectReference>
     <ProjectReference Include="..\FeatureToggle\FeatureToggle.csproj">
       <Project>{2647bfaf-c14f-42ab-ba25-35462c9e3251}</Project>
