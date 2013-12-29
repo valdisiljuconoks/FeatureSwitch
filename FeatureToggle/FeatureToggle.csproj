@@ -62,7 +62,6 @@
     <Compile Include="Strategies\BaseStrategyImpl.cs" />
     <Compile Include="Strategies\HttpSession.cs" />
     <Compile Include="Strategies\EmptyStrategy.cs" />
-    <Compile Include="Strategies\IAppSettingsReader.cs" />
     <Compile Include="Strategies\Implementations\AlwaysFalseStrategyImpl.cs" />
     <Compile Include="Strategies\Implementations\AlwaysTrueStrategyImpl.cs" />
     <Compile Include="Strategies\Implementations\AppSettingsStrategyImpl.cs" />

@@ -18,8 +18,7 @@ namespace FeatureToggle.Tests
                               ctx.AddFeature<MySampleFeature>();
                               ctx.ForStrategy<UnitTestsAlwaysTrueStrategy>().Use<AlwaysTrueStrategyImpl>();
                               ctx.ForStrategy<UnitTestsAlwaysTrueStrategy>().Use<AlwaysTrueStrategyImpl>();
-                          },
-                          expression => expression.AddRegistry<UnitTestDependencyRegistry>());
+                          });
 
             var isEnabled = container.IsEnabled<MySampleFeature>();
 

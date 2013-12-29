@@ -22,8 +22,7 @@ namespace FeatureToggle.Tests
 
                                               ctx.ForStrategy<AppSettingsStrategy>().Use<AlwaysTrueStrategyImpl>();
                                               ctx.ForStrategy<UnitTestsAlwaysTrueStrategy>().Use<AlwaysTrueStrategyImpl>();
-                                          },
-                                          expression => expression.AddRegistry<UnitTestDependencyRegistry>());
+                                          });
 
             Assert.True(container.IsEnabled<MySampleFeature>(), "MySampleFeature is not enabled");
             Assert.False(container.IsEnabled<MySampleFeatureWithoutStrategy>(), "MySampleFeatureWithoutStrategy is not enabled");
@@ -40,8 +39,7 @@ namespace FeatureToggle.Tests
                                               ctx.AddFeature<MySampleFeature>();
 
                                               ctx.ForStrategy<AppSettingsStrategy>().Use<AlwaysTrueStrategyImpl>();
-                                          },
-                                          expression => expression.AddRegistry<UnitTestDependencyRegistry>());
+                                          });
 
             var isEnabled = container.IsEnabled<MySampleFeature>();
 
@@ -80,8 +78,7 @@ namespace FeatureToggle.Tests
                                           {
                                               ctx.AddFeature<MySampleFeature>();
                                               ctx.ForStrategy<AppSettingsStrategy>().Use<AlwaysTrueStrategyImpl>();
-                                          },
-                                          expression => expression.AddRegistry<UnitTestDependencyRegistry>());
+                                          });
 
             var isEnabled = container.IsEnabled<MySampleFeatureWithoutStrategy>();
 

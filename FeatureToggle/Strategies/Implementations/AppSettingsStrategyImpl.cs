@@ -2,7 +2,7 @@
 
 namespace FeatureToggle.Strategies.Implementations
 {
-    public class AppSettingsStrategyImpl : BaseStrategyReaderImpl, IAppSettingsReader
+    public class AppSettingsStrategyImpl : BaseStrategyReaderImpl
     {
         public override bool Read()
         {

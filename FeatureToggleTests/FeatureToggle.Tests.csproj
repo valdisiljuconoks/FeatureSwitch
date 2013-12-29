@@ -76,10 +76,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Strategies\StrategyWithConstructorParameter.cs" />
     <Compile Include="Strategies\StrategyWithConstructorParameterReader.cs" />
-    <Compile Include="Strategies\UnitTestAppSettingsStrategyReader.cs" />
     <Compile Include="Strategies\UnitTestsAlwaysTrueStrategy.cs" />
     <Compile Include="StrategyTests\HttpSessionStrategyTests.cs" />
-    <Compile Include="UnitTestDependencyRegistry.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

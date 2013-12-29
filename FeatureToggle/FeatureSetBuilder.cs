@@ -13,7 +13,7 @@ namespace FeatureToggle
         private IContainer container;
         private readonly Dictionary<Type, Type> defaultImplementations = new Dictionary<Type, Type>
         {
-            { typeof(AppSettingsStrategy), typeof(IAppSettingsReader) },
+            { typeof(AppSettingsStrategy), typeof(AppSettingsStrategyImpl) },
             { typeof(AlwaysTrueStrategy), typeof(AlwaysTrueStrategyImpl) },
             { typeof(AlwaysFalseStrategy), typeof(AlwaysFalseStrategyImpl) },
             { typeof(HttpSession), typeof(HttpSessionStrategyImpl) },
