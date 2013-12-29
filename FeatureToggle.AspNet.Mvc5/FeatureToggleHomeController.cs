@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 
 namespace FeatureToggle.AspNet.Mvc5
 {
@@ -10,6 +11,19 @@ namespace FeatureToggle.AspNet.Mvc5
             {
                 Features = FeatureContext.GetFeatures()
             });
+        }
+
+        [HttpPost]
+        public void Update(string name, bool state)
+        {
+            if (state)
+            {
+                FeatureContext.Enable(name);
+            }
+            else
+            {
+                FeatureContext.Disable(name);
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using FeatureToggle.Strategies;
+using FeatureToggle.Strategies.Implementations;
 using StructureMap.Configuration.DSL;
 
 namespace FeatureToggle
@@ -7,7 +8,7 @@ namespace FeatureToggle
     {
         public DefaultDependencyRegistry()
         {
-            For<IAppSettingsReader>().Use<ApplicationSettingsStrategyImpl>();
+            For<IAppSettingsReader>().Use<AppSettingsStrategyImpl>();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using FeatureToggle.Strategies;
+﻿using System;
+using FeatureToggle.Strategies;
 
 namespace FeatureToggle
 {
@@ -9,6 +10,11 @@ namespace FeatureToggle
         public StrategyConfigurationExpression(FeatureContext context)
         {
             this.context = context;
+        }
+
+        public void Use(Type implementation)
+        {
+            throw new NotImplementedException();
         }
 
         public void Use<TImpl>() where TImpl : IStrategy

@@ -1,5 +1,6 @@
 ﻿using System;
 using FeatureToggle.Strategies;
+using FeatureToggle.Strategies.Implementations;
 using FeatureToggle.Tests.Features;
 using FeatureToggle.Tests.Strategies;
 using StructureMap;

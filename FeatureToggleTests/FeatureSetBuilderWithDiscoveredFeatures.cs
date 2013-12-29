@@ -1,17 +1,20 @@
-﻿using FeatureToggle.Tests.Features;
+﻿using System.Web;
+using FeatureToggle.Tests.Features;
+using Moq;
 using Xunit;
 
 namespace FeatureToggle.Tests
 {
     public class FeatureSetBuilderWithDiscoveredFeatures
     {
-        [Fact]
-        public void BuilderTest_BuildContextWithDiscovery_DiscoveredFeatureFound()
+        public FeatureSetBuilderWithDiscoveredFeatures()
         {
-            var builder = new FeatureSetBuilder();
-            var container = builder.Build();
+            var httpSessionMock = new Mock<HttpContextBase>();
+            var session = new Mock<HttpSessionStateBase>();
 
-            Assert.NotNull(container.GetFeature<MySampleDiscoveredFeature>());
+            httpSessionMock.Setup(b => b.Session).Returns(() => session.Object);
+
+            HttpContextFactory.SetCurrentContext(httpSessionMock.Object);
         }
 
         [Fact]
@@ -21,6 +24,15 @@ namespace FeatureToggle.Tests
             var container = builder.Build(context => context.AddFeature<MySample2ndLevelFeature>());
 
             Assert.NotNull(container.GetFeature<MySample2ndLevelFeature>());
+        }
+
+        [Fact]
+        public void BuilderTest_BuildContextWithDiscovery_DiscoveredFeatureFound()
+        {
+            var builder = new FeatureSetBuilder();
+            var container = builder.Build();
+
+            Assert.NotNull(container.GetFeature<MySampleDiscoveredFeature>());
         }
     }
 

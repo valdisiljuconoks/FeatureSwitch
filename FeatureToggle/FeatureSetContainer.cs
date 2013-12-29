@@ -8,14 +8,14 @@ namespace FeatureToggle
 {
     public class FeatureSetContainer
     {
-        private readonly Dictionary<Type, Tuple<BaseFeature, IList<IStrategy>>> features = new Dictionary<Type, Tuple<BaseFeature, IList<IStrategy>>>();
+        private readonly Dictionary<string, Tuple<BaseFeature, IList<IStrategy>>> features = new Dictionary<string, Tuple<BaseFeature, IList<IStrategy>>>();
 
         public FeatureSetContainer()
         {
             ConfigurationErrors = new List<string>();
         }
 
-        public IReadOnlyDictionary<Type, Tuple<BaseFeature, IList<IStrategy>>> Features
+        public IReadOnlyDictionary<string, Tuple<BaseFeature, IList<IStrategy>>> Features
         {
             get
             {
@@ -32,8 +32,10 @@ namespace FeatureToggle
 
         public void AddFeature(Type featureType)
         {
+            var key = featureType.FullName;
+
             // add only if does not exist
-            if (this.features.ContainsKey(featureType))
+            if (this.features.ContainsKey(key))
             {
                 return;
             }
@@ -41,7 +43,7 @@ namespace FeatureToggle
             var featureInstance = (BaseFeature)Activator.CreateInstance(featureType);
             featureInstance.Name = featureType.Name;
 
-            this.features.Add(featureType, Tuple.Create<BaseFeature, IList<IStrategy>>(featureInstance, new List<IStrategy>()));
+            this.features.Add(key, Tuple.Create<BaseFeature, IList<IStrategy>>(featureInstance, new List<IStrategy>()));
         }
 
         public IFeature GetFeature<T>(bool throwNotFound = true) where T : IFeature
@@ -51,7 +53,7 @@ namespace FeatureToggle
 
         public IFeature GetFeature(Type feature, bool throwNotFound = true)
         {
-            var item = GetFeatureWithStrategies(feature);
+            var item = GetFeatureWithStrategies(feature.FullName);
             if (item != null)
             {
                 return item.Item1;
@@ -84,20 +86,20 @@ namespace FeatureToggle
             }
         }
 
-        internal void ChangeEnabledState<T>(bool state) where T : IFeature
+        internal void ChangeEnabledState(string featureName, bool state)
         {
-            var item = GetFeatureWithStrategies(typeof(T));
+            var item = GetFeatureWithStrategies(featureName);
 
             if (item == null)
             {
-                throw new KeyNotFoundException("Feature of type" + typeof(T) + " not found");
+                throw new KeyNotFoundException("Feature of type" + featureName + " not found");
             }
 
             // find 1st writer strategy
             var writer = item.Item2.FirstOrDefault(s => s is IStrategyStorageWriter);
             if (writer == null)
             {
-                throw new InvalidOperationException("Feature of type " + typeof(T) + " is not modifiable");
+                throw new InvalidOperationException("Feature of type " + featureName + " is not modifiable");
             }
 
             try
@@ -111,9 +113,14 @@ namespace FeatureToggle
             }
         }
 
-        private Tuple<BaseFeature, IList<IStrategy>> GetFeatureWithStrategies(Type feature)
+        internal void ChangeEnabledState<T>(bool state) where T : IFeature
         {
-            var featureEntry = this.features.FirstOrDefault(f => f.Key != null && f.Key.IsAssignableFrom(feature));
+            ChangeEnabledState(typeof(T).FullName, state);
+        }
+
+        private Tuple<BaseFeature, IList<IStrategy>> GetFeatureWithStrategies(string featureName)
+        {
+            var featureEntry = this.features.FirstOrDefault(f => f.Key != null && f.Key == featureName);
             return featureEntry.Key != null ? featureEntry.Value : null;
         }
     }

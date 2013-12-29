@@ -42,14 +42,24 @@ namespace FeatureToggle
 
         public static void Disable<T>() where T : IFeature
         {
+            Disable(typeof(T).FullName);
+        }
+
+        public static void Disable(string featureName)
+        {
             TestInstance();
-            instance.Container.ChangeEnabledState<T>(false);
+            instance.Container.ChangeEnabledState(featureName, false);
         }
 
         public static void Enable<T>() where T : IFeature
         {
+            Enable(typeof(T).FullName);
+        }
+
+        public static void Enable(string featureName)
+        {
             TestInstance();
-            instance.Container.ChangeEnabledState<T>(true);
+            instance.Container.ChangeEnabledState(featureName, true);
         }
 
         public StrategyConfigurationExpression<TStrategy> ForStrategy<TStrategy>() where TStrategy : FeatureStrategyAttribute

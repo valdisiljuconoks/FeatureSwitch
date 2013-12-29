@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using FeatureToggle.Strategies;
+using FeatureToggle.Strategies.Implementations;
 using StructureMap;
 
 namespace FeatureToggle
@@ -127,7 +128,7 @@ namespace FeatureToggle
                 // test if there are any strategy with equal order
                 if (strategies.GroupBy(a => a.Order).Any(k => k.Count() > 1))
                 {
-                    context.AddConfigurationError(string.Format("Feature {0} has strategies with the same order.", keyValuePair.Key.FullName));
+                    context.AddConfigurationError(string.Format("Feature {0} has strategies with the same order.", keyValuePair.Key));
                 }
 
                 var strategyImplementations = strategies.Select(s => Tuple.Create(s, GetStrategyImplementation(s.GetType()))).ToList();

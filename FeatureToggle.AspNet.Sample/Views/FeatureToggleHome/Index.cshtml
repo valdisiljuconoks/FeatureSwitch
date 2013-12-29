@@ -16,7 +16,10 @@
 
             table td, table th { border: 1px solid gray; }
 
-            table tr td:first-child { text-align: center;vertical-align: middle; }
+            table tr td:first-child {
+                text-align: center;
+                vertical-align: middle;
+            }
         </style>
     </head>
     <body>
@@ -34,7 +37,7 @@
                 {
                     <tr>
                         <td>
-                            @Html.CheckBox(feature.GetType().FullName, @feature.IsEnabled, feature.CanModify ? new { disabled = "disabled" } : null)
+                            @Html.CheckBox(feature.GetType().FullName, @feature.IsEnabled, feature.CanModify ? null : new { disabled = "disabled" })
                         </td>
                         <td>@feature.Name</td>
                         <td>@feature.GetType().FullName</td>
@@ -47,7 +50,11 @@
         <script type="text/javascript">
             $(function() {
                 $('table').on('click', 'input:checkbox', function() {
-                    alert('checked');
+                    $.ajax({
+                        type: 'POST',
+                        url: 'Update',
+                        data: { name: this.name, state: this.checked }
+                    });
                 });
             });
         </script>

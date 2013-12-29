@@ -1,4 +1,4 @@
-﻿namespace FeatureToggle.Strategies
+﻿namespace FeatureToggle.Strategies.Implementations
 {
     public class AlwaysFalseStrategyImpl : BaseStrategyReaderImpl
     {

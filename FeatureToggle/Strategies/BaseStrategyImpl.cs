@@ -1,4 +1,6 @@
-﻿namespace FeatureToggle.Strategies
+﻿using FeatureToggle.Strategies.Implementations;
+
+namespace FeatureToggle.Strategies
 {
     public abstract class BaseStrategyImpl : BaseStrategyReaderImpl, IStrategyStorageWriter
     {

@@ -1,4 +1,5 @@
 using FeatureToggle.Strategies;
+using FeatureToggle.Strategies.Implementations;
 
 namespace FeatureToggle.Tests.Strategies
 {
