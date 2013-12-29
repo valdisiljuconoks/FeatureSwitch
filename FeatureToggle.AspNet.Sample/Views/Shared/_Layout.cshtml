@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>@ViewBag.Title - My ASP.NET Application</title>
         @(ToggleStyles.Render<StyleOptimizationDisabled>("~/Content/css"))
-        @(ToggleScripts.Render<ScriptOptimizationDisabled>("~/bundles/modernizr"))
+        @(ToggleScripts.Render<FeatureScriptOptimizationDisabled>("~/bundles/modernizr"))
 
     </head>
     <body>
@@ -37,8 +37,8 @@
             </footer>
         </div>
 
-        @(ToggleScripts.Render<ScriptOptimizationDisabled>("~/bundles/jquery"))
-        @ToggleScripts.Render(typeof(ScriptOptimizationDisabled), "~/bundles/bootstrap")
+        @(ToggleScripts.Render<FeatureScriptOptimizationDisabled>("~/bundles/jquery"))
+        @ToggleScripts.Render(typeof(FeatureScriptOptimizationDisabled), "~/bundles/bootstrap")
         @RenderSection("scripts", false)
     </body>
 </html>

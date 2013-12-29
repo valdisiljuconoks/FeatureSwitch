@@ -6,7 +6,10 @@ namespace FeatureToggle.AspNet.Mvc5
     {
         public ActionResult Index()
         {
-            return null;
+            return View(new FeatureToggleHomeViewModel
+            {
+                Features = FeatureContext.GetFeatures()
+            });
         }
     }
 }

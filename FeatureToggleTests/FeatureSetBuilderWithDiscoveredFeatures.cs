@@ -9,18 +9,18 @@ namespace FeatureToggle.Tests
         public void BuilderTest_BuildContextWithDiscovery_DiscoveredFeatureFound()
         {
             var builder = new FeatureSetBuilder();
-            builder.Build();
+            var container = builder.Build();
 
-            Assert.NotNull(FeatureContext.GetFeature<MySampleDiscoveredFeature>());
+            Assert.NotNull(container.GetFeature<MySampleDiscoveredFeature>());
         }
 
         [Fact]
         public void BuilderTest_2ndLevelInheritance_DiscoveredFeatureFound()
         {
             var builder = new FeatureSetBuilder();
-            builder.Build();
+            var container = builder.Build(context => context.AddFeature<MySample2ndLevelFeature>());
 
-            Assert.NotNull(FeatureContext.GetFeature<MySample2ndLevelFeature>());
+            Assert.NotNull(container.GetFeature<MySample2ndLevelFeature>());
         }
     }
 

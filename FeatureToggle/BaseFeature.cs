@@ -20,6 +20,8 @@
             }
         }
 
+        public string Name { get; internal set; }
+
         internal void ChangeEnabledState(bool enabled)
         {
             this.isEnabled = enabled;

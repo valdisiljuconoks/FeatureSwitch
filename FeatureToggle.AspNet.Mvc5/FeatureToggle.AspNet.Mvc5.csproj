@@ -80,6 +80,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FeatureContextExtensions.cs" />
+    <Compile Include="FeatureToggleHomeViewModel.cs" />
     <Compile Include="FeatureToggleStartup.cs" />
     <Compile Include="FeatureToggleHomeController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

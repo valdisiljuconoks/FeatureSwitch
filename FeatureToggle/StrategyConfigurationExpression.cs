@@ -11,17 +11,17 @@ namespace FeatureToggle
             this.context = context;
         }
 
-        public void Use<TReader>() where TReader : IStrategyStorageReader
+        public void Use<TImpl>() where TImpl : IStrategy
         {
             var strategyType = typeof(TStrategy);
-            if (this.context.Readers.Keys.Contains(strategyType))
+            if (this.context.AdditionalStrategies.Keys.Contains(strategyType))
             {
                 // swap already registered strategy
-                this.context.Readers[strategyType] = typeof(TReader);
+                this.context.AdditionalStrategies[strategyType] = typeof(TImpl);
             }
             else
             {
-                this.context.Readers.Add(strategyType, typeof(TReader));
+                this.context.AdditionalStrategies.Add(strategyType, typeof(TImpl));
             }
         }
     }

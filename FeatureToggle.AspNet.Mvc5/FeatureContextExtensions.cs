@@ -1,12 +1,11 @@
 ﻿using System.Web.Mvc;
 using System.Web.Routing;
-using FeatureToggle;
 
 namespace FeatureToggle.AspNet.Mvc5
 {
     public static class FeatureContextExtensions
     {
-        public static void WithRoute(this FeatureContext target, string routeName)
+        public static FeatureSetContainer WithRoute(this FeatureSetContainer target, string routeName)
         {
             routeName.CheckNull("routeName");
 
@@ -19,6 +18,8 @@ namespace FeatureToggle.AspNet.Mvc5
             route.DataTokens["Namespaces"] = new[] { "FeatureToggle.AspNet.Mvc5" };
 
             RouteTable.Routes.Insert(0, route);
+
+            return target;
         }
     }
 }

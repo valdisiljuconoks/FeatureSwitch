@@ -40,6 +40,7 @@
       <HintPath>..\packages\structuremap.2.6.4.1\lib\net40\StructureMap.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="xunit">
       <HintPath>..\packages\xunit.1.9.1\lib\net20\xunit.dll</HintPath>
     </Reference>
@@ -53,6 +54,7 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="FeatureSetBuilderStrategyOrderingTests.cs" />
     <Compile Include="FeatureSetBuilderTests.cs" />
     <Compile Include="FeatureSetBuilderWithDiscoveredFeatures.cs" />
     <Compile Include="FeatureSetBuilderWithMultipleStrategiesTests.cs" />

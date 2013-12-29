@@ -12,7 +12,7 @@ namespace FeatureToggle.Tests
         public void BuilderTest_AddSameStrategyMultipleTimes_NoFailures()
         {
             var builder = new FeatureSetBuilder(new Container());
-            builder.Build(ctx =>
+            var container = builder.Build(ctx =>
                           {
                               ctx.AddFeature<MySampleFeature>();
                               ctx.ForStrategy<UnitTestsAlwaysTrueStrategy>().Use<AlwaysTrueStrategyImpl>();
@@ -20,7 +20,7 @@ namespace FeatureToggle.Tests
                           },
                           expression => expression.AddRegistry<UnitTestDependencyRegistry>());
 
-            var isEnabled = FeatureContext.IsEnabled<MySampleFeature>();
+            var isEnabled = container.IsEnabled<MySampleFeature>();
 
             Assert.True(isEnabled);
         }
@@ -29,14 +29,14 @@ namespace FeatureToggle.Tests
         public void  BuilderTest_CustomStrategyWithConstructorParameters_NoFailure()
         {
             var builder = new FeatureSetBuilder(new Container());
-            builder.Build(ctx =>
+            var container = builder.Build(ctx =>
                           {
                               ctx.AddFeature<MySampleFeatureWithConstructorParameterStrategy>();
                               ctx.ForStrategy<StrategyWithConstructorParameter>().Use<StrategyWithConstructorParameterReader>();
                           },
                           expression => expression.For<ISampleInjectedInterface>().Use<SampleInjectedInterface>());
 
-            var feature = FeatureContext.GetFeature<MySampleFeatureWithConstructorParameterStrategy>();
+            var feature = container.GetFeature<MySampleFeatureWithConstructorParameterStrategy>();
 
             Assert.True(feature.IsEnabled);
             Assert.NotNull(((StrategyWithConstructorParameterReader)builder.GetStrategyImplementation<StrategyWithConstructorParameter>()).Dependency);
@@ -46,13 +46,13 @@ namespace FeatureToggle.Tests
         public void BuilderTest_CustomStrategy_FeatureIsEnabled()
         {
             var builder = new FeatureSetBuilder(new Container());
-            builder.Build(ctx =>
+            var container = builder.Build(ctx =>
                           {
                               ctx.AddFeature<MyFancyStrategySampleFeature>();
                               ctx.ForStrategy<UnitTestsAlwaysTrueStrategy>().Use<AlwaysTrueStrategyImpl>();
                           });
 
-            var isEnabled = FeatureContext.IsEnabled<MyFancyStrategySampleFeature>();
+            var isEnabled = container.IsEnabled<MyFancyStrategySampleFeature>();
 
             Assert.True(isEnabled, "MyFancyStrategySampleFeature is not enabled");
         }
@@ -61,7 +61,7 @@ namespace FeatureToggle.Tests
         public void BuilderTest_SwapBuiltInStrategy_ContainerHasSwappedStrategy()
         {
             var builder = new FeatureSetBuilder(new Container());
-            builder.Build(ctx =>
+            var container = builder.Build(ctx =>
                           {
                               ctx.AddFeature<MySampleFeature>();
                               ctx.ForStrategy<AppSettingsStrategy>().Use<AlwaysTrueStrategyImpl>();
@@ -75,13 +75,13 @@ namespace FeatureToggle.Tests
         public void BuilderTest_SwapBuiltInStrategy_NoFailure()
         {
             var builder = new FeatureSetBuilder(new Container());
-            builder.Build(ctx =>
+            var container = builder.Build(ctx =>
                           {
                               ctx.AddFeature<MySampleFeature>();
                               ctx.ForStrategy<AppSettingsStrategy>().Use<AlwaysTrueStrategyImpl>();
                           });
 
-            var isEnabled = FeatureContext.IsEnabled<MySampleFeature>();
+            var isEnabled = container.IsEnabled<MySampleFeature>();
 
             Assert.True(isEnabled);
         }

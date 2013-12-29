@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="BaseFeature.cs" />
     <Compile Include="DefaultDependencyRegistry.cs" />
+    <Compile Include="FeatureSetContainer.cs" />
     <Compile Include="ObjectValidationExtensions.cs" />
     <Compile Include="ConfigurationContext.cs" />
     <Compile Include="FeatureContext.cs" />
@@ -61,6 +62,8 @@
     <Compile Include="Strategies\AppSettingsStrategy.cs" />
     <Compile Include="Strategies\BaseStrategyImpl.cs" />
     <Compile Include="Strategies\BaseStrategyReaderImpl.cs" />
+    <Compile Include="Strategies\HttpSession.cs" />
+    <Compile Include="Strategies\HttpSessionStrategyImpl.cs" />
     <Compile Include="Strategies\EmptyStrategy.cs" />
     <Compile Include="Strategies\IAppSettingsReader.cs" />
     <Compile Include="Strategies\IStrategy.cs" />

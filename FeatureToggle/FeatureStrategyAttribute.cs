@@ -2,6 +2,7 @@
 
 namespace FeatureToggle
 {
+    [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
     public abstract class FeatureStrategyAttribute : Attribute
     {
         protected FeatureStrategyAttribute()

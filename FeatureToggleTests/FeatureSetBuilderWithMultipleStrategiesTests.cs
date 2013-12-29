@@ -10,13 +10,13 @@ namespace FeatureToggle.Tests
         public void BuilderTest_MultipleStrategies_FeatureEnabled()
         {
             var builder = new FeatureSetBuilder(new Container());
-            builder.Build(ctx =>
-                          {
-                              ctx.AddFeature<MyFeatureDisabledWithMultipleStrategies>();
-                              ctx.ForStrategy<AppSettingsStrategy>().Use<AlwaysFalseStrategyImpl>();
-                          });
+            var container = builder.Build(ctx =>
+                                          {
+                                              ctx.AddFeature<MyFeatureDisabledWithMultipleStrategies>();
+                                              ctx.ForStrategy<AppSettingsStrategy>().Use<AlwaysFalseStrategyImpl>();
+                                          });
 
-            var feature = FeatureContext.GetFeature<MyFeatureDisabledWithMultipleStrategies>();
+            var feature = container.GetFeature<MyFeatureDisabledWithMultipleStrategies>();
 
             Assert.False(feature.IsEnabled);
         }

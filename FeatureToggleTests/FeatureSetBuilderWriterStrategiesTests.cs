@@ -22,7 +22,7 @@ namespace FeatureToggle.Tests
         public void BuilderTest_FeatureWithWritableStrategy_FeatureCanDisable()
         {
             var builder = new FeatureSetBuilder(new Container());
-            builder.Build(ctx =>
+            var container = builder.Build(ctx =>
                           {
                               ctx.AddFeature<MyWritableFeatureSingleStrategy>();
                               ctx.ForStrategy<WritableStrategy>().Use<WritableStrategyImpl>();
@@ -41,7 +41,7 @@ namespace FeatureToggle.Tests
         public void BuilderTest_FeatureWithWritableStrategy_FeatureCanEnable()
         {
             var builder = new FeatureSetBuilder(new Container());
-            builder.Build(ctx =>
+            var container = builder.Build(ctx =>
                           {
                               ctx.AddFeature<MyWritableFeatureSingleStrategy>();
                               ctx.ForStrategy<WritableStrategy>().Use<WritableStrategyImpl>();
@@ -63,7 +63,7 @@ namespace FeatureToggle.Tests
         public void BuilderTest_MultipleFeaturesSameStrategy_NoCollisionsInState()
         {
             var builder = new FeatureSetBuilder(new Container());
-            builder.Build(ctx =>
+            var container = builder.Build(ctx =>
                           {
                               ctx.AddFeature<MyWritableFeatureSingleStrategy>();
                               ctx.AddFeature<MyWritableAnotherFeatureSingleStrategy>();
@@ -88,7 +88,7 @@ namespace FeatureToggle.Tests
         public void BuilderTest_FeatureWithWritableStrategy_FailToWrite_FeatureDoesNotChangeState()
         {
             var builder = new FeatureSetBuilder(new Container());
-            builder.Build(ctx =>
+            var container = builder.Build(ctx =>
             {
                 ctx.AddFeature<MyWritableFeatureSingleStrategy>();
                 ctx.ForStrategy<WritableStrategy>().Use<WritableStrategyExceptionImpl>();

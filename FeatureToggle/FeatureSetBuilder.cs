@@ -10,11 +10,12 @@ namespace FeatureToggle
     public class FeatureSetBuilder
     {
         private IContainer container;
-        private readonly Dictionary<Type, Type> defaultReaders = new Dictionary<Type, Type>
+        private readonly Dictionary<Type, Type> defaultImplementations = new Dictionary<Type, Type>
         {
             { typeof(AppSettingsStrategy), typeof(IAppSettingsReader) },
             { typeof(AlwaysTrueStrategy), typeof(AlwaysTrueStrategyImpl) },
             { typeof(AlwaysFalseStrategy), typeof(AlwaysFalseStrategyImpl) },
+            { typeof(HttpSession), typeof(HttpSessionStrategyImpl) },
         };
 
         public FeatureSetBuilder(IContainer container = null)
@@ -26,11 +27,11 @@ namespace FeatureToggle
         {
             get
             {
-                return this.defaultReaders;
+                return this.defaultImplementations;
             }
         }
 
-        public FeatureContext Build(Action<FeatureContext> action = null, Action<ConfigurationExpression> dependencyConfiguration = null)
+        public FeatureSetContainer Build(Action<FeatureContext> action = null, Action<ConfigurationExpression> dependencyConfiguration = null)
         {
             lock (typeof(FeatureSetBuilder))
             {
@@ -41,7 +42,7 @@ namespace FeatureToggle
 
                 FeatureContext.SetInstance(context);
 
-                return context;
+                return context.Container;
             }
         }
 
@@ -57,19 +58,19 @@ namespace FeatureToggle
             dependencyConfiguration.WithNotNull(expr => this.container.Configure(expr));
 
             // register additional or swapped strategies
-            foreach (var readerKeyValuePair in context.Readers)
+            foreach (var readerKeyValuePair in context.AdditionalStrategies)
             {
                 var strategyType = readerKeyValuePair.Key;
                 var strategyReaderType = readerKeyValuePair.Value;
 
-                if (this.defaultReaders.Keys.Contains(strategyType))
+                if (this.defaultImplementations.Keys.Contains(strategyType))
                 {
                     // swap already registered strategy
-                    this.defaultReaders[strategyType] = strategyReaderType;
+                    this.defaultImplementations[strategyType] = strategyReaderType;
                 }
                 else
                 {
-                    this.defaultReaders.Add(strategyType, strategyReaderType);
+                    this.defaultImplementations.Add(strategyType, strategyReaderType);
                 }
 
                 // TODO: review this
@@ -102,7 +103,7 @@ namespace FeatureToggle
         internal IStrategy GetStrategyImplementation(Type strategyType)
         {
             Type reader;
-            return this.defaultReaders.TryGetValue(strategyType, out reader) ? (IStrategy)this.container.GetInstance(reader) : new EmptyStrategy();
+            return this.defaultImplementations.TryGetValue(strategyType, out reader) ? (IStrategy)this.container.GetInstance(reader) : new EmptyStrategy();
         }
 
         internal IStrategy GetStrategyImplementation<T>()
@@ -113,10 +114,22 @@ namespace FeatureToggle
         private void BuildFeatureSet(FeatureContext context)
         {
             // configure and setup features
-            foreach (var keyValuePair in context.Features)
+            foreach (var keyValuePair in context.Container.Features)
             {
                 // build list of strategies and corresponding implementations for this feature
                 var strategies = keyValuePair.Value.Item1.GetType().GetCustomAttributes<FeatureStrategyAttribute>().OrderBy(a => a.Order);
+
+                if (!strategies.Any())
+                {
+                    continue;
+                }
+
+                // test if there are any strategy with equal order
+                if (strategies.GroupBy(a => a.Order).Any(k => k.Count() > 1))
+                {
+                    context.AddConfigurationError(string.Format("Feature {0} has strategies with the same order.", keyValuePair.Key.FullName));
+                }
+
                 var strategyImplementations = strategies.Select(s => Tuple.Create(s, GetStrategyImplementation(s.GetType()))).ToList();
 
                 keyValuePair.Value.Item2.Clear();

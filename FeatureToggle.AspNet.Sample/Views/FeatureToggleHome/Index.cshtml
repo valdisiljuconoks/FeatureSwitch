@@ -1,0 +1,55 @@
+﻿@model FeatureToggle.AspNet.Mvc5.FeatureToggleHomeViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>title</title>
+        <style>
+            table { border-collapse: collapse; }
+
+            table th { font-weight: bold; }
+
+            table td, table th { border: 1px solid gray; }
+
+            table tr td:first-child { text-align: center;vertical-align: middle; }
+        </style>
+    </head>
+    <body>
+        <div>
+            Features:
+            
+            <table>
+                <tr>
+                    <th>Enabled</th>
+                    <th>Name</th>
+                    <th>Type</th>
+                </tr>
+                
+                @foreach (var feature in Model.Features)
+                {
+                    <tr>
+                        <td>
+                            @Html.CheckBox(feature.GetType().FullName, @feature.IsEnabled, feature.CanModify ? new { disabled = "disabled" } : null)
+                        </td>
+                        <td>@feature.Name</td>
+                        <td>@feature.GetType().FullName</td>
+                    </tr>
+                }
+            </table>
+        </div>
+
+        <script src="~/Scripts/jquery-2.0.3.js"></script>
+        <script type="text/javascript">
+            $(function() {
+                $('table').on('click', 'input:checkbox', function() {
+                    alert('checked');
+                });
+            });
+        </script>
+    </body>
+</html>

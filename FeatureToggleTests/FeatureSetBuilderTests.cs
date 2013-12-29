@@ -10,61 +10,63 @@ namespace FeatureToggle.Tests
     public class FeatureSetBuilderTests
     {
         [Fact]
-        public void BuilderTest_CallContextWithoutSetup_Success()
-        {
-            Assert.Throws<InvalidOperationException>(() => FeatureContext.IsEnabled<MySampleFeature>());
-        }
-
-
-        [Fact]
         public void BuilderTest_AddMoreFeature_Success()
         {
             var builder = new FeatureSetBuilder(new Container());
-            builder.Build(ctx =>
-                          {
-                              ctx.AddFeature<MySampleFeature>();
-                              ctx.AddFeature<MySampleFeatureWithoutStrategy>();
-                              ctx.AddFeature<MyFancyStrategySampleFeature>();
+            var container = builder.Build(ctx =>
+                                          {
+                                              ctx.AddFeature<MySampleFeature>();
+                                              ctx.AddFeature<MySampleFeatureWithoutStrategy>();
+                                              ctx.AddFeature<MyFancyStrategySampleFeature>();
 
-                              ctx.ForStrategy<AppSettingsStrategy>().Use<AlwaysTrueStrategyImpl>();
-                              ctx.ForStrategy<UnitTestsAlwaysTrueStrategy>().Use<AlwaysTrueStrategyImpl>();
-                          },
-                          expression => expression.AddRegistry<UnitTestDependencyRegistry>());
+                                              ctx.ForStrategy<AppSettingsStrategy>().Use<AlwaysTrueStrategyImpl>();
+                                              ctx.ForStrategy<UnitTestsAlwaysTrueStrategy>().Use<AlwaysTrueStrategyImpl>();
+                                          },
+                                          expression => expression.AddRegistry<UnitTestDependencyRegistry>());
 
-            Assert.True(FeatureContext.IsEnabled<MySampleFeature>(), "MySampleFeature is not enabled");
-            Assert.False(FeatureContext.IsEnabled<MySampleFeatureWithoutStrategy>(), "MySampleFeatureWithoutStrategy is not enabled");
-            Assert.True(FeatureContext.IsEnabled<MyFancyStrategySampleFeature>(), "MyFancyStrategySampleFeature is not enabled");
+            Assert.True(container.IsEnabled<MySampleFeature>(), "MySampleFeature is not enabled");
+            Assert.False(container.IsEnabled<MySampleFeatureWithoutStrategy>(), "MySampleFeatureWithoutStrategy is not enabled");
+            Assert.True(container.IsEnabled<MyFancyStrategySampleFeature>(), "MyFancyStrategySampleFeature is not enabled");
         }
 
         [Fact]
         public void BuilderTest_AddSameFeatureMultipleTimes_NoFailure()
         {
             var builder = new FeatureSetBuilder(new Container());
-            builder.Build(ctx =>
-                          {
-                              ctx.AddFeature<MySampleFeature>();
-                              ctx.AddFeature<MySampleFeature>();
+            var container = builder.Build(ctx =>
+                                          {
+                                              ctx.AddFeature<MySampleFeature>();
+                                              ctx.AddFeature<MySampleFeature>();
 
-                              ctx.ForStrategy<AppSettingsStrategy>().Use<AlwaysTrueStrategyImpl>();
-                          },
-                          expression => expression.AddRegistry<UnitTestDependencyRegistry>());
+                                              ctx.ForStrategy<AppSettingsStrategy>().Use<AlwaysTrueStrategyImpl>();
+                                          },
+                                          expression => expression.AddRegistry<UnitTestDependencyRegistry>());
 
-            var isEnabled = FeatureContext.IsEnabled<MySampleFeature>();
+            var isEnabled = container.IsEnabled<MySampleFeature>();
 
             Assert.True(isEnabled);
+        }
+
+        [Fact]
+        public void BuilderTest_CallContextWithoutSetup_ThrowsException()
+        {
+            // reset context - this is not a good style, yes I know
+            // but test is for ensuring static type behavior
+            FeatureContext.SetInstance(null);
+            Assert.Throws<InvalidOperationException>(() => FeatureContext.IsEnabled<MySampleFeature>());
         }
 
         [Fact]
         public void BuilderTest_OneFeatureOneStrategy_Success()
         {
             var builder = new FeatureSetBuilder(new Container());
-            builder.Build(ctx =>
-                          {
-                              ctx.AddFeature<MySampleFeature>();
-                              ctx.ForStrategy<AppSettingsStrategy>().Use<AlwaysTrueStrategyImpl>();
-                          });
+            var container = builder.Build(ctx =>
+                                          {
+                                              ctx.AddFeature<MySampleFeature>();
+                                              ctx.ForStrategy<AppSettingsStrategy>().Use<AlwaysTrueStrategyImpl>();
+                                          });
 
-            var isEnabled = FeatureContext.IsEnabled<MySampleFeature>();
+            var isEnabled = container.IsEnabled<MySampleFeature>();
 
             Assert.True(isEnabled, "MySampleFeature is not enabled");
         }
@@ -73,14 +75,14 @@ namespace FeatureToggle.Tests
         public void BuilderTest_RequestForNonRegisteredFeature_FeatureDisabled()
         {
             var builder = new FeatureSetBuilder(new Container());
-            builder.Build(ctx =>
-                          {
-                              ctx.AddFeature<MySampleFeature>();
-                              ctx.ForStrategy<AppSettingsStrategy>().Use<AlwaysTrueStrategyImpl>();
-                          },
-                          expression => expression.AddRegistry<UnitTestDependencyRegistry>());
+            var container = builder.Build(ctx =>
+                                          {
+                                              ctx.AddFeature<MySampleFeature>();
+                                              ctx.ForStrategy<AppSettingsStrategy>().Use<AlwaysTrueStrategyImpl>();
+                                          },
+                                          expression => expression.AddRegistry<UnitTestDependencyRegistry>());
 
-            var isEnabled = FeatureContext.IsEnabled<MySampleFeatureWithoutStrategy>();
+            var isEnabled = container.IsEnabled<MySampleFeatureWithoutStrategy>();
 
             Assert.False(isEnabled);
         }
