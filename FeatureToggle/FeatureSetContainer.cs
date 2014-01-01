@@ -15,7 +15,7 @@ namespace FeatureToggle
             ConfigurationErrors = new List<string>();
         }
 
-        public IReadOnlyDictionary<string, Tuple<BaseFeature, IList<IStrategy>>> Features
+        public IDictionary<string, Tuple<BaseFeature, IList<IStrategy>>> Features
         {
             get
             {

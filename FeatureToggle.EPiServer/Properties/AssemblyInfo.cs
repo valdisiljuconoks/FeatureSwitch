@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyTitle("FeatureToggle.AspNet.Optimization")]
+[assembly: AssemblyTitle("FeatureToggle.EPiServer")]
 [assembly: AssemblyDescription("")]
 [assembly: ComVisible(false)]
-[assembly: Guid("6ea10b61-5500-4dc9-aa18-682c319e7320")]
+[assembly: Guid("1511a4bd-d60d-455b-b74f-2f505eacc140")]

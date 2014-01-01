@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using FeatureToggle.Strategies;
 using FeatureToggle.Strategies.Implementations;
 using StructureMap;
@@ -118,7 +117,11 @@ namespace FeatureToggle
             foreach (var keyValuePair in context.Container.Features)
             {
                 // build list of strategies and corresponding implementations for this feature
-                var strategies = keyValuePair.Value.Item1.GetType().GetCustomAttributes<FeatureStrategyAttribute>().OrderBy(a => a.Order);
+                var strategies =
+                    keyValuePair.Value.Item1.GetType()
+                                .GetCustomAttributes(typeof(FeatureStrategyAttribute), true)
+                                .Cast<FeatureStrategyAttribute>()
+                                .OrderBy(a => a.Order);
 
                 if (!strategies.Any())
                 {

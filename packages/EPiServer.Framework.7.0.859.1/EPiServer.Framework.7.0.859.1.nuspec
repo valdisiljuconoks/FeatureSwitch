@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>EPiServer.Framework</id>
+    <version>7.0.859.1</version>
+    <authors>EPiServer AB</authors>
+    <owners>EPiServer AB</owners>
+    <licenseUrl>http://world.episerver.com/PageFiles/99654/EPiServer EULA.txt</licenseUrl>
+    <projectUrl>http://www.episerver.com/en/Products/Content/</projectUrl>
+    <iconUrl>http://www.episerver.com/Framework/Styles/Images/Products/Integration.png</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>EPiServer Framework Assemblies</description>
+    <tags>EPiServer Framework</tags>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="System.Web" targetFramework=".NETFramework4.0" />
+    </frameworkAssemblies>
+  </metadata>
+</package>
