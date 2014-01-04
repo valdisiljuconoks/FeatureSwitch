@@ -25,7 +25,7 @@ namespace FeatureToggle
 
         public List<string> ConfigurationErrors { get; private set; }
 
-        public void AddFeature<T>() where T : IFeature
+        public void AddFeature<T>() where T : BaseFeature
         {
             AddFeature(typeof(T));
         }
@@ -46,17 +46,17 @@ namespace FeatureToggle
             this.features.Add(key, Tuple.Create<BaseFeature, IList<IStrategy>>(featureInstance, new List<IStrategy>()));
         }
 
-        public IFeature GetFeature<T>(bool throwNotFound = true) where T : IFeature
+        public BaseFeature GetFeature<T>(bool throwNotFound = true) where T : BaseFeature
         {
-            return GetFeature(typeof(T), throwNotFound);
+            return GetFeature(typeof(T), throwNotFound).Item1;
         }
 
-        public IFeature GetFeature(Type feature, bool throwNotFound = true)
+        public Tuple<BaseFeature, IList<IStrategy>> GetFeature(Type feature, bool throwNotFound = true)
         {
             var item = GetFeatureWithStrategies(feature.FullName);
             if (item != null)
             {
-                return item.Item1;
+                return item;
             }
 
             if (throwNotFound)
@@ -70,10 +70,24 @@ namespace FeatureToggle
         public bool IsEnabled(Type feature)
         {
             var f = GetFeature(feature, false);
-            return f != null && f.IsEnabled;
+
+            if (f == null)
+            {
+                return false;
+            }
+
+            var states = f.Item2.Select(s =>
+                                            {
+                                                // test if strategy implementation is readable
+                                                var reader = s as IStrategyStorageReader;
+                                                return reader != null && reader.Read();
+                                            });
+
+            // feature is enabled if any of strategies is telling truth
+            return states.Any(b => b);
         }
 
-        public bool IsEnabled<T>() where T : IFeature
+        public bool IsEnabled<T>() where T : BaseFeature
         {
             return IsEnabled(typeof(T));
         }
@@ -105,15 +119,14 @@ namespace FeatureToggle
             try
             {
                 ((IStrategyStorageWriter)writer).Write(state);
-                item.Item1.ChangeEnabledState(state);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 // TODO: add extension point for logging
             }
         }
 
-        internal void ChangeEnabledState<T>(bool state) where T : IFeature
+        internal void ChangeEnabledState<T>(bool state) where T : BaseFeature
         {
             ChangeEnabledState(typeof(T).FullName, state);
         }

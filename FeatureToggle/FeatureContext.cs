@@ -30,7 +30,7 @@ namespace FeatureToggle
             Container.ConfigurationErrors.Add(error);
         }
 
-        public void AddFeature<T>() where T : IFeature
+        public void AddFeature<T>() where T : BaseFeature
         {
             AddFeature(typeof(T));
         }
@@ -40,7 +40,7 @@ namespace FeatureToggle
             Container.AddFeature(featureType);
         }
 
-        public static void Disable<T>() where T : IFeature
+        public static void Disable<T>() where T : BaseFeature
         {
             Disable(typeof(T).FullName);
         }
@@ -51,7 +51,7 @@ namespace FeatureToggle
             instance.Container.ChangeEnabledState(featureName, false);
         }
 
-        public static void Enable<T>() where T : IFeature
+        public static void Enable<T>() where T : BaseFeature
         {
             Enable(typeof(T).FullName);
         }
@@ -67,19 +67,24 @@ namespace FeatureToggle
             return new StrategyConfigurationExpression<TStrategy>(this);
         }
 
-        public static IFeature GetFeature<T>(bool throwNotFound = true) where T : IFeature
+        public static BaseFeature GetFeature<T>(bool throwNotFound = true) where T : BaseFeature
         {
             return GetFeature(typeof(T), throwNotFound);
         }
 
-        public static IFeature GetFeature(Type feature, bool throwNotFound = true)
+        public static BaseFeature GetFeature(Type feature, bool throwNotFound = true)
         {
-            return instance.Container.GetFeature(feature, throwNotFound);
+            return instance.Container.GetFeature(feature, throwNotFound).Item1;
         }
 
         public static IList<BaseFeature> GetFeatures()
         {
             return instance.Container.Features.Values.Select(t => t.Item1).ToList();
+        }
+
+        public static bool IsEnabled(BaseFeature feature)
+        {
+            return IsEnabled(feature.GetType());
         }
 
         public static bool IsEnabled(Type feature)
@@ -88,7 +93,7 @@ namespace FeatureToggle
             return instance.Container.IsEnabled(feature);
         }
 
-        public static bool IsEnabled<T>() where T : IFeature
+        public static bool IsEnabled<T>() where T : BaseFeature
         {
             return IsEnabled(typeof(T));
         }

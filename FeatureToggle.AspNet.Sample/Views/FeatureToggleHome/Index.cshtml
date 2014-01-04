@@ -1,4 +1,5 @@
-﻿@model FeatureToggle.AspNet.Mvc5.FeatureToggleHomeViewModel
+﻿@using FeatureToggle
+@model FeatureToggle.AspNet.Mvc5.FeatureToggleHomeViewModel
 
 @{
     Layout = null;
@@ -37,7 +38,7 @@
                 {
                     <tr>
                         <td>
-                            @Html.CheckBox(feature.GetType().FullName, @feature.IsEnabled, feature.CanModify ? null : new { disabled = "disabled" })
+                            @Html.CheckBox(feature.GetType().FullName, FeatureContext.IsEnabled(feature), feature.CanModify ? null : new { disabled = "disabled" })
                         </td>
                         <td>@feature.Name</td>
                         <td>@feature.GetType().FullName</td>

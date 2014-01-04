@@ -1,0 +1,7 @@
+﻿<Solution Format="0.0.0.3">
+  <Version>2014-01-04T21:13:57.886047Z</Version>
+  <Project Path="C:\Users\valdis\Documents\GitHub\FeatureToggle\FeatureToggleTests\FeatureToggle.Tests.csproj">
+    <Reference Path="C:\Users\valdis\Documents\GitHub\FeatureToggle\FeatureToggle\FeatureToggle.csproj" />
+  </Project>
+  <Project Path="C:\Users\valdis\Documents\GitHub\FeatureToggle\FeatureToggle\FeatureToggle.csproj" />
+</Solution>

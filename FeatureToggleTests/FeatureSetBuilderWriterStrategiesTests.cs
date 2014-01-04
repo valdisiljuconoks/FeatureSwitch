@@ -54,9 +54,7 @@ namespace FeatureToggle.Tests
 
             FeatureContext.Enable<MyWritableFeatureSingleStrategy>();
 
-            // retrieve once again from the context
-            var modifiedFeature = FeatureContext.GetFeature<MyWritableFeatureSingleStrategy>();
-            Assert.True(modifiedFeature.IsEnabled);
+            Assert.True(FeatureContext.IsEnabled<MyWritableFeatureSingleStrategy>());
         }
 
         [Fact]
@@ -70,18 +68,16 @@ namespace FeatureToggle.Tests
                               ctx.ForStrategy<WritableStrategy>().Use<WritableStrategyImpl>();
                           });
 
-            var feature1 = FeatureContext.GetFeature<MyWritableFeatureSingleStrategy>();
-            var feature2 = FeatureContext.GetFeature<MyWritableAnotherFeatureSingleStrategy>();
             FeatureContext.Enable<MyWritableAnotherFeatureSingleStrategy>();
 
-            Assert.False(feature1.IsEnabled);
-            Assert.True(feature2.IsEnabled);
+            Assert.False(FeatureContext.IsEnabled<MyWritableFeatureSingleStrategy>());
+            Assert.True(FeatureContext.IsEnabled<MyWritableAnotherFeatureSingleStrategy>());
 
             FeatureContext.Enable<MyWritableFeatureSingleStrategy>();
             FeatureContext.Disable<MyWritableAnotherFeatureSingleStrategy>();
 
-            Assert.True(FeatureContext.GetFeature<MyWritableFeatureSingleStrategy>().IsEnabled);
-            Assert.False(FeatureContext.GetFeature<MyWritableAnotherFeatureSingleStrategy>().IsEnabled);
+            Assert.True(FeatureContext.IsEnabled<MyWritableFeatureSingleStrategy>());
+            Assert.False(FeatureContext.IsEnabled<MyWritableAnotherFeatureSingleStrategy>());
         }
 
         [Fact]
@@ -122,12 +118,12 @@ namespace FeatureToggle.Tests
 
         public override bool Read()
         {
-            return this.isEnabled;
+            return isEnabled;
         }
 
         public override void Write(bool state)
         {
-            this.isEnabled = state;
+            isEnabled = state;
         }
     }
 

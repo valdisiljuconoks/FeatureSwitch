@@ -1,6 +1,6 @@
 ﻿namespace FeatureToggle
 {
-    public class BaseFeature : IFeature
+    public class BaseFeature
     {
         private bool canModify;
         private bool isEnabled;

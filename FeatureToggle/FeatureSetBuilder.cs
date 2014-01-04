@@ -16,21 +16,14 @@ namespace FeatureToggle
             { typeof(AlwaysTrueStrategy), typeof(AlwaysTrueStrategyImpl) },
             { typeof(AlwaysFalseStrategy), typeof(AlwaysFalseStrategyImpl) },
             { typeof(HttpSession), typeof(HttpSessionStrategyImpl) },
+            { typeof(QueryString), typeof(QueryStringImpl) },
         };
 
         public FeatureSetBuilder(IContainer container = null)
         {
             this.container = container;
         }
-
-        public Dictionary<Type, Type> Readers
-        {
-            get
-            {
-                return this.defaultImplementations;
-            }
-        }
-
+        
         public FeatureSetContainer Build(Action<FeatureContext> action = null, Action<ConfigurationExpression> dependencyConfiguration = null)
         {
             lock (typeof(FeatureSetBuilder))
@@ -78,7 +71,8 @@ namespace FeatureToggle
                 {
                     // we can create implementation only for concrete types
                     // if registered reader is interface - most probably it's registered in via IoC registry already
-                    this.container.Inject(strategyReaderType, this.container.GetInstance(strategyReaderType));
+                    //this.container.Inject(strategyReaderType, this.container.GetInstance(strategyReaderType));
+                    container.Configure(c => c.For(strategyReaderType).Use(strategyReaderType));
                 }
             }
         }
