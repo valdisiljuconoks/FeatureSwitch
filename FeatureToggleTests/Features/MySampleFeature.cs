@@ -2,7 +2,7 @@
 
 namespace FeatureToggle.Tests.Features
 {
-    [AppSettingsStrategy(Key = "MySampleFeatureKey")]
+    [AppSettings(Key = "MySampleFeatureKey")]
     public class MySampleFeature : BaseFeature
     {
     }

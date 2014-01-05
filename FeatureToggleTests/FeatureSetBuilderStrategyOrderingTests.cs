@@ -24,8 +24,8 @@ namespace FeatureToggle.Tests
             Assert.Throws<ConfigurationErrorsException>(() => FeatureContext.IsEnabled<FeatureWithSameOrderStrategy>());
         }
 
-        [AppSettingsStrategy(Key = "Key1")]
-        [AppSettingsStrategy(Key = "Key2")]
+        [AppSettings(Key = "Key1")]
+        [AppSettings(Key = "Key2")]
         public class FeatureWithSameOrderStrategy : BaseFeature
         {
         }

@@ -20,7 +20,7 @@ namespace FeatureToggle.Tests
                                               ctx.AddFeature<MySampleFeatureWithoutStrategy>();
                                               ctx.AddFeature<MyFancyStrategySampleFeature>();
 
-                                              ctx.ForStrategy<AppSettingsStrategy>().Use<AlwaysTrueStrategyImpl>();
+                                              ctx.ForStrategy<AppSettings>().Use<AlwaysTrueStrategyImpl>();
                                               ctx.ForStrategy<UnitTestsAlwaysTrueStrategy>().Use<AlwaysTrueStrategyImpl>();
                                           });
 
@@ -38,7 +38,7 @@ namespace FeatureToggle.Tests
                                               ctx.AddFeature<MySampleFeature>();
                                               ctx.AddFeature<MySampleFeature>();
 
-                                              ctx.ForStrategy<AppSettingsStrategy>().Use<AlwaysTrueStrategyImpl>();
+                                              ctx.ForStrategy<AppSettings>().Use<AlwaysTrueStrategyImpl>();
                                           });
 
             var isEnabled = container.IsEnabled<MySampleFeature>();
@@ -62,7 +62,7 @@ namespace FeatureToggle.Tests
             var container = builder.Build(ctx =>
                                           {
                                               ctx.AddFeature<MySampleFeature>();
-                                              ctx.ForStrategy<AppSettingsStrategy>().Use<AlwaysTrueStrategyImpl>();
+                                              ctx.ForStrategy<AppSettings>().Use<AlwaysTrueStrategyImpl>();
                                           });
 
             var isEnabled = container.IsEnabled<MySampleFeature>();
@@ -77,7 +77,7 @@ namespace FeatureToggle.Tests
             var container = builder.Build(ctx =>
                                           {
                                               ctx.AddFeature<MySampleFeature>();
-                                              ctx.ForStrategy<AppSettingsStrategy>().Use<AlwaysTrueStrategyImpl>();
+                                              ctx.ForStrategy<AppSettings>().Use<AlwaysTrueStrategyImpl>();
                                           });
 
             var isEnabled = container.IsEnabled<MySampleFeatureWithoutStrategy>();

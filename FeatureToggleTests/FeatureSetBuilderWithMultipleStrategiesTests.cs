@@ -14,7 +14,7 @@ namespace FeatureToggle.Tests
             var container = builder.Build(ctx =>
                                           {
                                               ctx.AddFeature<MyFeatureDisabledWithMultipleStrategies>();
-                                              ctx.ForStrategy<AppSettingsStrategy>().Use<AlwaysFalseStrategyImpl>();
+                                              ctx.ForStrategy<AppSettings>().Use<AlwaysFalseStrategyImpl>();
                                           });
 
             var feature = container.GetFeature<MyFeatureDisabledWithMultipleStrategies>();
@@ -23,8 +23,8 @@ namespace FeatureToggle.Tests
         }
     }
 
-    [AppSettingsStrategy(Order = 0)]
-    [AlwaysFalseStrategy(Order = 1)]
+    [AppSettings(Order = 0)]
+    [AlwaysFalse(Order = 1)]
     public class MyFeatureDisabledWithMultipleStrategies : BaseFeature
     {
     }

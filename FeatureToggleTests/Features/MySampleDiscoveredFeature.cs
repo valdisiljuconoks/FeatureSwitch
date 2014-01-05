@@ -2,7 +2,7 @@
 
 namespace FeatureToggle.Tests.Features
 {
-    [AlwaysTrueStrategy]
+    [AlwaysTrue]
     public class MySampleDiscoveredFeature : BaseFeature
     {
     }

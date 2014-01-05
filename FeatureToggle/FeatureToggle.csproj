@@ -59,9 +59,9 @@
     <Compile Include="FeatureSetBuilder.cs" />
     <Compile Include="FeatureStrategyAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Strategies\AlwaysFalseStrategy.cs" />
-    <Compile Include="Strategies\AlwaysTrueStrategy.cs" />
-    <Compile Include="Strategies\AppSettingsStrategy.cs" />
+    <Compile Include="Strategies\AlwaysFalse.cs" />
+    <Compile Include="Strategies\AlwaysTrue.cs" />
+    <Compile Include="Strategies\AppSettings.cs" />
     <Compile Include="Strategies\BaseStrategyImpl.cs" />
     <Compile Include="Strategies\HttpSession.cs" />
     <Compile Include="Strategies\EmptyStrategy.cs" />
@@ -70,7 +70,7 @@
     <Compile Include="Strategies\Implementations\AppSettingsStrategyImpl.cs" />
     <Compile Include="Strategies\Implementations\BaseStrategyReaderImpl.cs" />
     <Compile Include="Strategies\Implementations\HttpSessionStrategyImpl.cs" />
-    <Compile Include="Strategies\Implementations\QueryStringImpl.cs" />
+    <Compile Include="Strategies\Implementations\QueryStringStrategyImpl.cs" />
     <Compile Include="Strategies\IStrategy.cs" />
     <Compile Include="Strategies\IStrategyStorageReader.cs" />
     <Compile Include="Strategies\IStrategyStorageWriter.cs" />

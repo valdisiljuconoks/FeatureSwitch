@@ -12,11 +12,11 @@ namespace FeatureToggle
         private IContainer container;
         private readonly Dictionary<Type, Type> defaultImplementations = new Dictionary<Type, Type>
         {
-            { typeof(AppSettingsStrategy), typeof(AppSettingsStrategyImpl) },
-            { typeof(AlwaysTrueStrategy), typeof(AlwaysTrueStrategyImpl) },
-            { typeof(AlwaysFalseStrategy), typeof(AlwaysFalseStrategyImpl) },
+            { typeof(AppSettings), typeof(AppSettingsStrategyImpl) },
+            { typeof(AlwaysTrue), typeof(AlwaysTrueStrategyImpl) },
+            { typeof(AlwaysFalse), typeof(AlwaysFalseStrategyImpl) },
             { typeof(HttpSession), typeof(HttpSessionStrategyImpl) },
-            { typeof(QueryString), typeof(QueryStringImpl) },
+            { typeof(QueryString), typeof(QueryStringStrategyImpl) },
         };
 
         public FeatureSetBuilder(IContainer container = null)

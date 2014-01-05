@@ -64,10 +64,10 @@ namespace FeatureToggle.Tests
             var container = builder.Build(ctx =>
                           {
                               ctx.AddFeature<MySampleFeature>();
-                              ctx.ForStrategy<AppSettingsStrategy>().Use<AlwaysTrueStrategyImpl>();
+                              ctx.ForStrategy<AppSettings>().Use<AlwaysTrueStrategyImpl>();
                           });
 
-            var strategy = builder.GetStrategyImplementation<AppSettingsStrategy>();
+            var strategy = builder.GetStrategyImplementation<AppSettings>();
             Assert.IsAssignableFrom(typeof(AlwaysTrueStrategyImpl), strategy);
         }
 
@@ -78,7 +78,7 @@ namespace FeatureToggle.Tests
             var container = builder.Build(ctx =>
                           {
                               ctx.AddFeature<MySampleFeature>();
-                              ctx.ForStrategy<AppSettingsStrategy>().Use<AlwaysTrueStrategyImpl>();
+                              ctx.ForStrategy<AppSettings>().Use<AlwaysTrueStrategyImpl>();
                           });
 
             var isEnabled = container.IsEnabled<MySampleFeature>();

@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace FeatureToggle.Strategies.Implementations
 {
-    public class QueryStringImpl : BaseStrategyReaderImpl
+    public class QueryStringStrategyImpl : BaseStrategyReaderImpl
     {
         public override bool Read()
         {
