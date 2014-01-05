@@ -25,9 +25,9 @@ namespace FeatureToggle
             }
         }
 
-        public void AddConfigurationError(string error)
+        public void AddConfigurationError(BaseFeature feature, string error)
         {
-            Container.ConfigurationErrors.Add(error);
+            Container.ConfigurationErrors.Add(feature.GetType().FullName, error);
         }
 
         public void AddFeature<T>() where T : BaseFeature

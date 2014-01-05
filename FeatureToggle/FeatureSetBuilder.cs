@@ -110,12 +110,12 @@ namespace FeatureToggle
             // configure and setup features
             foreach (var keyValuePair in context.Container.Features)
             {
+                var feature = keyValuePair.Value.Item1;
                 // build list of strategies and corresponding implementations for this feature
-                var strategies =
-                    keyValuePair.Value.Item1.GetType()
-                                .GetCustomAttributes(typeof(FeatureStrategyAttribute), true)
-                                .Cast<FeatureStrategyAttribute>()
-                                .OrderBy(a => a.Order);
+                var strategies = feature.GetType()
+                                        .GetCustomAttributes(typeof(FeatureStrategyAttribute), true)
+                                        .Cast<FeatureStrategyAttribute>()
+                                        .OrderBy(a => a.Order);
 
                 if (!strategies.Any())
                 {
@@ -125,7 +125,9 @@ namespace FeatureToggle
                 // test if there are any strategy with equal order
                 if (strategies.GroupBy(a => a.Order).Any(k => k.Count() > 1))
                 {
-                    context.AddConfigurationError(string.Format("Feature {0} has strategies with the same order.", keyValuePair.Key));
+                    feature.ChangeIsProperlyConfiguredState(false);
+                    context.AddConfigurationError(feature, string.Format("Feature {0} has strategies with the same order.", keyValuePair.Key));
+                    continue;
                 }
 
                 var strategyImplementations = strategies.Select(s => Tuple.Create(s, GetStrategyImplementation(s.GetType()))).ToList();
@@ -142,10 +144,10 @@ namespace FeatureToggle
                                                             });
 
                 // feature is enabled if any of strategies is telling truth
-                keyValuePair.Value.Item1.ChangeEnabledState(states.Any(b => b));
+                feature.ChangeEnabledState(states.Any(b => b));
 
                 // do we have any writer in da house?
-                keyValuePair.Value.Item1.ChangeModifiableState(strategyImplementations.Any(s => s.Item2 is IStrategyStorageWriter));
+                feature.ChangeModifiableState(strategyImplementations.Any(s => s.Item2 is IStrategyStorageWriter));
             }
         }
 

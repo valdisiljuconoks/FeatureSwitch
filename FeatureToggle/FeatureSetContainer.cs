@@ -12,7 +12,7 @@ namespace FeatureToggle
 
         public FeatureSetContainer()
         {
-            ConfigurationErrors = new List<string>();
+            ConfigurationErrors = new Dictionary<string, string>();
         }
 
         public IDictionary<string, Tuple<BaseFeature, IList<IStrategy>>> Features
@@ -23,7 +23,7 @@ namespace FeatureToggle
             }
         }
 
-        public List<string> ConfigurationErrors { get; private set; }
+        public IDictionary<string, string> ConfigurationErrors { get; private set; }
 
         public void AddFeature<T>() where T : BaseFeature
         {
@@ -69,6 +69,11 @@ namespace FeatureToggle
 
         public bool IsEnabled(Type feature)
         {
+            if (ConfigurationErrors.Keys.Contains(feature.FullName, StringComparer.InvariantCultureIgnoreCase))
+            {
+                throw new ConfigurationErrorsException(ConfigurationErrors[feature.FullName]);
+            }
+
             var f = GetFeature(feature, false);
 
             if (f == null)

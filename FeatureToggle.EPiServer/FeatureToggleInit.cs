@@ -1,5 +1,6 @@
 ﻿using EPiServer.Framework;
 using EPiServer.Framework.Initialization;
+using System;
 
 namespace FeatureToggle.EPiServer
 {
@@ -9,7 +10,8 @@ namespace FeatureToggle.EPiServer
         public void Initialize(InitializationEngine context)
         {
             var builder = new FeatureSetBuilder();
-            builder.Build();
+            builder.Build()
+                   .ValidateConfiguration();
         }
 
         public void Uninitialize(InitializationEngine context)
