@@ -8,6 +8,7 @@ namespace FeatureToggle
     {
         private readonly Dictionary<Type, Type> additionalStrategies = new Dictionary<Type, Type>();
         private static bool initialized;
+        private static object syncRoot = new object();
         private static FeatureContext instance = new FeatureContext();
 
         public FeatureContext()
@@ -100,7 +101,7 @@ namespace FeatureToggle
 
         internal static void SetInstance(FeatureContext context)
         {
-            lock (typeof(FeatureContext))
+            lock (syncRoot)
             {
                 if (context == null)
                 {

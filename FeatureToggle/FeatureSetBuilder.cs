@@ -26,17 +26,14 @@ namespace FeatureToggle
         
         public FeatureSetContainer Build(Action<FeatureContext> action = null, Action<ConfigurationExpression> dependencyConfiguration = null)
         {
-            lock (typeof(FeatureSetBuilder))
-            {
-                var context = SetupFeatureContext(action);
-                SetupDependencyContainer(dependencyConfiguration, context);
-                BuildFeatureSet(context);
-                DetectCollisions(context);
+            var context = SetupFeatureContext(action);
+            SetupDependencyContainer(dependencyConfiguration, context);
+            BuildFeatureSet(context);
+            DetectCollisions(context);
 
-                FeatureContext.SetInstance(context);
+            FeatureContext.SetInstance(context);
 
-                return context.Container;
-            }
+            return context.Container;
         }
 
         protected void SetupDependencyContainer(Action<ConfigurationExpression> dependencyConfiguration, FeatureContext context)
