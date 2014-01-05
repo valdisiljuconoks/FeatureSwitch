@@ -1,11 +1,28 @@
-﻿using System.Web.Mvc;
+﻿using Owin;
+using System.Web.Mvc;
 using System.Web.Routing;
 
 namespace FeatureToggle.AspNet.Mvc5
 {
-    public static class FeatureContextExtensions
+    public static class RouteRegistrationExtensions
     {
         public static FeatureSetContainer WithRoute(this FeatureSetContainer target, string routeName)
+        {
+            CreateAndInsertRoute(routeName);
+            return target;
+        }
+
+        public static void MapFeatureToggleRoute(this RouteCollection target, string routeName = "FeatureToggle")
+        {
+            CreateAndInsertRoute(routeName);
+        }
+
+        public static void MapFeatureToggle(this IAppBuilder target, string routeName = "FeatureToggle")
+        {
+            CreateAndInsertRoute(routeName);
+        }
+
+        private static void CreateAndInsertRoute(string routeName)
         {
             routeName.CheckNull("routeName");
 
@@ -18,8 +35,7 @@ namespace FeatureToggle.AspNet.Mvc5
             route.DataTokens["Namespaces"] = new[] { "FeatureToggle.AspNet.Mvc5" };
 
             RouteTable.Routes.Insert(0, route);
-
-            return target;
+            RouteConfiguration.RotueName = routeName;
         }
     }
 }

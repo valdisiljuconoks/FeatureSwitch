@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using FeatureToggle.AspNet.Mvc5;
+using System.Web.Mvc;
 using System.Web.Routing;
 
 namespace FeatureToggle.AspNet.Sample
@@ -10,6 +11,8 @@ namespace FeatureToggle.AspNet.Sample
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute("Default", "{controller}/{action}/{id}", new { controller = "Home", action = "Index", id = UrlParameter.Optional });
+
+            //routes.MapFeatureToggleRoute();
         }
     }
 }

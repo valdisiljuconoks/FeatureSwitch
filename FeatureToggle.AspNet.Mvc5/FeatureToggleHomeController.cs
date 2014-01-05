@@ -9,7 +9,8 @@ namespace FeatureToggle.AspNet.Mvc5
         {
             return View(new FeatureToggleHomeViewModel
             {
-                Features = FeatureContext.GetFeatures()
+                Features = FeatureContext.GetFeatures(),
+                RouteName = RouteConfiguration.RotueName
             });
         }
 

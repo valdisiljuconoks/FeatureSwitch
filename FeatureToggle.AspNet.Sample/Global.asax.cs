@@ -9,6 +9,9 @@ namespace FeatureToggle.AspNet.Sample
     {
         protected void Application_Start()
         {
+            //var builder = new FeatureSetBuilder();
+            //builder.Build();
+
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

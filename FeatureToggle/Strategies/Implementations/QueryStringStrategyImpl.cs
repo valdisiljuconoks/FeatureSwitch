@@ -9,23 +9,31 @@ namespace FeatureToggle.Strategies.Implementations
         {
             var key = Context.Key;
 
-            if (HttpContextFactory.Current.Request == null)
+            try
             {
+                if (HttpContextFactory.Current.Request == null)
+                {
+                    return false;
+                }
+
+                if (HttpContextFactory.Current.Request.QueryString == null)
+                {
+                    return false;
+                }
+
+                var queryString = HttpContextFactory.Current.Request.QueryString;
+                if (!queryString.AllKeys.Contains(key, StringComparer.InvariantCultureIgnoreCase))
+                {
+                    return false;
+                }
+
+                return ConvertToBoolean(queryString[key]);
+            }
+            catch (Exception)
+            {
+                // TODO: think of a way to add logging extension point
                 return false;
             }
-
-            if (HttpContextFactory.Current.Request.QueryString == null)
-            {
-                return false;
-            }
-
-            var queryString = HttpContextFactory.Current.Request.QueryString;
-            if (!queryString.AllKeys.Contains(key, StringComparer.InvariantCultureIgnoreCase))
-            {
-                return false;
-            }
-
-            return ConvertToBoolean(queryString[key]);
         }
     }
 }

@@ -2,7 +2,7 @@
 using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartup("FeatureToggleStartup", typeof(FeatureToggleStartup))]
+//[assembly: OwinStartup("FeatureToggleStartup", typeof(FeatureToggleStartup))]
 
 namespace FeatureToggle.AspNet.Mvc5
 {

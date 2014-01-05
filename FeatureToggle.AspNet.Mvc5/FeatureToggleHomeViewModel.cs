@@ -5,5 +5,7 @@ namespace FeatureToggle.AspNet.Mvc5
     public class FeatureToggleHomeViewModel
     {
         public IList<BaseFeature> Features { get; set; }
+
+        public string RouteName { get; set; }
     }
 }

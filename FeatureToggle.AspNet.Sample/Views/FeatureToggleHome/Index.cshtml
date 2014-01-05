@@ -53,7 +53,7 @@
                 $('table').on('click', 'input:checkbox', function() {
                     $.ajax({
                         type: 'POST',
-                        url: 'Update',
+                        url: '/@Model.RouteName/Update',
                         data: { name: this.name, state: this.checked }
                     });
                 });
