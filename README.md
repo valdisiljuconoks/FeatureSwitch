@@ -5,7 +5,7 @@ Feature Toggle Framework for various types of applications (Console host, ASP.NE
 
 Overview
 
-Setup
+Setup (FeatureSet builder)
 
 Features
 
