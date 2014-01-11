@@ -3,14 +3,14 @@ using System.Web.Mvc;
 
 namespace FeatureToggle.AspNet.Mvc5
 {
-    public class FeatureToggleHomeController : Controller
+    public class FeatureToggleController : Controller
     {
         public ActionResult Index()
         {
-            return View(new FeatureToggleHomeViewModel
+            return View(new FeatureToggleViewModel
             {
                 Features = FeatureContext.GetFeatures(),
-                RouteName = RouteConfiguration.RotueName
+                RouteName = RouteConfiguration.RouteName
             });
         }
 

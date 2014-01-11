@@ -2,6 +2,6 @@
 {
     internal static class RouteConfiguration
     {
-        public static string RotueName { get; set; }
+        public static string RouteName { get; set; }
     }
 }

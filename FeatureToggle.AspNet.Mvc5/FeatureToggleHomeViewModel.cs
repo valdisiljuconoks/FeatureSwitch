@@ -2,7 +2,7 @@
 
 namespace FeatureToggle.AspNet.Mvc5
 {
-    public class FeatureToggleHomeViewModel
+    public class FeatureToggleViewModel
     {
         public IList<BaseFeature> Features { get; set; }
 

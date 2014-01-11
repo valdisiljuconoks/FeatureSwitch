@@ -1,5 +1,5 @@
 ﻿@using FeatureToggle
-@model FeatureToggle.AspNet.Mvc5.FeatureToggleHomeViewModel
+@model FeatureToggle.AspNet.Mvc5.FeatureToggleViewModel
 
 @{
     Layout = null;
@@ -11,9 +11,17 @@
     <head>
         <title>title</title>
         <style>
-            table { border-collapse: collapse; }
+            body {
+                font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+                font-size: 16px;
+            }
 
-            table th { font-weight: bold; }
+            table {
+                border-collapse: collapse;
+                padding: 3px;
+            }
+
+            table th { font-weight: bold;padding: 5px; }
 
             table td, table th { border: 1px solid gray; }
 
@@ -21,6 +29,8 @@
                 text-align: center;
                 vertical-align: middle;
             }
+
+            table td { padding: 5px; }
         </style>
     </head>
     <body>
