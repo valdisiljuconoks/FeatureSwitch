@@ -1,0 +1,1 @@
+﻿<%@ Application Codebehind="Global.asax.cs" Inherits="FeatureSwitch.AspNet.Sample.MvcApplication" Language="C#" %>

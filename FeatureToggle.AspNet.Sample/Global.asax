@@ -1,1 +1,0 @@
-﻿<%@ Application Codebehind="Global.asax.cs" Inherits="FeatureToggle.AspNet.Sample.MvcApplication" Language="C#" %>

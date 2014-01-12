@@ -1,0 +1,12 @@
+using System.Web.Mvc;
+
+namespace FeatureSwitch.AspNet.Mvc5
+{
+    public class CustomViewEngine : WebFormViewEngine
+    {
+        public CustomViewEngine()
+        {
+            ViewLocationFormats = new[] { "~/" + Const.ModuleName + "/Views/{1}/{0}.aspx" };
+        }
+    }
+}
