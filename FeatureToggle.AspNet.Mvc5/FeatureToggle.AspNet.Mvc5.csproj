@@ -116,6 +116,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="FeatureToggle.AspNet.Mvc5.nuspec" />
     <None Include="packages.config" />
     <EmbeddedResource Include="Views\Web.config" />
     <EmbeddedResource Include="Views\FeatureToggle\Index.cshtml" />

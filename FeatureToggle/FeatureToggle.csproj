@@ -91,6 +91,7 @@
     <Compile Include="TypeAttributeHelper.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="FeatureToggle.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
