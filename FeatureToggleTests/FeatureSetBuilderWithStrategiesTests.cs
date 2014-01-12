@@ -36,9 +36,7 @@ namespace FeatureToggle.Tests
                           },
                           expression => expression.For<ISampleInjectedInterface>().Use<SampleInjectedInterface>());
 
-            var feature = container.GetFeature<MySampleFeatureWithConstructorParameterStrategy>();
-
-            Assert.True(feature.IsEnabled);
+            Assert.True(container.IsEnabled<MySampleFeatureWithConstructorParameterStrategy>());
             Assert.NotNull(((StrategyWithConstructorParameterReader)builder.GetStrategyImplementation<StrategyWithConstructorParameter>()).Dependency);
         }
 

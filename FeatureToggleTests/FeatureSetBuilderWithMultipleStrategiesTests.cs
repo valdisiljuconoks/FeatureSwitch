@@ -17,9 +17,7 @@ namespace FeatureToggle.Tests
                                               ctx.ForStrategy<AppSettings>().Use<AlwaysFalseStrategyImpl>();
                                           });
 
-            var feature = container.GetFeature<MyFeatureDisabledWithMultipleStrategies>();
-
-            Assert.False(feature.IsEnabled);
+            Assert.False(container.IsEnabled<MyFeatureDisabledWithMultipleStrategies>());
         }
     }
 

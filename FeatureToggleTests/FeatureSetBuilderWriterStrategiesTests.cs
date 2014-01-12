@@ -19,42 +19,52 @@ namespace FeatureToggle.Tests
         }
 
         [Fact]
+        public void BuilderTest_FeatureWithWritableStrategy_FailToWrite_FeatureDoesNotChangeState()
+        {
+            var builder = new FeatureSetBuilder(new Container());
+            var container = builder.Build(ctx =>
+                                          {
+                                              ctx.AddFeature<MyWritableFeatureSingleStrategy>();
+                                              ctx.ForStrategy<WritableStrategy>().Use<WritableStrategyExceptionImpl>();
+                                          });
+
+            Assert.False(container.IsEnabled<MyWritableFeatureSingleStrategy>());
+            FeatureContext.Enable<MyWritableFeatureSingleStrategy>();
+
+            Assert.False(container.IsEnabled<MyWritableFeatureSingleStrategy>());
+        }
+
+        [Fact]
+        public void BuilderTest_FeatureWithWritableStrategy_FeatureCanBeEnabled()
+        {
+            var builder = new FeatureSetBuilder(new Container());
+            var container = builder.Build(ctx =>
+                                          {
+                                              ctx.AddFeature<MyWritableFeatureSingleStrategy>();
+                                              ctx.ForStrategy<WritableStrategy>().Use<WritableStrategyImpl>();
+                                          });
+
+            Assert.False(container.IsEnabled<MyWritableFeatureSingleStrategy>());
+            Assert.True(container.GetFeature<MyWritableFeatureSingleStrategy>().CanModify, "Feature is not modifiable");
+
+            FeatureContext.Enable<MyWritableFeatureSingleStrategy>();
+
+            Assert.True(container.IsEnabled<MyWritableFeatureSingleStrategy>());
+        }
+
+        [Fact]
         public void BuilderTest_FeatureWithWritableStrategy_FeatureCanDisable()
         {
             var builder = new FeatureSetBuilder(new Container());
             var container = builder.Build(ctx =>
-                          {
-                              ctx.AddFeature<MyWritableFeatureSingleStrategy>();
-                              ctx.ForStrategy<WritableStrategy>().Use<WritableStrategyImpl>();
-                          });
+                                          {
+                                              ctx.AddFeature<MyWritableFeatureSingleStrategy>();
+                                              ctx.ForStrategy<WritableStrategy>().Use<WritableStrategyImpl>();
+                                          });
 
-            var feature = FeatureContext.GetFeature<MyWritableFeatureSingleStrategy>();
             FeatureContext.Disable<MyWritableFeatureSingleStrategy>();
 
-            Assert.False(feature.IsEnabled);
-            // retrieve once again from the context
-            var modifiedFeature = FeatureContext.GetFeature<MyWritableFeatureSingleStrategy>();
-            Assert.False(modifiedFeature.IsEnabled);
-        }
-
-        [Fact]
-        public void BuilderTest_FeatureWithWritableStrategy_FeatureCanEnable()
-        {
-            var builder = new FeatureSetBuilder(new Container());
-            var container = builder.Build(ctx =>
-                          {
-                              ctx.AddFeature<MyWritableFeatureSingleStrategy>();
-                              ctx.ForStrategy<WritableStrategy>().Use<WritableStrategyImpl>();
-                          });
-
-            var feature = FeatureContext.GetFeature<MyWritableFeatureSingleStrategy>();
-
-            Assert.False(feature.IsEnabled);
-            Assert.True(feature.CanModify, "Feature is not modifiable");
-
-            FeatureContext.Enable<MyWritableFeatureSingleStrategy>();
-
-            Assert.True(FeatureContext.IsEnabled<MyWritableFeatureSingleStrategy>());
+            Assert.False(container.IsEnabled<MyWritableFeatureSingleStrategy>());
         }
 
         [Fact]
@@ -62,11 +72,11 @@ namespace FeatureToggle.Tests
         {
             var builder = new FeatureSetBuilder(new Container());
             var container = builder.Build(ctx =>
-                          {
-                              ctx.AddFeature<MyWritableFeatureSingleStrategy>();
-                              ctx.AddFeature<MyWritableAnotherFeatureSingleStrategy>();
-                              ctx.ForStrategy<WritableStrategy>().Use<WritableStrategyImpl>();
-                          });
+                                          {
+                                              ctx.AddFeature<MyWritableFeatureSingleStrategy>();
+                                              ctx.AddFeature<MyWritableAnotherFeatureSingleStrategy>();
+                                              ctx.ForStrategy<WritableStrategy>().Use<WritableStrategyImpl>();
+                                          });
 
             FeatureContext.Enable<MyWritableAnotherFeatureSingleStrategy>();
 
@@ -78,23 +88,6 @@ namespace FeatureToggle.Tests
 
             Assert.True(FeatureContext.IsEnabled<MyWritableFeatureSingleStrategy>());
             Assert.False(FeatureContext.IsEnabled<MyWritableAnotherFeatureSingleStrategy>());
-        }
-
-        [Fact]
-        public void BuilderTest_FeatureWithWritableStrategy_FailToWrite_FeatureDoesNotChangeState()
-        {
-            var builder = new FeatureSetBuilder(new Container());
-            var container = builder.Build(ctx =>
-            {
-                ctx.AddFeature<MyWritableFeatureSingleStrategy>();
-                ctx.ForStrategy<WritableStrategy>().Use<WritableStrategyExceptionImpl>();
-            });
-
-            var feature1 = FeatureContext.GetFeature<MyWritableFeatureSingleStrategy>();
-
-            Assert.False(feature1.IsEnabled);
-            FeatureContext.Enable<MyWritableFeatureSingleStrategy>();
-            Assert.False(feature1.IsEnabled);
         }
     }
 
@@ -118,12 +111,12 @@ namespace FeatureToggle.Tests
 
         public override bool Read()
         {
-            return isEnabled;
+            return this.isEnabled;
         }
 
         public override void Write(bool state)
         {
-            isEnabled = state;
+            this.isEnabled = state;
         }
     }
 
@@ -139,5 +132,4 @@ namespace FeatureToggle.Tests
             throw new FileNotFoundException();
         }
     }
-    
 }

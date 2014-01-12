@@ -68,7 +68,6 @@ namespace FeatureToggle
                 {
                     // we can create implementation only for concrete types
                     // if registered reader is interface - most probably it's registered in via IoC registry already
-                    //this.container.Inject(strategyReaderType, this.container.GetInstance(strategyReaderType));
                     container.Configure(c => c.For(strategyReaderType).Use(strategyReaderType));
                 }
             }
@@ -128,20 +127,12 @@ namespace FeatureToggle
                 }
 
                 var strategyImplementations = strategies.Select(s => Tuple.Create(s, GetStrategyImplementation(s.GetType()))).ToList();
-
                 keyValuePair.Value.Item2.Clear();
-                strategyImplementations.ForEach(i => keyValuePair.Value.Item2.Add(i.Item2));
-
-                strategyImplementations.ForEach(i => i.Item2.Initialize(i.Item1.BuildConfigurationContext()));
-                var states = strategyImplementations.Select(k =>
-                                                            {
-                                                                // test if strategy implementation is readable
-                                                                var reader = k.Item2 as IStrategyStorageReader;
-                                                                return reader != null && reader.Read();
-                                                            });
-
-                // feature is enabled if any of strategies is telling truth
-                feature.ChangeEnabledState(states.Any(b => b));
+                strategyImplementations.ForEach(i =>
+                                                {
+                                                    i.Item2.Initialize(i.Item1.BuildConfigurationContext());
+                                                    keyValuePair.Value.Item2.Add(i.Item2);
+                                                });
 
                 // do we have any writer in da house?
                 feature.ChangeModifiableState(strategyImplementations.Any(s => s.Item2 is IStrategyStorageWriter));
