@@ -96,13 +96,15 @@
     <Compile Include="..\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="AccessAuthorizationAttribute.cs" />
+    <Compile Include="AuthorizationExtensions.cs" />
     <Compile Include="Const.cs" />
     <Compile Include="CustomViewEngine.cs" />
     <Compile Include="ResourceProvider.cs" />
     <Compile Include="ResourceVirtualFile.cs" />
     <Compile Include="RouteRegistrationExtensions.cs" />
     <Compile Include="FeatureToggleHomeViewModel.cs" />
-    <Compile Include="FeatureToggleHomeController.cs" />
+    <Compile Include="FeatureToggleController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RouteConfiguration.cs" />
   </ItemGroup>

@@ -7,14 +7,16 @@ namespace FeatureToggle.AspNet.Mvc5
 {
     public static class RouteRegistrationExtensions
     {
-        public static void MapFeatureToggle(this IAppBuilder target, string routeName = Const.ModuleName)
+        public static IAppBuilder MapFeatureToggle(this IAppBuilder target, string routeName = Const.ModuleName)
         {
             CreateAndInsertRoute(routeName);
+            return target;
         }
 
-        public static void MapFeatureToggleRoute(this RouteCollection target, string routeName = Const.ModuleName)
+        public static RouteCollection MapFeatureToggleRoute(this RouteCollection target, string routeName = Const.ModuleName)
         {
             CreateAndInsertRoute(routeName);
+            return target;
         }
 
         public static FeatureSetContainer WithRoute(this FeatureSetContainer target, string routeName)

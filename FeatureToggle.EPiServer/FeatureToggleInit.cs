@@ -10,8 +10,7 @@ namespace FeatureToggle.EPiServer
         public void Initialize(InitializationEngine context)
         {
             var builder = new FeatureSetBuilder();
-            builder.Build()
-                   .ValidateConfiguration();
+            builder.Build().ValidateConfiguration();
         }
 
         public void Uninitialize(InitializationEngine context)
