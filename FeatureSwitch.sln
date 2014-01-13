@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeatureSwitch.AspNet.Sample
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeatureSwitch.AspNet.Mvc5", "FeatureSwitch.AspNet.Mvc5\FeatureSwitch.AspNet.Mvc5.csproj", "{47B28B12-59E0-493A-B0C7-1B5F808FFA53}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeatureSwitch.AspNet.Optimization", "FeatureSwitch.AspNet.Optimization\FeatureSwitch.AspNet.Optimization.csproj", "{029552DE-EA83-4E55-96F3-E65BCD7C2C19}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeatureSwitch.Web.Optimization", "FeatureSwitch.Web.Optimization\FeatureSwitch.Web.Optimization.csproj", "{029552DE-EA83-4E55-96F3-E65BCD7C2C19}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeatureSwitch.EPiServer", "FeatureSwitch.EPiServer\FeatureSwitch.EPiServer.csproj", "{F74A45CF-96CC-4FF9-A054-F598EE5891F1}"
 EndProject

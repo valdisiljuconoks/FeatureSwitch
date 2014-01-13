@@ -51,6 +51,18 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="FeatureSwitch, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\FeatureSwitch.1.0.0.0\lib\net40\FeatureSwitch.dll</HintPath>
+    </Reference>
+    <Reference Include="FeatureSwitch.AspNet.Mvc5, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\FeatureSwitch.AspNet.Mvc5.1.0.0.0\lib\net45\FeatureSwitch.AspNet.Mvc5.dll</HintPath>
+    </Reference>
+    <Reference Include="FeatureSwitch.Web.Optimization, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\FeatureSwitch.Web.Optimization.1.0.0.0\lib\net45\FeatureSwitch.Web.Optimization.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Owin, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -244,20 +256,6 @@
     <Content Include="Views\Account\Manage.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\FeatureSwitch.AspNet.Mvc5\FeatureSwitch.AspNet.Mvc5.csproj">
-      <Project>{47b28b12-59e0-493a-b0c7-1b5f808ffa53}</Project>
-      <Name>FeatureToggle.AspNet.Mvc5</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\FeatureSwitch.AspNet.Optimization\FeatureSwitch.AspNet.Optimization.csproj">
-      <Project>{029552de-ea83-4e55-96f3-e65bcd7c2c19}</Project>
-      <Name>FeatureToggle.AspNet.Optimization</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\FeatureSwitch\FeatureSwitch.csproj">
-      <Project>{2647bfaf-c14f-42ab-ba25-35462c9e3251}</Project>
-      <Name>FeatureToggle</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

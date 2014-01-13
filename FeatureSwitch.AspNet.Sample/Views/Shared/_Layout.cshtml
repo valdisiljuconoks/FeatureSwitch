@@ -1,12 +1,13 @@
-﻿@using FeatureSwitch.AspNet.Optimization
+﻿@using Scripts = FeatureSwitch.Web.Optimization.Scripts
+@using Styles = FeatureSwitch.Web.Optimization.Styles
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>@ViewBag.Title - My ASP.NET Application</title>
-        @(ToggleStyles.Render<StyleOptimizationDisabled>("~/Content/css"))
-        @(ToggleScripts.Render<FeatureScriptOptimizationDisabled>("~/bundles/modernizr"))
+        @(Styles.Render<StyleOptimizationDisabled>("~/Content/css"))
+        @(Scripts.Render<FeatureScriptOptimizationDisabled>("~/bundles/modernizr"))
 
     </head>
     <body>
@@ -38,8 +39,8 @@
             </footer>
         </div>
 
-        @(ToggleScripts.Render<FeatureScriptOptimizationDisabled>("~/bundles/jquery"))
-        @ToggleScripts.Render(typeof(FeatureScriptOptimizationDisabled), "~/bundles/bootstrap")
+        @(Scripts.Render<FeatureScriptOptimizationDisabled>("~/bundles/jquery"))
+        @(Scripts.Render<FeatureScriptOptimizationDisabled>("~/bundles/bootstrap"))
         @RenderSection("scripts", false)
     </body>
 </html>
