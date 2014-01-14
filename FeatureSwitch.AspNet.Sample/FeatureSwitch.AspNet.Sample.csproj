@@ -55,9 +55,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\FeatureSwitch.1.0.0.0\lib\net40\FeatureSwitch.dll</HintPath>
     </Reference>
-    <Reference Include="FeatureSwitch.AspNet.Mvc5, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="FeatureSwitch.AspNet.Mvc5, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\FeatureSwitch.AspNet.Mvc5.1.0.0.0\lib\net45\FeatureSwitch.AspNet.Mvc5.dll</HintPath>
+      <HintPath>..\packages\FeatureSwitch.AspNet.Mvc5.1.1.0.0\lib\net45\FeatureSwitch.AspNet.Mvc5.dll</HintPath>
     </Reference>
     <Reference Include="FeatureSwitch.Web.Optimization, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

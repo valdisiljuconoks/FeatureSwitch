@@ -11,7 +11,7 @@ namespace FeatureSwitch.AspNet.Sample
 
             routes.MapRoute("Default", "{controller}/{action}/{id}", new { controller = "Home", action = "Index", id = UrlParameter.Optional });
 
-            //routes.MapFeatureToggleRoute(); //.WithRoles("Administrators");
+            //routes.MapFeatureSwitch(); //.WithRoles("Administrators");
         }
     }
 }

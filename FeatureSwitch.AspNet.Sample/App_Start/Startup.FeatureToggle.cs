@@ -10,7 +10,7 @@ namespace FeatureSwitch.AspNet.Sample
             var builder = new FeatureSetBuilder();
             builder.Build();
 
-            app.MapFeatureToggle(); //.WithRoles("Administrators");
+            app.MapFeatureSwitch(); //.WithRoles("Administrators");
         }
     }
 }
