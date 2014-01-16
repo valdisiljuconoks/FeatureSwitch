@@ -1,18 +1,11 @@
 ﻿using System.Web.Hosting;
 using System.Web.Mvc;
 using System.Web.Routing;
-using Owin;
 
-namespace FeatureSwitch.AspNet.Mvc5
+namespace FeatureSwitch.AspNet.Mvc
 {
     public static class RouteRegistrationExtensions
     {
-        public static IAppBuilder MapFeatureSwitch(this IAppBuilder target, string routeName = Const.ModuleName)
-        {
-            CreateAndInsertRoute(routeName);
-            return target;
-        }
-
         public static RouteCollection MapFeatureSwitch(this RouteCollection target, string routeName = Const.ModuleName)
         {
             CreateAndInsertRoute(routeName);
@@ -25,7 +18,7 @@ namespace FeatureSwitch.AspNet.Mvc5
             return target;
         }
 
-        private static void CreateAndInsertRoute(string routeName)
+        internal static void CreateAndInsertRoute(string routeName)
         {
             routeName.CheckNull("routeName");
 

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace FeatureSwitch.AspNet.Mvc5
+namespace FeatureSwitch.AspNet.Mvc
 {
     public class FeatureSwitchViewModel
     {

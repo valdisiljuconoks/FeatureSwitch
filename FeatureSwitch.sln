@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeatureSwitch.AspNet.Mvc5",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeatureSwitch.Web.Optimization", "FeatureSwitch.Web.Optimization\FeatureSwitch.Web.Optimization.csproj", "{029552DE-EA83-4E55-96F3-E65BCD7C2C19}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeatureSwitch.EPiServer", "FeatureSwitch.EPiServer\FeatureSwitch.EPiServer.csproj", "{F74A45CF-96CC-4FF9-A054-F598EE5891F1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeatureSwitch.EPiServer.Cms70", "FeatureSwitch.EPiServer\FeatureSwitch.EPiServer.Cms70.csproj", "{F74A45CF-96CC-4FF9-A054-F598EE5891F1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0E5E270C-CD78-4635-AAAF-FC28A1144373}"
 	ProjectSection(SolutionItems) = preProject

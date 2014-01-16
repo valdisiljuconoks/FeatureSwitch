@@ -1,4 +1,4 @@
-namespace FeatureSwitch.AspNet.Mvc5
+namespace FeatureSwitch.AspNet.Mvc
 {
     public class Const
     {
@@ -8,7 +8,7 @@ namespace FeatureSwitch.AspNet.Mvc5
         {
             get
             {
-                return "FeatureSwitch.AspNet.Mvc5";
+                return "FeatureSwitch.AspNet.Mvc";
             }
         }
     }

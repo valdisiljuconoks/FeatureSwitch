@@ -2,7 +2,7 @@ using System.IO;
 using System.Web;
 using System.Web.Hosting;
 
-namespace FeatureSwitch.AspNet.Mvc5
+namespace FeatureSwitch.AspNet.Mvc
 {
     internal class ResourceVirtualFile : VirtualFile
     {

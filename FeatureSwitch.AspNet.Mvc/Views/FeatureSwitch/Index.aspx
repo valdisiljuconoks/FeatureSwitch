@@ -1,9 +1,5 @@
-﻿@using FeatureSwitch
-@model FeatureSwitchViewModel
-
-@{
-    Layout = null;
-}
+﻿<%@ Page Title="" Language="C#" Inherits="System.Web.Mvc.ViewPage<FeatureSwitch.AspNet.Mvc.FeatureSwitchViewModel>" %>
+<%@ Import Namespace="FeatureSwitch" %>
 
 <!DOCTYPE html>
 
@@ -21,7 +17,10 @@
                 padding: 3px;
             }
 
-            table th { font-weight: bold;padding: 5px; }
+            table th {
+                font-weight: bold;
+                padding: 5px;
+            }
 
             table td, table th { border: 1px solid gray; }
 
@@ -44,26 +43,30 @@
                     <th>Type</th>
                 </tr>
                 
-                @foreach (var feature in Model.Features)
-                {
+                <%
+                    foreach (var feature in Model.Features)
+                    {
+                %>
                     <tr>
                         <td>
-                            @Html.CheckBox(feature.GetType().FullName, FeatureContext.IsEnabled(feature), feature.CanModify ? null : new { disabled = "disabled" })
+                            <input type="checkbox" name="<%= feature.GetType().FullName %>" <%= FeatureContext.IsEnabled(feature) ? "checked=\"checked\"" : string.Empty %> <%= !feature.CanModify ?  "disabled=\"disabled\"" : string.Empty %> />
                         </td>
-                        <td>@feature.Name</td>
-                        <td>@feature.GetType().FullName</td>
+                        <td><%= feature.Name %></td>
+                        <td><%= feature.GetType().FullName %></td>
                     </tr>
-                }
+                <%
+                    }
+                %>
             </table>
         </div>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script type="text/javascript">
             $(function() {
-                $('table').on('click', 'input:checkbox', function() {
+                $('table').on('click', ':checkbox', function() {
                     $.ajax({
                         type: 'POST',
-                        url: '/@Model.RouteName/Update',
+                        url: '/<%= Model.RouteName %>/Update',
                         data: { name: this.name, state: this.checked }
                     });
                 });

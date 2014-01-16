@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.Caching;
 using System.Web.Hosting;
 
-namespace FeatureSwitch.AspNet.Mvc5
+namespace FeatureSwitch.AspNet.Mvc
 {
     public class AssemblyEmbeddedResourceProvider : VirtualPathProvider
     {

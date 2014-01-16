@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace FeatureSwitch.AspNet.Mvc5
+namespace FeatureSwitch.AspNet.Mvc
 {
     [AccessAuthorization]
     public class FeatureSwitchController : Controller

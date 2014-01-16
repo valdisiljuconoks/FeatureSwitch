@@ -2,7 +2,7 @@ using System;
 using System.Web;
 using System.Web.Mvc;
 
-namespace FeatureSwitch.AspNet.Mvc5
+namespace FeatureSwitch.AspNet.Mvc
 {
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false)]
     public class AccessAuthorizationAttribute : AuthorizeAttribute

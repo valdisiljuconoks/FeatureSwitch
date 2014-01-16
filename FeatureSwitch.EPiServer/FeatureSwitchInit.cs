@@ -1,5 +1,6 @@
 ﻿using EPiServer.Framework;
 using EPiServer.Framework.Initialization;
+using FeatureSwitch.AspNet.Mvc;
 
 namespace FeatureSwitch.EPiServer
 {
@@ -9,7 +10,9 @@ namespace FeatureSwitch.EPiServer
         public void Initialize(InitializationEngine context)
         {
             var builder = new FeatureSetBuilder();
-            builder.Build().ValidateConfiguration();
+            builder.Build()
+                    .WithRoute("modules/FeatureSwitch")
+                    .ValidateConfiguration();
         }
 
         public void Uninitialize(InitializationEngine context)

@@ -7,7 +7,7 @@
     <ProjectGuid>{47B28B12-59E0-493A-B0C7-1B5F808FFA53}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FeatureSwitch.AspNet.Mvc5</RootNamespace>
+    <RootNamespace>FeatureSwitch.AspNet.Mvc</RootNamespace>
     <AssemblyName>FeatureSwitch.AspNet.Mvc5</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -91,11 +91,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\CommonAssemblyInfo.cs">
@@ -103,6 +100,7 @@
     </Compile>
     <Compile Include="AccessAuthorizationAttribute.cs" />
     <Compile Include="AuthorizationExtensions.cs" />
+    <Compile Include="AuthorizationExtensionsOwin.cs" />
     <Compile Include="Const.cs" />
     <Compile Include="CustomViewEngine.cs" />
     <Compile Include="AssemblyEmbeddedResourceProvider.cs" />
@@ -112,6 +110,7 @@
     <Compile Include="FeatureSwitchController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RouteConfiguration.cs" />
+    <Compile Include="RouteRegistrationExtensionsOwin.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="FeatureSwitch.AspNet.Mvc5.nuspec" />

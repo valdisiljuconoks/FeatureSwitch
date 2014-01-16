@@ -1,4 +1,4 @@
-﻿namespace FeatureSwitch.AspNet.Mvc5
+﻿namespace FeatureSwitch.AspNet.Mvc
 {
     internal static class RouteConfiguration
     {
