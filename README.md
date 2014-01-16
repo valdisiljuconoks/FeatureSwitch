@@ -4,14 +4,14 @@ FeatureToggle
 ## Feature Toggling Framework for Various Types of Applications
 Have you ever wrote the code like following to verify that either you have to disable or enable some functionality base on set of conditions (usually different sources):
 
-```
+```csharp
   if(ConfigurationManager.AppSettings["MyKey"] == "true")
       return ...;
 ```
 
 or something like this:
 
-```
+```csharp
   if(HttpContext.Current != null && HttpContext.Current.Session != null && HttpContext.Current.Session["MyKey"] == "true")
       return ...;
 ```
@@ -21,12 +21,16 @@ FeatureSwitch library is easily adoptable and extendable.
 
 ## Overview
 FeatureSwitch library is based on two basic aspects [features](https://github.com/valdisiljuconoks/FeatureSwitch/wiki#features) and [strategies](https://github.com/valdisiljuconoks/FeatureSwitch/wiki#strategies). In combination they provide enough input data for feature set builder to construct feature context to be used later to check whether particular feature is enabled or disabled.
+Currently there are following additional integrations:
+* [Mvc Control Panel](https://github.com/valdisiljuconoks/FeatureSwitch/wiki/Asp.Net-MVC-Integration) - FeatureSwitch UI Control Panel
+* [Web Optimization](https://github.com/valdisiljuconoks/FeatureSwitch/wiki/Web-Optimization-Helpers) - Helpers for styles and scripts conditional bundling and minification
+* [EPiServer integration](https://github.com/valdisiljuconoks/FeatureSwitch/wiki/EPiServer-Integration) - Module to integrate into EPiServer CMS platform for easier access to UI Control Panel
 
 ## Features
 Feature is main aspect of FeatureSwitch library it's your logical feature representation - either it's enabled or disabled. You will need to define your features to work with FeatureSwitch library.
 To define your feature you have to create class that inherits from `FeatureSwitch.BaseFeature` class:
 
-```
+```csharp
   public class MySampleFeature : FeatureSwitch.BaseFeature
   {
   }
