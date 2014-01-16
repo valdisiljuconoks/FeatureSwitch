@@ -24,7 +24,7 @@ FeatureSwitch library is based on two basic aspects [features](https://github.co
 Currently there are following additional integrations:
 * [Mvc Control Panel](https://github.com/valdisiljuconoks/FeatureSwitch/wiki/Asp.Net-MVC-Integration) - FeatureSwitch UI Control Panel
 * [Web Optimization](https://github.com/valdisiljuconoks/FeatureSwitch/wiki/Web-Optimization-Helpers) - Helpers for styles and scripts conditional bundling and minification
-* [EPiServer integration](https://github.com/valdisiljuconoks/FeatureSwitch/wiki/EPiServer-Integration) - Module to integrate into EPiServer CMS platform for easier access to UI Control Panel
+* [EPiServer integration](https://github.com/valdisiljuconoks/FeatureSwitch/wiki/EPiServer-Integration) - Module to integrate into [EPiServer CMS platform](http://www.episerver.com) for easier access to UI Control Panel
 
 ## Features
 Feature is main aspect of FeatureSwitch library it's your logical feature representation - either it's enabled or disabled. You will need to define your features to work with FeatureSwitch library.
