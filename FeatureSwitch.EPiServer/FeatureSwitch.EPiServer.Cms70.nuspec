@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <projectUrl>https://github.com/valdisiljuconoks/FeatureSwitch/wiki/EPiServer-Integration</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>FeatureSwitch integration library for EPiServer CMS platform.</releaseNotes>
+    <copyright>Copyright 2014</copyright>
+    <tags>FeatureSwitch Feature Toggle EPiServer CMS CMS6</tags>
+  </metadata>
+</package>

@@ -75,6 +75,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\CommonAssemblyInfo.cs">
+      <Link>Properties\CommonAssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="..\FeatureSwitch.AspNet.Mvc5\AccessAuthorizationAttribute.cs">
       <Link>AccessAuthorizationAttribute.cs</Link>
     </Compile>
@@ -111,6 +114,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="FeatureSwitch.AspNet.Mvc.nuspec" />
     <None Include="packages.config" />
     <None Include="Views\Web.config" />
   </ItemGroup>

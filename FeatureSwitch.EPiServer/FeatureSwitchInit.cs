@@ -12,6 +12,7 @@ namespace FeatureSwitch.EPiServer
             var builder = new FeatureSetBuilder();
             builder.Build()
                     .WithRoute("modules/FeatureSwitch")
+                    .WithRoles("Administrators")
                     .ValidateConfiguration();
         }
 
