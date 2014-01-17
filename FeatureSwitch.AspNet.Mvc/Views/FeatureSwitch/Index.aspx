@@ -2,24 +2,30 @@
 <%@ Import Namespace="FeatureSwitch" %>
 
 <!DOCTYPE html>
-
 <html>
     <head>
-        <title>title</title>
         <style>
             body {
-                font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-                font-size: 16px;
+                font: 12px Myriad, Helvetica, Tahoma, Arial, clean, sans-serif;
+                background: #fbfbfb;
+                color: #333;
             }
 
             table {
                 border-collapse: collapse;
+                border-spacing: 0;
                 padding: 3px;
+                background-color: #ffffff;
+                border: 1px solid #bebebe !important;
             }
 
             table th {
                 font-weight: bold;
                 padding: 5px;
+                color: #000000;
+                border-color: #aeaeae;
+                text-shadow: #ffffff 0 1px 0;
+                background: #f1f1f1;
             }
 
             table td, table th { border: 1px solid gray; }

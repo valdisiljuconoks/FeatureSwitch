@@ -5,5 +5,5 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription("FeatureSwitch integration library for Asp.Net Mvc")]
 [assembly: ComVisible(false)]
 [assembly: Guid("18130042-dc8f-4619-98a2-1688bef7e54a")]
-[assembly: AssemblyVersion("1.0.1.0")]
-[assembly: AssemblyFileVersion("1.0.1.0")]
+[assembly: AssemblyVersion("1.0.3.0")]
+[assembly: AssemblyFileVersion("1.0.3.0")]

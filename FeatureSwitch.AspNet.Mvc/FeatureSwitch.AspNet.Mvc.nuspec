@@ -12,5 +12,8 @@
     <releaseNotes>FeatureSwitch integration library for Asp.Net Mvc</releaseNotes>
     <copyright>Copyright 2014</copyright>
     <tags>FeatureSwitch Feature Toggle Asp.Net Mvc</tags>
+    <dependencies>
+      <dependency id="Microsoft.AspNet.Mvc" version="[4.0.20710,5.0)" />
+    </dependencies>
   </metadata>
 </package>
