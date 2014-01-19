@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeatureSwitch.AspNet.Mvc", "FeatureSwitch.AspNet.Mvc.csproj", "{CD92104C-7CAC-4F1C-A545-DDC539A3B6F8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeatureSwitch.AspNet.Mvc", "FeatureSwitch.AspNet.Mvc\FeatureSwitch.AspNet.Mvc.csproj", "{CD92104C-7CAC-4F1C-A545-DDC539A3B6F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeatureSwitch.EPiServer.Cms70", "..\FeatureSwitch.EPiServer\FeatureSwitch.EPiServer.Cms70.csproj", "{F74A45CF-96CC-4FF9-A054-F598EE5891F1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeatureSwitch.EPiServer.Cms70", "FeatureSwitch.EPiServer\FeatureSwitch.EPiServer.Cms70.csproj", "{F74A45CF-96CC-4FF9-A054-F598EE5891F1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
