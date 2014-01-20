@@ -65,7 +65,7 @@ All packages are available on NuGet feeds:
 * [Asp.Net Mvc Integration](https://www.nuget.org/packages/FeatureSwitch.AspNet.Mvc/)
 * [Asp.Net Mvc 5 Integration / Owin](https://www.nuget.org/packages/FeatureSwitch.AspNet.Mvc5/)
 * [Web Optimization pack](https://www.nuget.org/packages/FeatureSwitch.Web.Optimization/)
-* [EPiServer integration] - waiting for publish
+* [EPiServer integration](http://nuget.episerver.com/en/OtherPages/Package/?packageId=FeatureSwitch.EPiServer) - waiting for publish
 
 ## More Information
 [More information](https://github.com/valdisiljuconoks/FeatureSwitch/wiki/Extending-FeatureSwitch-library) on extending FeatureSwitch library.
