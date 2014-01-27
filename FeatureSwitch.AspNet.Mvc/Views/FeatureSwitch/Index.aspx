@@ -66,7 +66,7 @@
             </table>
         </div>
 
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.2.min.js"></script>
         <script type="text/javascript">
             $(function() {
                 $('table').on('click', ':checkbox', function() {

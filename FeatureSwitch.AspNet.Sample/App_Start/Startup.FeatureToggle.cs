@@ -1,4 +1,4 @@
-﻿using FeatureSwitch.AspNet.Mvc5;
+﻿using FeatureSwitch.AspNet.Mvc;
 using Owin;
 
 namespace FeatureSwitch.AspNet.Sample

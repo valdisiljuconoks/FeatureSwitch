@@ -77,6 +77,8 @@
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="BundleRenderer.cs" />
+    <Compile Include="DisableScriptOptimization.cs" />
+    <Compile Include="DisableStyleOptimization.cs" />
     <Compile Include="Scripts.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Styles.cs" />

@@ -6,8 +6,8 @@
 <div class="jumbotron">
     <h1>ASP.NET</h1>
     <div>
-        ScriptOptimizationDisabled is "@(FeatureContext.IsEnabled<FeatureScriptOptimizationDisabled>() ? "Enabled" : "Disabled")"
-        StyleOptimizationDisabled is "@(FeatureContext.IsEnabled<StyleOptimizationDisabled>() ? "Enabled" : "Disabled")"
+        DisableScriptOptimization is "@(FeatureContext.IsEnabled<DisableScriptOptimization>() ? "Enabled" : "Disabled")"
+        DisableStyleOptimization is "@(FeatureContext.IsEnabled<DisableStyleOptimization>() ? "Enabled" : "Disabled")"
     </div>
 </div>
 
