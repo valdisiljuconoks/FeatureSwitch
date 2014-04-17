@@ -21,10 +21,10 @@ namespace FeatureSwitch.Web.Optimization
 
         public static IHtmlString Render<T>(params string[] paths) where T : BaseFeature
         {
-            return Render<T>(DefaultTagFormat, paths);
+            return RenderFormat<T>(DefaultTagFormat, paths);
         }
 
-        public static IHtmlString Render<T>(string tagFromat, params string[] paths) where T : BaseFeature
+        public static IHtmlString RenderFormat<T>(string tagFromat, params string[] paths) where T : BaseFeature
         {
             return Render(typeof(T), tagFromat, paths);
         }
