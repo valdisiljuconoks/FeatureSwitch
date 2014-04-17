@@ -6,6 +6,7 @@ namespace FeatureSwitch.Web.Optimization
     public static class Styles
     {
         private static string defaultTagFormat = "<link href=\"{0}\" rel=\"stylesheet\"/>";
+
         public static string DefaultTagFormat
         {
             get
@@ -20,12 +21,17 @@ namespace FeatureSwitch.Web.Optimization
 
         public static IHtmlString Render<T>(params string[] paths) where T : BaseFeature
         {
-            return Render(typeof(T), paths);
+            return Render<T>(DefaultTagFormat, paths);
         }
 
-        private static IHtmlString Render(Type feature, string[] paths)
+        public static IHtmlString Render<T>(string tagFormat, params string[] paths) where T : BaseFeature
         {
-            return !FeatureContext.IsEnabled(feature) ? System.Web.Optimization.Styles.Render(paths) : BundleRenderer.Render(paths, DefaultTagFormat);
+            return Render(typeof(T), tagFormat, paths);
+        }
+
+        private static IHtmlString Render(Type feature, string tagFormat, string[] paths)
+        {
+            return !FeatureContext.IsEnabled(feature) ? System.Web.Optimization.Styles.Render(paths) : BundleRenderer.Render(paths, tagFormat);
         }
     }
 }
