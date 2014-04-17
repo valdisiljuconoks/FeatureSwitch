@@ -31,7 +31,7 @@ namespace FeatureSwitch.Web.Optimization
 
         private static IHtmlString Render(Type feature, string tagFormat, string[] paths)
         {
-            return !FeatureContext.IsEnabled(feature) ? System.Web.Optimization.Styles.Render(paths) : BundleRenderer.Render(paths, tagFormat);
+            return !FeatureContext.IsEnabled(feature) ? System.Web.Optimization.Styles.RenderFormat(tagFormat, paths) : BundleRenderer.Render(paths, tagFormat);
         }
     }
 }
