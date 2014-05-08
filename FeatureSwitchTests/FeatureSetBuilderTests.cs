@@ -3,7 +3,6 @@ using FeatureSwitch.Strategies;
 using FeatureSwitch.Strategies.Implementations;
 using FeatureSwitch.Tests.Features;
 using FeatureSwitch.Tests.Strategies;
-using StructureMap;
 using Xunit;
 
 namespace FeatureSwitch.Tests
@@ -13,7 +12,7 @@ namespace FeatureSwitch.Tests
         [Fact]
         public void BuilderTest_AddMoreFeature_Success()
         {
-            var builder = new FeatureSetBuilder(new Container());
+            var builder = new FeatureSetBuilder();
             var container = builder.Build(ctx =>
                                           {
                                               ctx.AddFeature<MySampleFeature>();
@@ -32,7 +31,7 @@ namespace FeatureSwitch.Tests
         [Fact]
         public void BuilderTest_AddSameFeatureMultipleTimes_NoFailure()
         {
-            var builder = new FeatureSetBuilder(new Container());
+            var builder = new FeatureSetBuilder();
             var container = builder.Build(ctx =>
                                           {
                                               ctx.AddFeature<MySampleFeature>();
@@ -58,7 +57,7 @@ namespace FeatureSwitch.Tests
         [Fact]
         public void BuilderTest_OneFeatureOneStrategy_Success()
         {
-            var builder = new FeatureSetBuilder(new Container());
+            var builder = new FeatureSetBuilder();
             var container = builder.Build(ctx =>
                                           {
                                               ctx.AddFeature<MySampleFeature>();
@@ -73,7 +72,7 @@ namespace FeatureSwitch.Tests
         [Fact]
         public void BuilderTest_RequestForNonRegisteredFeature_FeatureDisabled()
         {
-            var builder = new FeatureSetBuilder(new Container());
+            var builder = new FeatureSetBuilder();
             var container = builder.Build(ctx =>
                                           {
                                               ctx.AddFeature<MySampleFeature>();

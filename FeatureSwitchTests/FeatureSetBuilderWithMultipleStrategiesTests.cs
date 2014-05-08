@@ -1,6 +1,5 @@
 ﻿using FeatureSwitch.Strategies;
 using FeatureSwitch.Strategies.Implementations;
-using StructureMap;
 using Xunit;
 
 namespace FeatureSwitch.Tests
@@ -10,7 +9,7 @@ namespace FeatureSwitch.Tests
         [Fact]
         public void BuilderTest_MultipleStrategies_FeatureEnabled()
         {
-            var builder = new FeatureSetBuilder(new Container());
+            var builder = new FeatureSetBuilder();
             var container = builder.Build(ctx =>
                                           {
                                               ctx.AddFeature<MyFeatureDisabledWithMultipleStrategies>();

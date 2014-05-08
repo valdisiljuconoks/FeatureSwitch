@@ -2,17 +2,18 @@
 using FeatureSwitch.Strategies.Implementations;
 using FeatureSwitch.Tests.Features;
 using FeatureSwitch.Tests.Strategies;
-using StructureMap;
 using Xunit;
 
 namespace FeatureSwitch.Tests
 {
+    using System;
+
     public class FeatureSetBuilderWithStrategiesTests
     {
         [Fact]
         public void BuilderTest_AddSameStrategyMultipleTimes_NoFailures()
         {
-            var builder = new FeatureSetBuilder(new Container());
+            var builder = new FeatureSetBuilder();
             var container = builder.Build(ctx =>
                           {
                               ctx.AddFeature<MySampleFeature>();
@@ -26,24 +27,21 @@ namespace FeatureSwitch.Tests
         }
 
         [Fact]
-        public void  BuilderTest_CustomStrategyWithConstructorParameters_NoFailure()
+        public void BuilderTest_CustomStrategyWithConstructorParameters_ThrowsExceptionWithSimpleContainer()
         {
-            var builder = new FeatureSetBuilder(new Container());
-            var container = builder.Build(ctx =>
+            var builder = new FeatureSetBuilder();
+            
+            Assert.Throws<MissingMethodException>(() => builder.Build(ctx =>
                           {
                               ctx.AddFeature<MySampleFeatureWithConstructorParameterStrategy>();
                               ctx.ForStrategy<StrategyWithConstructorParameter>().Use<StrategyWithConstructorParameterReader>();
-                          },
-                          expression => expression.For<ISampleInjectedInterface>().Use<SampleInjectedInterface>());
-
-            Assert.True(container.IsEnabled<MySampleFeatureWithConstructorParameterStrategy>());
-            Assert.NotNull(((StrategyWithConstructorParameterReader)builder.GetStrategyImplementation<StrategyWithConstructorParameter>()).Dependency);
+                          }));
         }
 
         [Fact]
         public void BuilderTest_CustomStrategy_FeatureIsEnabled()
         {
-            var builder = new FeatureSetBuilder(new Container());
+            var builder = new FeatureSetBuilder();
             var container = builder.Build(ctx =>
                           {
                               ctx.AddFeature<MyFancyStrategySampleFeature>();
@@ -58,7 +56,7 @@ namespace FeatureSwitch.Tests
         [Fact]
         public void BuilderTest_SwapBuiltInStrategy_ContainerHasSwappedStrategy()
         {
-            var builder = new FeatureSetBuilder(new Container());
+            var builder = new FeatureSetBuilder();
             var container = builder.Build(ctx =>
                           {
                               ctx.AddFeature<MySampleFeature>();
@@ -72,7 +70,7 @@ namespace FeatureSwitch.Tests
         [Fact]
         public void BuilderTest_SwapBuiltInStrategy_NoFailure()
         {
-            var builder = new FeatureSetBuilder(new Container());
+            var builder = new FeatureSetBuilder();
             var container = builder.Build(ctx =>
                           {
                               ctx.AddFeature<MySampleFeature>();
