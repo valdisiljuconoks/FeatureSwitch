@@ -248,6 +248,10 @@
       <Project>{47b28b12-59e0-493a-b0c7-1b5f808ffa53}</Project>
       <Name>FeatureSwitch.AspNet.Mvc5</Name>
     </ProjectReference>
+    <ProjectReference Include="..\FeatureSwitch.StructureMap\FeatureSwitch.StructureMap.csproj">
+      <Project>{62eda675-f73d-4040-92e4-595e200473b1}</Project>
+      <Name>FeatureSwitch.StructureMap</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FeatureSwitch.Web.Optimization\FeatureSwitch.Web.Optimization.csproj">
       <Project>{029552de-ea83-4e55-96f3-e65bcd7c2c19}</Project>
       <Name>FeatureSwitch.Web.Optimization</Name>

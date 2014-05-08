@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using FeatureSwitch.Strategies;
 using FeatureSwitch.Strategies.Implementations;
-using StructureMap;
 
 namespace FeatureSwitch
 {
     public class FeatureSetBuilder
     {
-        private IContainer container;
+        private readonly IDependencyContainer container;
         private readonly Dictionary<Type, Type> defaultImplementations = new Dictionary<Type, Type>
         {
             { typeof(AppSettings), typeof(AppSettingsStrategyImpl) },
@@ -19,15 +18,20 @@ namespace FeatureSwitch
             { typeof(QueryString), typeof(QueryStringStrategyImpl) },
         };
 
-        public FeatureSetBuilder(IContainer container = null)
+        public FeatureSetBuilder(IDependencyContainer container = null)
         {
+            if (container == null)
+            {
+                container = new SimpleDependencyContainer();
+            }
+
             this.container = container;
         }
         
-        public FeatureSetContainer Build(Action<FeatureContext> action = null, Action<ConfigurationExpression> dependencyConfiguration = null)
+        public FeatureSetContainer Build(Action<FeatureContext> action = null)
         {
             var context = SetupFeatureContext(action);
-            SetupDependencyContainer(dependencyConfiguration, context);
+            SetupDependencyContainer(context);
             BuildFeatureSet(context);
             DetectCollisions(context);
 
@@ -36,17 +40,8 @@ namespace FeatureSwitch
             return context.Container;
         }
 
-        protected void SetupDependencyContainer(Action<ConfigurationExpression> dependencyConfiguration, FeatureContext context)
+        protected void SetupDependencyContainer(FeatureContext context)
         {
-            // setup dependency container
-            if (this.container == null)
-            {
-                ObjectFactory.Initialize(init => init.AddRegistry<DefaultDependencyRegistry>());
-                this.container = ObjectFactory.Container;
-            }
-
-            dependencyConfiguration.WithNotNull(expr => this.container.Configure(expr));
-
             // register additional or swapped strategies
             foreach (var readerKeyValuePair in context.AdditionalStrategies)
             {
@@ -68,7 +63,7 @@ namespace FeatureSwitch
                 {
                     // we can create implementation only for concrete types
                     // if registered reader is interface - most probably it's registered in via IoC registry already
-                    this.container.Configure(c => c.For(strategyReaderType).Use(strategyReaderType));
+                    this.container.RegisterType(strategyReaderType, strategyReaderType);
                 }
             }
         }
@@ -93,7 +88,7 @@ namespace FeatureSwitch
         internal IStrategy GetStrategyImplementation(Type strategyType)
         {
             Type reader;
-            return this.defaultImplementations.TryGetValue(strategyType, out reader) ? (IStrategy)this.container.GetInstance(reader) : new EmptyStrategy();
+            return this.defaultImplementations.TryGetValue(strategyType, out reader) ? (IStrategy)this.container.Resolve(reader) : new EmptyStrategy();
         }
 
         internal IStrategy GetStrategyImplementation<T>()

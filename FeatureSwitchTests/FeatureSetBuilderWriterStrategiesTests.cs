@@ -2,7 +2,6 @@
 using System.IO;
 using FeatureSwitch.Strategies;
 using FeatureSwitch.Tests.Features;
-using StructureMap;
 using Xunit;
 
 namespace FeatureSwitch.Tests
@@ -21,7 +20,7 @@ namespace FeatureSwitch.Tests
         [Fact]
         public void BuilderTest_FeatureWithWritableStrategy_FailToWrite_FeatureDoesNotChangeState()
         {
-            var builder = new FeatureSetBuilder(new Container());
+            var builder = new FeatureSetBuilder();
             var container = builder.Build(ctx =>
                                           {
                                               ctx.AddFeature<MyWritableFeatureSingleStrategy>();
@@ -37,7 +36,7 @@ namespace FeatureSwitch.Tests
         [Fact]
         public void BuilderTest_FeatureWithWritableStrategy_FeatureCanBeEnabled()
         {
-            var builder = new FeatureSetBuilder(new Container());
+            var builder = new FeatureSetBuilder();
             var container = builder.Build(ctx =>
                                           {
                                               ctx.AddFeature<MyWritableFeatureSingleStrategy>();
@@ -55,7 +54,7 @@ namespace FeatureSwitch.Tests
         [Fact]
         public void BuilderTest_FeatureWithWritableStrategy_FeatureCanDisable()
         {
-            var builder = new FeatureSetBuilder(new Container());
+            var builder = new FeatureSetBuilder();
             var container = builder.Build(ctx =>
                                           {
                                               ctx.AddFeature<MyWritableFeatureSingleStrategy>();
@@ -70,7 +69,7 @@ namespace FeatureSwitch.Tests
         [Fact]
         public void BuilderTest_MultipleFeaturesSameStrategy_NoCollisionsInState()
         {
-            var builder = new FeatureSetBuilder(new Container());
+            var builder = new FeatureSetBuilder();
             var container = builder.Build(ctx =>
                                           {
                                               ctx.AddFeature<MyWritableFeatureSingleStrategy>();

@@ -5,7 +5,7 @@
          
     }
 
-    class SampleInjectedInterface : ISampleInjectedInterface
+    public class SampleInjectedInterface : ISampleInjectedInterface
     {
     }
 }
