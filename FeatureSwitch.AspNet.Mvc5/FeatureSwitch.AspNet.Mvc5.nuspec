@@ -9,7 +9,7 @@
     <projectUrl>https://github.com/valdisiljuconoks/FeatureSwitch/wiki/Asp.Net-MVC-Integration</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>Initial version of FeatureSwitch integration library for Asp.Net MVC v5</releaseNotes>
+    <releaseNotes>FeatureSwitch integration library for Asp.Net MVC v5</releaseNotes>
     <copyright>Copyright 2014</copyright>
     <tags>FeatureToggle Toggle Feature AspNet Mvc5</tags>
   </metadata>

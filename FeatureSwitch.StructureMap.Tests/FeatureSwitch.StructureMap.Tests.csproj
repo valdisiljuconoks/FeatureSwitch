@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B90FCCBB-9CAE-48E1-83B7-F5C30809EF88}</ProjectGuid>
+    <ProjectGuid>{273AD480-5E40-42A9-8F79-7C176382CD87}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FeatureSwitch.Tests</RootNamespace>
-    <AssemblyName>FeatureSwitch.Tests</AssemblyName>
+    <RootNamespace>FeatureSwitch.StructureMap.Tests</RootNamespace>
+    <AssemblyName>FeatureSwitch.StructureMap.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -36,24 +36,20 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Verify|AnyCPU'">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\Verify\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Moq">
       <HintPath>..\packages\Moq.4.2.1312.1622\lib\net40\Moq.dll</HintPath>
     </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Configuration" />
-    <Reference Include="System.Web" />
-    <Reference Include="xunit, Version=1.9.2.1705, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
+    <Reference Include="StructureMap, Version=3.0.3.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\structuremap.3.0.3.116\lib\net40\StructureMap.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap.Net4, Version=3.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\structuremap.3.0.3.116\lib\net40\StructureMap.Net4.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="xunit">
       <HintPath>..\packages\xunit.1.9.2\lib\net20\xunit.dll</HintPath>
     </Reference>
     <Reference Include="xunit.extensions">
@@ -69,39 +65,27 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
-    <Compile Include="FeatureSetBuilderStrategyOrderingTests.cs" />
-    <Compile Include="FeatureSetBuilderTests.cs" />
-    <Compile Include="FeatureSetBuilderWithDiscoveredFeatures.cs" />
-    <Compile Include="FeatureSetBuilderWithMultipleStrategiesTests.cs" />
-    <Compile Include="FeatureSetBuilderWithoutDependencyContainerConfigured.cs" />
-    <Compile Include="FeatureSetBuilderWithStrategiesTests.cs" />
-    <Compile Include="FeatureSetBuilderWriterStrategiesTests.cs" />
-    <Compile Include="Features\MySampleDiscoveredFeature.cs" />
-    <Compile Include="Features\MyFancyStrategySampleFeature.cs" />
-    <Compile Include="Features\MySampleDisabledFeature.cs" />
-    <Compile Include="Features\MySampleFeature.cs" />
-    <Compile Include="Features\MySampleFeatureWithConstructorParameterStrategy.cs" />
-    <Compile Include="Features\MySampleFeatureWithoutStrategy.cs" />
-    <Compile Include="Features\MySampleNonExistingKeyFeature.cs" />
-    <Compile Include="ISampleInjectedInterface.cs" />
+    <Compile Include="FeatureSetBuilderWithStructureMapTests.cs" />
+    <Compile Include="StructureMapDependencyContainerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Strategies\StrategyWithConstructorParameter.cs" />
-    <Compile Include="Strategies\StrategyWithConstructorParameterReader.cs" />
-    <Compile Include="Strategies\UnitTestsAlwaysTrueStrategy.cs" />
-    <Compile Include="StrategyTests\HttpSessionStrategyTests.cs" />
-    <Compile Include="StrategyTests\QueryStringStrategyTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FeatureSwitch.StructureMap\FeatureSwitch.StructureMap.csproj">
+      <Project>{62eda675-f73d-4040-92e4-595e200473b1}</Project>
+      <Name>FeatureSwitch.StructureMap</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FeatureSwitchTests\FeatureSwitch.Tests.csproj">
+      <Project>{B90FCCBB-9CAE-48E1-83B7-F5C30809EF88}</Project>
+      <Name>FeatureSwitch.Tests</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FeatureSwitch\FeatureSwitch.csproj">
-      <Project>{2647BFAF-C14F-42AB-BA25-35462C9E3251}</Project>
+      <Project>{2647bfaf-c14f-42ab-ba25-35462c9e3251}</Project>
       <Name>FeatureSwitch</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
@@ -123,6 +107,12 @@
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

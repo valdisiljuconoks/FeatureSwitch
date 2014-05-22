@@ -6,11 +6,11 @@
     <title>$title$</title>
     <authors>$author$</authors>
     <owners>$author$</owners>
-    <projectUrl>https://github.com/valdisiljuconoks/FeatureSwitch/wiki/Web-Optimization-Helpers</projectUrl>
+    <projectUrl>https://github.com/valdisiljuconoks/FeatureSwitch</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>FeatureSwitch helper library for Web.Optimization bundling and minification</releaseNotes>
+    <releaseNotes>FeatureSwitch helper library to integrate with StructureMap</releaseNotes>
     <copyright>Copyright 2014</copyright>
-    <tags>FeatureToggle Toggle Feature AspNet WebOptimization Optimization</tags>
+    <tags>FeatureToggle Toggle Feature StructureMap</tags>
   </metadata>
 </package>
