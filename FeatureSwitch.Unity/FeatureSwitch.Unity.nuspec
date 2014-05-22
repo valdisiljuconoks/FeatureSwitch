@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <projectUrl>https://github.com/valdisiljuconoks/FeatureSwitch</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>FeatureSwitch helper library to integrate with Unity IoC</releaseNotes>
+    <copyright>Copyright 2014</copyright>
+    <tags>FeatureToggle Toggle Feature Unity</tags>
+  </metadata>
+</package>
