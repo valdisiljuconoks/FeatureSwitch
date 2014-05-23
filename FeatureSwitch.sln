@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30324.0
+VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeatureSwitch", "FeatureSwitch\FeatureSwitch.csproj", "{2647BFAF-C14F-42AB-BA25-35462C9E3251}"
 EndProject
@@ -30,6 +30,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeatureSwitch.StructureMap.Tests", "FeatureSwitch.StructureMap.Tests\FeatureSwitch.StructureMap.Tests.csproj", "{273AD480-5E40-42A9-8F79-7C176382CD87}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ContainerSupport", "ContainerSupport", "{326B800E-CCA2-443A-B688-1969CE0190B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeatureSwitch.StructureMap.2.6", "FeatureSwitch.StructureMap.2.6\FeatureSwitch.StructureMap.2.6.csproj", "{7C28E40A-C377-40EA-92B4-60273446649C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -80,6 +82,12 @@ Global
 		{273AD480-5E40-42A9-8F79-7C176382CD87}.Release|Any CPU.Build.0 = Release|Any CPU
 		{273AD480-5E40-42A9-8F79-7C176382CD87}.Verify|Any CPU.ActiveCfg = Release|Any CPU
 		{273AD480-5E40-42A9-8F79-7C176382CD87}.Verify|Any CPU.Build.0 = Release|Any CPU
+		{7C28E40A-C377-40EA-92B4-60273446649C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C28E40A-C377-40EA-92B4-60273446649C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C28E40A-C377-40EA-92B4-60273446649C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C28E40A-C377-40EA-92B4-60273446649C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C28E40A-C377-40EA-92B4-60273446649C}.Verify|Any CPU.ActiveCfg = Release|Any CPU
+		{7C28E40A-C377-40EA-92B4-60273446649C}.Verify|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -87,5 +95,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{62EDA675-F73D-4040-92E4-595E200473B1} = {326B800E-CCA2-443A-B688-1969CE0190B9}
 		{273AD480-5E40-42A9-8F79-7C176382CD87} = {326B800E-CCA2-443A-B688-1969CE0190B9}
+		{7C28E40A-C377-40EA-92B4-60273446649C} = {326B800E-CCA2-443A-B688-1969CE0190B9}
 	EndGlobalSection
 EndGlobal

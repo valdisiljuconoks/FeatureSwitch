@@ -6,14 +6,14 @@
     <title>$title$</title>
     <authors>$author$</authors>
     <owners>$author$</owners>
-    <projectUrl>https://github.com/valdisiljuconoks/FeatureSwitch/wiki/Asp.Net-MVC-Integration</projectUrl>
+    <projectUrl>https://github.com/valdisiljuconoks/FeatureSwitch/wiki/Dependency-Injection-Container-Support</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>FeatureSwitch integration library for Asp.Net Mvc v4. Provides control panel for easier toggling.</releaseNotes>
+    <releaseNotes>FeatureSwitch helper library to integrate with StructureMap v2.6</releaseNotes>
     <copyright>Copyright 2014</copyright>
-    <tags>FeatureSwitch Feature Toggle Asp.Net Mvc</tags>
+    <tags>FeatureToggle Toggle Feature StructureMap</tags>
     <dependencies>
-      <dependency id="Microsoft.AspNet.Mvc" version="[4.0.20710,5.0)" />
+      <dependency id="structuremap" version="[2.6, 3.0)" />
     </dependencies>
   </metadata>
 </package>

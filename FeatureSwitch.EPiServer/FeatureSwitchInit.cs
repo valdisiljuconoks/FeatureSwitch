@@ -1,6 +1,7 @@
 ﻿using EPiServer.Framework;
 using EPiServer.Framework.Initialization;
 using FeatureSwitch.AspNet.Mvc;
+using FeatureSwitch.StructureMap;
 
 namespace FeatureSwitch.EPiServer
 {
@@ -9,11 +10,11 @@ namespace FeatureSwitch.EPiServer
     {
         public void Initialize(InitializationEngine context)
         {
-            var builder = new FeatureSetBuilder();
+            var builder = new FeatureSetBuilder(new StructureMapDependencyContainer());
             builder.Build()
-                    .WithRoute("modules/FeatureSwitch")
-                    .WithRoles("Administrators")
-                    .ValidateConfiguration();
+                   .WithRoute("modules/FeatureSwitch")
+                   .WithRoles("Administrators")
+                   .ValidateConfiguration();
         }
 
         public void Uninitialize(InitializationEngine context)
