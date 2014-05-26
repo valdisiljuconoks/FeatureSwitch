@@ -1,5 +1,6 @@
-﻿using System.Reflection;
+using System.Reflection;
 using System.Runtime.InteropServices;
+
 
 [assembly: AssemblyTitle("FeatureSwitch.StructureMap.2.6")]
 [assembly: AssemblyDescription("FeatureSwitch helper library to integrate with StructureMap v2.6")]
