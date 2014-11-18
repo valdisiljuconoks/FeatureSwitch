@@ -8,18 +8,18 @@ namespace FeatureSwitch
 {
     public class FeatureSetContainer
     {
-        private readonly Dictionary<string, Tuple<BaseFeature, IList<IStrategy>>> features = new Dictionary<string, Tuple<BaseFeature, IList<IStrategy>>>();
+        private readonly Dictionary<string, Tuple<BaseFeature, IList<IStrategy>>> _features = new Dictionary<string, Tuple<BaseFeature, IList<IStrategy>>>();
 
         public FeatureSetContainer()
         {
-            this.ConfigurationErrors = new Dictionary<string, string>();
+            ConfigurationErrors = new Dictionary<string, string>();
         }
 
         public IDictionary<string, Tuple<BaseFeature, IList<IStrategy>>> Features
         {
             get
             {
-                return this.features;
+                return _features;
             }
         }
 
@@ -35,7 +35,7 @@ namespace FeatureSwitch
             var key = featureType.FullName;
 
             // add only if does not exist
-            if (this.features.ContainsKey(key))
+            if (_features.ContainsKey(key))
             {
                 return;
             }
@@ -43,7 +43,7 @@ namespace FeatureSwitch
             var featureInstance = (BaseFeature)Activator.CreateInstance(featureType);
             featureInstance.Name = featureType.Name;
 
-            this.features.Add(key, Tuple.Create<BaseFeature, IList<IStrategy>>(featureInstance, new List<IStrategy>()));
+            _features.Add(key, Tuple.Create<BaseFeature, IList<IStrategy>>(featureInstance, new List<IStrategy>()));
         }
 
         public BaseFeature GetFeature<T>(bool throwNotFound = true) where T : BaseFeature
@@ -69,9 +69,9 @@ namespace FeatureSwitch
 
         public bool IsEnabled(Type feature)
         {
-            if (this.ConfigurationErrors.Keys.Contains(feature.FullName, StringComparer.InvariantCultureIgnoreCase))
+            if (ConfigurationErrors.Keys.Contains(feature.FullName, StringComparer.InvariantCultureIgnoreCase))
             {
-                throw new ConfigurationErrorsException(this.ConfigurationErrors[feature.FullName]);
+                throw new ConfigurationErrorsException(ConfigurationErrors[feature.FullName]);
             }
 
             var f = GetFeature(feature, false);
@@ -82,11 +82,11 @@ namespace FeatureSwitch
             }
 
             var states = f.Item2.Select(s =>
-                                            {
-                                                // test if strategy implementation is readable
-                                                var reader = s as IStrategyStorageReader;
-                                                return reader != null && reader.Read();
-                                            });
+            {
+                // test if strategy implementation is readable
+                var reader = s as IStrategyStorageReader;
+                return reader != null && reader.Read();
+            });
 
             // feature is enabled if any of strategies is telling truth
             return states.Any(b => b);
@@ -99,9 +99,9 @@ namespace FeatureSwitch
 
         public void ValidateConfiguration()
         {
-            if (this.ConfigurationErrors.Any())
+            if (ConfigurationErrors.Any())
             {
-                throw new ConfigurationErrorsException(string.Join("; ", this.ConfigurationErrors));
+                throw new ConfigurationErrorsException(string.Join("; ", ConfigurationErrors));
             }
         }
 
@@ -136,9 +136,15 @@ namespace FeatureSwitch
             ChangeEnabledState(typeof(T).FullName, state);
         }
 
+        internal bool IsStrategyEnabled(Type strategyType)
+        {
+            var allStrategies = Features.SelectMany(f => f.Value.Item2).Distinct();
+            return allStrategies.Any(strategyType.IsInstanceOfType);
+        }
+
         private Tuple<BaseFeature, IList<IStrategy>> GetFeatureWithStrategies(string featureName)
         {
-            var featureEntry = this.features.FirstOrDefault(f => f.Key != null && f.Key == featureName);
+            var featureEntry = _features.FirstOrDefault(f => f.Key != null && f.Key == featureName);
             return featureEntry.Key != null ? featureEntry.Value : null;
         }
     }

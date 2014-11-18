@@ -88,6 +88,7 @@
     <Compile Include="Strategies\StrategyWithConstructorParameter.cs" />
     <Compile Include="Strategies\StrategyWithConstructorParameterReader.cs" />
     <Compile Include="Strategies\UnitTestsAlwaysTrueStrategy.cs" />
+    <Compile Include="StrategyTests\EnabledStrategyTests.cs" />
     <Compile Include="StrategyTests\HttpSessionStrategyTests.cs" />
     <Compile Include="StrategyTests\QueryStringStrategyTests.cs" />
   </ItemGroup>

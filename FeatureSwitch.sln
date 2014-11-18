@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeatureSwitch", "FeatureSwitch\FeatureSwitch.csproj", "{2647BFAF-C14F-42AB-BA25-35462C9E3251}"
 EndProject
@@ -36,6 +36,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeatureSwitch.Unity.Tests", "FeatureSwitch.Unity.Tests\FeatureSwitch.Unity.Tests.csproj", "{164320A0-41C2-4E2F-BD2C-9CE4C2F9EB34}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeatureSwitch.StructureMap.2.6", "FeatureSwitch.StructureMap.2.6\FeatureSwitch.StructureMap.2.6.csproj", "{7C28E40A-C377-40EA-92B4-60273446649C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeatureSwitch.Glimpse", "FeatureSwitch.Glimpse\FeatureSwitch.Glimpse.csproj", "{22598820-C464-4C62-A353-4D7D18BC0CF1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -104,6 +106,12 @@ Global
 		{7C28E40A-C377-40EA-92B4-60273446649C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7C28E40A-C377-40EA-92B4-60273446649C}.Verify|Any CPU.ActiveCfg = Release|Any CPU
 		{7C28E40A-C377-40EA-92B4-60273446649C}.Verify|Any CPU.Build.0 = Release|Any CPU
+		{22598820-C464-4C62-A353-4D7D18BC0CF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22598820-C464-4C62-A353-4D7D18BC0CF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22598820-C464-4C62-A353-4D7D18BC0CF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22598820-C464-4C62-A353-4D7D18BC0CF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22598820-C464-4C62-A353-4D7D18BC0CF1}.Verify|Any CPU.ActiveCfg = Release|Any CPU
+		{22598820-C464-4C62-A353-4D7D18BC0CF1}.Verify|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

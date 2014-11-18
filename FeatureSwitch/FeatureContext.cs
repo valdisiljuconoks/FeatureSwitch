@@ -6,14 +6,14 @@ namespace FeatureSwitch
 {
     public class FeatureContext
     {
-        private readonly Dictionary<Type, Type> additionalStrategies = new Dictionary<Type, Type>();
-        private static bool initialized;
-        private static object syncRoot = new object();
-        private static FeatureContext instance = new FeatureContext();
+        private readonly Dictionary<Type, Type> _additionalStrategies = new Dictionary<Type, Type>();
+        private static bool _initialized;
+        private static FeatureContext _instance = new FeatureContext();
+        private static readonly object _syncRoot = new object();
 
         public FeatureContext()
         {
-            this.Container = new FeatureSetContainer();
+            Container = new FeatureSetContainer();
         }
 
         public FeatureSetContainer Container { get; private set; }
@@ -22,13 +22,13 @@ namespace FeatureSwitch
         {
             get
             {
-                return this.additionalStrategies;
+                return _additionalStrategies;
             }
         }
 
         public void AddConfigurationError(BaseFeature feature, string error)
         {
-            this.Container.ConfigurationErrors.Add(feature.GetType().FullName, error);
+            Container.ConfigurationErrors.Add(feature.GetType().FullName, error);
         }
 
         public void AddFeature<T>() where T : BaseFeature
@@ -38,7 +38,7 @@ namespace FeatureSwitch
 
         public void AddFeature(Type featureType)
         {
-            this.Container.AddFeature(featureType);
+            Container.AddFeature(featureType);
         }
 
         public static void Disable<T>() where T : BaseFeature
@@ -49,7 +49,7 @@ namespace FeatureSwitch
         public static void Disable(string featureName)
         {
             TestInstance();
-            instance.Container.ChangeEnabledState(featureName, false);
+            _instance.Container.ChangeEnabledState(featureName, false);
         }
 
         public static void Enable<T>() where T : BaseFeature
@@ -60,7 +60,7 @@ namespace FeatureSwitch
         public static void Enable(string featureName)
         {
             TestInstance();
-            instance.Container.ChangeEnabledState(featureName, true);
+            _instance.Container.ChangeEnabledState(featureName, true);
         }
 
         public StrategyConfigurationExpression<TStrategy> ForStrategy<TStrategy>() where TStrategy : FeatureStrategyAttribute
@@ -75,12 +75,12 @@ namespace FeatureSwitch
 
         public static BaseFeature GetFeature(Type feature, bool throwNotFound = true)
         {
-            return instance.Container.GetFeature(feature, throwNotFound).Item1;
+            return _instance.Container.GetFeature(feature, throwNotFound).Item1;
         }
 
         public static IList<BaseFeature> GetFeatures()
         {
-            return instance.Container.Features.Values.Select(t => t.Item1).ToList();
+            return _instance.Container.Features.Values.Select(t => t.Item1).ToList();
         }
 
         public static bool IsEnabled(BaseFeature feature)
@@ -91,7 +91,7 @@ namespace FeatureSwitch
         public static bool IsEnabled(Type feature)
         {
             TestInstance();
-            return instance.Container.IsEnabled(feature);
+            return _instance.Container.IsEnabled(feature);
         }
 
         public static bool IsEnabled<T>() where T : BaseFeature
@@ -99,25 +99,31 @@ namespace FeatureSwitch
             return IsEnabled(typeof(T));
         }
 
+        internal static bool IsStrategyEnabled<T>()
+        {
+            TestInstance();
+            return _instance.Container.IsStrategyEnabled(typeof(T));
+        }
+
         internal static void SetInstance(FeatureContext context)
         {
-            lock (syncRoot)
+            lock (_syncRoot)
             {
                 if (context == null)
                 {
-                    initialized = false;
+                    _initialized = false;
                 }
                 else
                 {
-                    instance = context;
-                    initialized = true;
+                    _instance = context;
+                    _initialized = true;
                 }
             }
         }
 
         private static void TestInstance()
         {
-            if (!initialized)
+            if (!_initialized)
             {
                 throw new InvalidOperationException("Feature context is not initialized. Create new instance of FeatureSetBuilder and call Build() method.");
             }
