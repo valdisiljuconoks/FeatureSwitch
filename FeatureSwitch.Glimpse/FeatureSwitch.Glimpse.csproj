@@ -47,10 +47,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\CommonAssemblyInfo.cs">
+      <Link>Properties\CommonAssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tab.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="FeatureSwitch.Glimpse.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
