@@ -11,7 +11,7 @@
     <description>$description$</description>
     <releaseNotes>FeatureSwitch integration library for EPiServer CMS platform.</releaseNotes>
     <copyright>Copyright 2014</copyright>
-    <tags>FeatureSwitch Feature Toggle EPiServer CMS CMS6</tags>
+    <tags>FeatureSwitch Switch Feature Toggle Toggling EPiServer CMS CMS6</tags>
     <dependencies>
       <dependency id="EPiServer.CMS.Core" version="[7.0.586.1,7.5)" />
       <dependency id="EPiServer.Framework" version="[7.0.859.1,7.5)" />

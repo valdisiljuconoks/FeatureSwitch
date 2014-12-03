@@ -8,8 +8,8 @@ namespace FeatureSwitch
 {
     public class FeatureSetBuilder
     {
-        private readonly IDependencyContainer container;
-        private readonly Dictionary<Type, Type> defaultImplementations = new Dictionary<Type, Type>
+        private readonly IDependencyContainer _container;
+        private readonly Dictionary<Type, Type> _defaultImplementations = new Dictionary<Type, Type>
         {
             { typeof(AppSettings), typeof(AppSettingsStrategyImpl) },
             { typeof(AlwaysTrue), typeof(AlwaysTrueStrategyImpl) },
@@ -25,7 +25,7 @@ namespace FeatureSwitch
                 container = new DefaultDependencyContainer();
             }
 
-            this.container = container;
+            _container = container;
         }
         
         public FeatureSetContainer Build(Action<FeatureContext> action = null)
@@ -48,14 +48,14 @@ namespace FeatureSwitch
                 var strategyType = readerKeyValuePair.Key;
                 var strategyReaderType = readerKeyValuePair.Value;
 
-                if (this.defaultImplementations.Keys.Contains(strategyType))
+                if (_defaultImplementations.Keys.Contains(strategyType))
                 {
                     // swap already registered strategy
-                    this.defaultImplementations[strategyType] = strategyReaderType;
+                    _defaultImplementations[strategyType] = strategyReaderType;
                 }
                 else
                 {
-                    this.defaultImplementations.Add(strategyType, strategyReaderType);
+                    _defaultImplementations.Add(strategyType, strategyReaderType);
                 }
 
                 // TODO: review this
@@ -63,7 +63,7 @@ namespace FeatureSwitch
                 {
                     // we can create implementation only for concrete types
                     // if registered reader is interface - most probably it's registered in via IoC registry already
-                    this.container.RegisterType(strategyReaderType, strategyReaderType);
+                    _container.RegisterType(strategyReaderType, strategyReaderType);
                 }
             }
         }
@@ -75,7 +75,7 @@ namespace FeatureSwitch
             {
                 // if configuration expression is present - call it
                 // Need to set AutoDiscoverFeatures to false to avoid semantic breaking change
-                // as the provision of an action previouslty precluded feature discovery
+                // as the provision of an action previously precluded feature discovery
                 // The action implementor can now decide if the want to set it back to true
                 context.AutoDiscoverFeatures = false;
                 action(context);
@@ -93,7 +93,7 @@ namespace FeatureSwitch
         internal IStrategy GetStrategyImplementation(Type strategyType)
         {
             Type reader;
-            return this.defaultImplementations.TryGetValue(strategyType, out reader) ? (IStrategy)this.container.Resolve(reader) : new EmptyStrategy();
+            return _defaultImplementations.TryGetValue(strategyType, out reader) ? (IStrategy)_container.Resolve(reader) : new EmptyStrategy();
         }
 
         internal IStrategy GetStrategyImplementation<T>()

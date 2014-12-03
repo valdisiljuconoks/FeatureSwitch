@@ -16,9 +16,7 @@ namespace FeatureSwitch.EPiServer.Strategies
         public override void Write(bool state)
         {
             var store = typeof(FeatureState).GetStore();
-
-            var definition = store.Items<FeatureState>().FirstOrDefault(d => d.Name == Context.Key) ?? 
-                new FeatureState() { Name = Context.Key };
+            var definition = store.Items<FeatureState>().FirstOrDefault(d => d.Name == Context.Key) ?? new FeatureState { Name = Context.Key };
 
             definition.Enabled = state;
             store.Save(definition);

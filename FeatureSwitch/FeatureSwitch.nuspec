@@ -11,6 +11,6 @@
     <description>$description$</description>
     <releaseNotes>Initial version released of FeatureSwitch library.</releaseNotes>
     <copyright>Copyright 2014</copyright>
-    <tags>FeatureToggle Toggle Feature</tags>
+    <tags>FeatureSwitch Switch Feature Toggle Toggling</tags>
   </metadata>
 </package>

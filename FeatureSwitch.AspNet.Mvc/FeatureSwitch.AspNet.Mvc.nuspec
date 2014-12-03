@@ -11,7 +11,7 @@
     <description>$description$</description>
     <releaseNotes>FeatureSwitch integration library for Asp.Net Mvc v4. Provides control panel for easier toggling.</releaseNotes>
     <copyright>Copyright 2014</copyright>
-    <tags>FeatureSwitch Feature Toggle Asp.Net Mvc</tags>
+    <tags>FeatureSwitch Switch Feature Toggle Toggling Asp.Net Mvc</tags>
     <dependencies>
       <dependency id="Microsoft.AspNet.Mvc" version="[4.0.20710,5.0)" />
     </dependencies>
