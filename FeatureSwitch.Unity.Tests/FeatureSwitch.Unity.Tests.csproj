@@ -37,8 +37,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FeatureSwitch">
-      <HintPath>..\packages\FeatureSwitch.1.2.0\lib\net40\FeatureSwitch.dll</HintPath>
+    <Reference Include="FeatureSwitch, Version=1.2.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\FeatureSwitch.1.2.2\lib\net40\FeatureSwitch.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.Unity">
       <HintPath>..\packages\Unity.3.5.1404.0\lib\net45\Microsoft.Practices.Unity.dll</HintPath>

@@ -73,12 +73,17 @@ namespace FeatureSwitch
             var context = new FeatureContext();
             if (action != null)
             {
-                // if configuration expression is present - call that one
+                // if configuration expression is present - call it
+                // Need to set AutoDiscoverFeatures to false to avoid semantic breaking change
+                // as the provision of an action previouslty precluded feature discovery
+                // The action implementor can now decide if the want to set it back to true
+                context.AutoDiscoverFeatures = false;
                 action(context);
             }
-            else
+            
+            if (context.AutoDiscoverFeatures)
             {
-                // otherwise we are going to scan for all features exposed and add to the context
+                // Scan for all features exposed and add to the context
                 DiscoverFeatures(context);
             }
 

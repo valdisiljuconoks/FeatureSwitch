@@ -33,9 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FeatureSwitch, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="FeatureSwitch, Version=1.2.2.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\FeatureSwitch.1.2.0\lib\net40\FeatureSwitch.dll</HintPath>
+      <HintPath>..\packages\FeatureSwitch.1.2.2\lib\net40\FeatureSwitch.dll</HintPath>
     </Reference>
     <Reference Include="StructureMap, Version=3.0.3.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

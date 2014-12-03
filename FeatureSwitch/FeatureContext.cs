@@ -14,9 +14,11 @@ namespace FeatureSwitch
         public FeatureContext()
         {
             Container = new FeatureSetContainer();
+            AutoDiscoverFeatures = true;
         }
 
         public FeatureSetContainer Container { get; private set; }
+        public bool AutoDiscoverFeatures { get; set; }
 
         internal IDictionary<Type, Type> AdditionalStrategies
         {

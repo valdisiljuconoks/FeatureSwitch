@@ -138,9 +138,9 @@
       <Private>True</Private>
       <HintPath>..\packages\EPiServer.CMS.Core.7.0.586.1\lib\net40\EPiServer.XmlRpc.dll</HintPath>
     </Reference>
-    <Reference Include="FeatureSwitch">
-      <HintPath>..\packages\FeatureSwitch.1.2.0\lib\net40\FeatureSwitch.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="FeatureSwitch, Version=1.2.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\FeatureSwitch.1.2.2\lib\net40\FeatureSwitch.dll</HintPath>
     </Reference>
     <Reference Include="FeatureSwitch.AspNet.Mvc">
       <HintPath>..\packages\FeatureSwitch.AspNet.Mvc.1.2.0\lib\net40\FeatureSwitch.AspNet.Mvc.dll</HintPath>
@@ -194,6 +194,9 @@
     </Compile>
     <Compile Include="FeatureSwitchInit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Strategies\EPiServerDatabase.cs" />
+    <Compile Include="Strategies\EPiServerDatabaseStrategyImpl.cs" />
+    <Compile Include="Strategies\FeatureState.cs" />
     <Compile Include="ToolsPluginDescriptor.cs" />
   </ItemGroup>
   <ItemGroup>

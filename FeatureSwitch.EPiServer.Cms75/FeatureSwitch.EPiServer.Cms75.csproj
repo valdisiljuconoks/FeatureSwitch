@@ -109,8 +109,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EPiServer.CMS.Core.7.7.0\lib\net40\EPiServer.XForms.dll</HintPath>
     </Reference>
-    <Reference Include="FeatureSwitch">
-      <HintPath>..\packages\FeatureSwitch.1.2.0\lib\net40\FeatureSwitch.dll</HintPath>
+    <Reference Include="FeatureSwitch, Version=1.2.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\FeatureSwitch.1.2.2\lib\net40\FeatureSwitch.dll</HintPath>
     </Reference>
     <Reference Include="FeatureSwitch.AspNet.Mvc5">
       <HintPath>..\packages\FeatureSwitch.AspNet.Mvc5.1.2.0\lib\net45\FeatureSwitch.AspNet.Mvc5.dll</HintPath>
@@ -175,6 +176,15 @@
     <Compile Include="..\FeatureSwitch.EPiServer\ToolsPluginDescriptor.cs">
       <Link>ToolsPluginDescriptor.cs</Link>
     </Compile>
+    <Compile Include="..\FeatureSwitch.EPiServer\Strategies\EPiServerDatabase.cs">
+      <Link>EPiServerDatabase.cs</Link>
+    </Compile>
+    <Compile Include="..\FeatureSwitch.EPiServer\Strategies\EPiServerDatabaseStrategyImpl.cs">
+      <Link>EPiServerDatabaseStrategyImpl.cs</Link>
+    </Compile>
+    <Compile Include="..\FeatureSwitch.EPiServer\Strategies\FeatureState.cs">
+      <Link>FeatureState.cs</Link>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -183,6 +193,9 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Strategies\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
