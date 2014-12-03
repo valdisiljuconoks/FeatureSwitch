@@ -48,7 +48,8 @@ namespace FeatureSwitch
 
         public BaseFeature GetFeature<T>(bool throwNotFound = true) where T : BaseFeature
         {
-            return GetFeature(typeof(T), throwNotFound).Item1;
+            var featureWithStrategy = GetFeature(typeof (T), throwNotFound);
+            return featureWithStrategy != null ? featureWithStrategy.Item1 : null;
         }
 
         public Tuple<BaseFeature, IList<IStrategy>> GetFeature(Type feature, bool throwNotFound = true)

@@ -18,12 +18,35 @@ namespace FeatureSwitch.Tests
         }
 
         [Fact]
-        public void BuilderTest_2ndLevelInheritance_DiscoveredFeatureFound()
+        public void BuilderTest_2ndLevelInheritance_AddedFeatureFound()
         {
             var builder = new FeatureSetBuilder();
             var container = builder.Build(context => context.AddFeature<MySample2ndLevelFeature>());
 
             Assert.NotNull(container.GetFeature<MySample2ndLevelFeature>());
+        }
+
+        [Fact]
+        public void BuilderTest_2ndLevelInheritance_NonAddedFeatureNotFound()
+        {
+            var builder = new FeatureSetBuilder();
+            var container = builder.Build(context => context.AddFeature<MySample2ndLevelFeature>());
+
+            Assert.Null(container.GetFeature<MySample1stLevelFeature>(false));
+        }
+
+        [Fact]
+        public void BuilderTest_2ndLevelInheritance_AllFeaturesFound()
+        {
+            var builder = new FeatureSetBuilder();
+            var container = builder.Build(context =>
+            {
+                context.AddFeature<MySample2ndLevelFeature>();
+                context.AutoDiscoverFeatures = true;
+            });
+
+            Assert.NotNull(container.GetFeature<MySample2ndLevelFeature>());
+            Assert.NotNull(container.GetFeature<MySample1stLevelFeature>());
         }
 
         [Fact]
