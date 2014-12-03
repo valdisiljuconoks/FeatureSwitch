@@ -16,9 +16,10 @@ namespace FeatureSwitch.EPiServer
             {
                 ctx.ForStrategy<EPiServerDatabase>().Use<EPiServerDatabaseStrategyImpl>();
                 ctx.AutoDiscoverFeatures = true;
-            }).WithRoute("modules/FeatureSwitch")
-                   .WithRoles("Administrators")
-                   .ValidateConfiguration();
+            })
+            .WithRoute("modules/FeatureSwitch")
+            .WithRoles("Administrators")
+            .ValidateConfiguration();
         }
 
         public void Uninitialize(InitializationEngine context)
