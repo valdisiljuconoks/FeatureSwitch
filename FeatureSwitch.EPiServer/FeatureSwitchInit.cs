@@ -7,7 +7,7 @@ using FeatureSwitch.StructureMap;
 namespace FeatureSwitch.EPiServer
 {
     [InitializableModule]
-    public class FeatureToggleInit : IInitializableModule
+    public class FeatureSwitchInit : IInitializableModule
     {
         public void Initialize(InitializationEngine context)
         {
