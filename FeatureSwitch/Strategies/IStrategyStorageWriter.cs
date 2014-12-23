@@ -1,6 +1,6 @@
 ﻿namespace FeatureSwitch.Strategies
 {
-    public interface IStrategyStorageWriter : IStrategy
+    public interface IStrategyStorageWriter : IStrategyStorageReader
     {
         void Write(bool state);
     }

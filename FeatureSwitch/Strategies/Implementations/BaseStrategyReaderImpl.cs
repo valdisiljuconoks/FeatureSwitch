@@ -8,7 +8,7 @@ namespace FeatureSwitch.Strategies.Implementations
 
         public virtual void Initialize(ConfigurationContext configurationContext)
         {
-            this.Context = configurationContext;
+            Context = configurationContext;
         }
 
         public abstract bool Read();

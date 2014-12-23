@@ -4,7 +4,7 @@
     {
         public ConfigurationContext(string key)
         {
-            this.Key = key;
+            Key = key;
         }
 
         public string Key { get; private set; }

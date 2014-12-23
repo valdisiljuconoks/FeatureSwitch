@@ -121,7 +121,7 @@ namespace FeatureSwitch
                 // test if there are any strategy with equal order
                 if (strategies.GroupBy(a => a.Order).Any(k => k.Count() > 1))
                 {
-                    feature.ChangeIsProperlyConfiguredState(false);
+                    feature.MarkAsMisConfigured(false);
                     context.AddConfigurationError(feature, string.Format("Feature {0} has strategies with the same order.", keyValuePair.Key));
                     continue;
                 }
@@ -135,7 +135,10 @@ namespace FeatureSwitch
                                                 });
 
                 // do we have any writer in da house?
-                feature.ChangeModifiableState(strategyImplementations.Any(s => s.Item2 is IStrategyStorageWriter));
+                if (strategyImplementations.Any(s => s.Item2 is IStrategyStorageWriter))
+                {
+                    feature.MarkAsModifiable();
+                }
             }
         }
 

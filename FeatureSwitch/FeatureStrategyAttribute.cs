@@ -7,16 +7,15 @@ namespace FeatureSwitch
     {
         protected FeatureStrategyAttribute()
         {
-            this.Order = 0;
+            Order = 0;
         }
 
         public int Order { get; set; }
-
         public string Key { get; set; }
 
         public ConfigurationContext BuildConfigurationContext()
         {
-            return new ConfigurationContext(this.Key);
+            return new ConfigurationContext(Key);
         }
     }
 }
