@@ -69,6 +69,7 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="FeatureSetBuilderGroupTests.cs" />
     <Compile Include="FeatureSetBuilderStrategyOrderingTests.cs" />
     <Compile Include="FeatureSetBuilderTests.cs" />
     <Compile Include="FeatureSetBuilderWithDiscoveredFeatures.cs" />

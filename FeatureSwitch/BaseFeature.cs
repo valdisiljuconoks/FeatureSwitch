@@ -2,35 +2,26 @@
 {
     public class BaseFeature
     {
-        private bool canModify;
-        private bool isProperlyConfigured;
-
-        public bool CanModify
-        {
-            get
-            {
-                return this.canModify;
-            }
-        }
-
-        public bool IsProperlyConfigured
-        {
-            get
-            {
-                return this.isProperlyConfigured;
-            }
-        }
-
+        public bool CanModify { get; private set; }
+        public bool IsProperlyConfigured { get; private set; }
         public string Name { get; internal set; }
 
         internal void ChangeIsProperlyConfiguredState(bool state)
         {
-            this.isProperlyConfigured = state;
+            IsProperlyConfigured = state;
         }
 
         internal void ChangeModifiableState(bool modifiable)
         {
-            this.canModify = modifiable;
+            CanModify = modifiable;
+        }
+
+        public virtual string GroupName
+        {
+            get
+            {
+                return string.Empty;
+            }
         }
     }
 }
