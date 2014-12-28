@@ -112,7 +112,7 @@ namespace FeatureSwitch
 
             if (item == null)
             {
-                throw new KeyNotFoundException("Feature of type" + featureName + " not found");
+                throw new KeyNotFoundException("Feature of type " + featureName + " not found");
             }
 
             // find 1st writer strategy
