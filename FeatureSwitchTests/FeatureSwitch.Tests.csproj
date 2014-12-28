@@ -82,6 +82,7 @@
     <Compile Include="Features\MySampleDisabledFeature.cs" />
     <Compile Include="Features\MySampleFeature.cs" />
     <Compile Include="Features\MySampleFeatureWithConstructorParameterStrategy.cs" />
+    <Compile Include="Features\MySampleFeatureWithMultipleWritableStrategies.cs" />
     <Compile Include="Features\MySampleFeatureWithoutStrategy.cs" />
     <Compile Include="Features\MySampleNonExistingKeyFeature.cs" />
     <Compile Include="ISampleInjectedInterface.cs" />
@@ -89,9 +90,11 @@
     <Compile Include="Strategies\StrategyWithConstructorParameter.cs" />
     <Compile Include="Strategies\StrategyWithConstructorParameterReader.cs" />
     <Compile Include="Strategies\UnitTestsAlwaysTrueStrategy.cs" />
+    <Compile Include="Strategies\WritableHashMapStrategyAttribute.cs" />
     <Compile Include="StrategyTests\EnabledStrategyTests.cs" />
     <Compile Include="StrategyTests\HttpSessionStrategyTests.cs" />
     <Compile Include="StrategyTests\QueryStringStrategyTests.cs" />
+    <Compile Include="StrategyTests\WritableStrategyTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

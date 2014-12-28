@@ -130,7 +130,7 @@ namespace FeatureSwitch
                 keyValuePair.Value.Item2.Clear();
                 strategyImplementations.ForEach(i =>
                                                 {
-                                                    i.Item2.Initialize(i.Item1.BuildConfigurationContext());
+                                                    i.Item2.Initialize(i.Item1.BuildConfigurationContext(feature, i.Item2));
                                                     keyValuePair.Value.Item2.Add(i.Item2);
                                                 });
 

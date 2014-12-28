@@ -22,10 +22,10 @@ namespace FeatureSwitch.Tests
         {
             var builder = new FeatureSetBuilder();
             var container = builder.Build(ctx =>
-                                          {
-                                              ctx.AddFeature<MyWritableFeatureSingleStrategy>();
-                                              ctx.ForStrategy<WritableStrategy>().Use<WritableStrategyExceptionImpl>();
-                                          });
+            {
+                ctx.AddFeature<MyWritableFeatureSingleStrategy>();
+                ctx.ForStrategy<WritableStrategy>().Use<WritableStrategyExceptionImpl>();
+            });
 
             Assert.False(container.IsEnabled<MyWritableFeatureSingleStrategy>());
             FeatureContext.Enable<MyWritableFeatureSingleStrategy>();
@@ -38,10 +38,10 @@ namespace FeatureSwitch.Tests
         {
             var builder = new FeatureSetBuilder();
             var container = builder.Build(ctx =>
-                                          {
-                                              ctx.AddFeature<MyWritableFeatureSingleStrategy>();
-                                              ctx.ForStrategy<WritableStrategy>().Use<WritableStrategyImpl>();
-                                          });
+            {
+                ctx.AddFeature<MyWritableFeatureSingleStrategy>();
+                ctx.ForStrategy<WritableStrategy>().Use<WritableStrategyImpl>();
+            });
 
             Assert.False(container.IsEnabled<MyWritableFeatureSingleStrategy>());
             Assert.True(container.GetFeature<MyWritableFeatureSingleStrategy>().CanModify, "Feature is not modifiable");
@@ -56,10 +56,10 @@ namespace FeatureSwitch.Tests
         {
             var builder = new FeatureSetBuilder();
             var container = builder.Build(ctx =>
-                                          {
-                                              ctx.AddFeature<MyWritableFeatureSingleStrategy>();
-                                              ctx.ForStrategy<WritableStrategy>().Use<WritableStrategyImpl>();
-                                          });
+            {
+                ctx.AddFeature<MyWritableFeatureSingleStrategy>();
+                ctx.ForStrategy<WritableStrategy>().Use<WritableStrategyImpl>();
+            });
 
             FeatureContext.Disable<MyWritableFeatureSingleStrategy>();
 
@@ -71,11 +71,11 @@ namespace FeatureSwitch.Tests
         {
             var builder = new FeatureSetBuilder();
             var container = builder.Build(ctx =>
-                                          {
-                                              ctx.AddFeature<MyWritableFeatureSingleStrategy>();
-                                              ctx.AddFeature<MyWritableAnotherFeatureSingleStrategy>();
-                                              ctx.ForStrategy<WritableStrategy>().Use<WritableStrategyImpl>();
-                                          });
+            {
+                ctx.AddFeature<MyWritableFeatureSingleStrategy>();
+                ctx.AddFeature<MyWritableAnotherFeatureSingleStrategy>();
+                ctx.ForStrategy<WritableStrategy>().Use<WritableStrategyImpl>();
+            });
 
             FeatureContext.Enable<MyWritableAnotherFeatureSingleStrategy>();
 
@@ -106,16 +106,16 @@ namespace FeatureSwitch.Tests
 
     public class WritableStrategyImpl : BaseStrategyImpl
     {
-        private bool isEnabled;
+        private bool _isEnabled;
 
         public override bool Read()
         {
-            return this.isEnabled;
+            return _isEnabled;
         }
 
         public override void Write(bool state)
         {
-            this.isEnabled = state;
+            _isEnabled = state;
         }
     }
 

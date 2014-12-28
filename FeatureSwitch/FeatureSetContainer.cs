@@ -22,7 +22,6 @@ namespace FeatureSwitch
                 return _features;
             }
         }
-
         public IDictionary<string, string> ConfigurationErrors { get; private set; }
 
         public void AddFeature<T>() where T : BaseFeature
@@ -48,7 +47,7 @@ namespace FeatureSwitch
 
         public BaseFeature GetFeature<T>(bool throwNotFound = true) where T : BaseFeature
         {
-            var featureWithStrategy = GetFeature(typeof (T), throwNotFound);
+            var featureWithStrategy = GetFeature(typeof(T), throwNotFound);
             return featureWithStrategy != null ? featureWithStrategy.Item1 : null;
         }
 
@@ -87,9 +86,9 @@ namespace FeatureSwitch
                 // test if strategy implementation is readable
                 var reader = s as IStrategyStorageReader;
                 return reader != null && reader.Read();
-            });
+            }).ToList();
 
-            // feature is enabled if any of strategies is telling truth
+            // feature is enabled if any of strategies is telling the truth
             return states.Any(b => b);
         }
 
@@ -135,6 +134,14 @@ namespace FeatureSwitch
         internal void ChangeEnabledState<T>(bool state) where T : BaseFeature
         {
             ChangeEnabledState(typeof(T).FullName, state);
+        }
+
+        internal bool IsEnabled<T>(Type strategy) where T : BaseFeature
+        {
+            var f = GetFeature(typeof(T), false);
+            var matchStrategy = f.Item2.FirstOrDefault(s => s.GetType() == strategy);
+
+            return matchStrategy != null && ((IStrategyStorageReader)matchStrategy).Read();
         }
 
         internal bool IsStrategyEnabled(Type strategyType)
