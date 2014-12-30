@@ -7,7 +7,7 @@ namespace FeatureSwitch.AspNet.Sample
 
     public partial class Startup
     {
-        public void ConfigureFeatureToggle(IAppBuilder app)
+        public void ConfigureFeatureSwitch(IAppBuilder app)
         {
             var builder = new FeatureSetBuilder(new StructureMapDependencyContainer());
             builder.Build();

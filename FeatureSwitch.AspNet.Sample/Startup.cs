@@ -11,7 +11,7 @@ namespace FeatureSwitch.AspNet.Sample
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
-            ConfigureFeatureToggle(app);
+            ConfigureFeatureSwitch(app);
         }
     }
 }

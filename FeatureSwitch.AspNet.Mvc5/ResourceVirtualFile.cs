@@ -6,16 +6,16 @@ namespace FeatureSwitch.AspNet.Mvc
 {
     internal class ResourceVirtualFile : VirtualFile
     {
-        private readonly string fileName;
+        private readonly string _fileName;
 
         public ResourceVirtualFile(string virtualPath) : base(virtualPath)
         {
-            this.fileName = VirtualPathUtility.ToAppRelative(virtualPath);
+            _fileName = VirtualPathUtility.ToAppRelative(virtualPath);
         }
 
         public override Stream Open()
         {
-            return GetType().Assembly.GetManifestResourceStream(Const.NamespaceName + "." + AssemblyEmbeddedResourceProvider.TranslateToResource(this.fileName));
+            return GetType().Assembly.GetManifestResourceStream(Const.NamespaceName + "." + AssemblyEmbeddedResourceProvider.TranslateToResource(_fileName));
         }
     }
 }
