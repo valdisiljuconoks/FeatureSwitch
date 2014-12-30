@@ -9,7 +9,7 @@
     <projectUrl>https://github.com/valdisiljuconoks/FeatureSwitch/</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>FeatureSwticj</releaseNotes>
+    <releaseNotes>Initial version of FeatureSwitch plugin for Glimpse</releaseNotes>
     <copyright>Copyright 2014</copyright>
     <tags>FeatureSwitch Switch Feature Toggle Toggling Glimpse</tags>
   </metadata>
