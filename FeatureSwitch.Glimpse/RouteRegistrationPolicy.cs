@@ -14,7 +14,7 @@ namespace FeatureSwitch.Glimpse
 
             // need to register assembly resource loader provider
             HostingEnvironment.RegisterVirtualPathProvider(new AssemblyEmbeddedResourceProvider());
-            return RuntimePolicy.On;
+            return RuntimePolicy.DisplayGlimpseClient;
         }
 
         public RuntimeEvent ExecuteOn

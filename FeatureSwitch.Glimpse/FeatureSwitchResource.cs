@@ -62,7 +62,7 @@ namespace FeatureSwitch.Glimpse
             var features = FeatureContext.GetFeatures();
             var vm = features.Select(f => new
             {
-                Enabled = FeatureContext.IsEnabled((BaseFeature)f),
+                Enabled = FeatureContext.IsEnabled(f),
                 f.Name,
                 f.CanModify,
                 f.GetType().FullName

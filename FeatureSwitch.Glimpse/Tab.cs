@@ -44,7 +44,11 @@ namespace FeatureSwitch.Glimpse
         public override object GetData(ITabContext context)
         {
             var features = FeatureContext.GetFeatures();
-            var vm = features.Select(f => new { Enabled = FeatureContext.IsEnabled(f), f.Name }).ToList();
+            var vm = features.Select(f => new
+            {
+                Enabled = FeatureContext.IsEnabled(f),
+                Name = f.Name + " (" + f.GetType().FullName + ")"
+            }).ToList();
             return vm;
         }
     }

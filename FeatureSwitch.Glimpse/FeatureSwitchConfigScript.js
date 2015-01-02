@@ -42,7 +42,7 @@
 
             if (result.length) {
                 for (var i = 0; i < result.length; i++) {
-                    body += '<tr class="glimpse-row"><td><input type="checkbox" ' + (result[i].enabled ? 'checked="true"' : '') + ' data-fname="' + result[i].fullName + '" class="featureswitch-toggle" ' + (!result[i].canModify ? 'disabled="disabled"' : '') + '/></td><td>' + result[i].name + '</td></tr>';
+                    body += '<tr class="glimpse-row"><td><input type="checkbox" ' + (result[i].enabled ? 'checked="true"' : '') + ' data-fname="' + result[i].fullName + '" class="featureswitch-toggle" ' + (!result[i].canModify ? 'disabled="disabled"' : '') + '/></td><td>' + result[i].name + ' (' + result[i].fullName + ')</td></tr>';
                 }
             }
 
