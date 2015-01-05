@@ -41,6 +41,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeatureSwitch.Glimpse", "Fe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeatureSwitch.AspNet.Mvc", "FeatureSwitch.AspNet.Mvc\FeatureSwitch.AspNet.Mvc.csproj", "{CD92104C-7CAC-4F1C-A545-DDC539A3B6F8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeatureSwitch.Ninject", "FeatureSwitch.Ninject\FeatureSwitch.Ninject.csproj", "{23F6C11F-CE3C-495B-A5A8-27CEDB8AA646}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeatureSwitch.Ninject.Tests", "FeatureSwitch.Ninject.Tests\FeatureSwitch.Ninject.Tests.csproj", "{291EE4E4-825E-49D3-877D-EE012CF3785A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -120,6 +124,18 @@ Global
 		{CD92104C-7CAC-4F1C-A545-DDC539A3B6F8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CD92104C-7CAC-4F1C-A545-DDC539A3B6F8}.Verify|Any CPU.ActiveCfg = Release|Any CPU
 		{CD92104C-7CAC-4F1C-A545-DDC539A3B6F8}.Verify|Any CPU.Build.0 = Release|Any CPU
+		{23F6C11F-CE3C-495B-A5A8-27CEDB8AA646}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23F6C11F-CE3C-495B-A5A8-27CEDB8AA646}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23F6C11F-CE3C-495B-A5A8-27CEDB8AA646}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23F6C11F-CE3C-495B-A5A8-27CEDB8AA646}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23F6C11F-CE3C-495B-A5A8-27CEDB8AA646}.Verify|Any CPU.ActiveCfg = Release|Any CPU
+		{23F6C11F-CE3C-495B-A5A8-27CEDB8AA646}.Verify|Any CPU.Build.0 = Release|Any CPU
+		{291EE4E4-825E-49D3-877D-EE012CF3785A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{291EE4E4-825E-49D3-877D-EE012CF3785A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{291EE4E4-825E-49D3-877D-EE012CF3785A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{291EE4E4-825E-49D3-877D-EE012CF3785A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{291EE4E4-825E-49D3-877D-EE012CF3785A}.Verify|Any CPU.ActiveCfg = Release|Any CPU
+		{291EE4E4-825E-49D3-877D-EE012CF3785A}.Verify|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -130,5 +146,7 @@ Global
 		{BAFA25BA-35D0-4C96-BC69-653DC2C4BB9D} = {326B800E-CCA2-443A-B688-1969CE0190B9}
 		{164320A0-41C2-4E2F-BD2C-9CE4C2F9EB34} = {326B800E-CCA2-443A-B688-1969CE0190B9}
 		{7C28E40A-C377-40EA-92B4-60273446649C} = {326B800E-CCA2-443A-B688-1969CE0190B9}
+		{23F6C11F-CE3C-495B-A5A8-27CEDB8AA646} = {326B800E-CCA2-443A-B688-1969CE0190B9}
+		{291EE4E4-825E-49D3-877D-EE012CF3785A} = {326B800E-CCA2-443A-B688-1969CE0190B9}
 	EndGlobalSection
 EndGlobal
