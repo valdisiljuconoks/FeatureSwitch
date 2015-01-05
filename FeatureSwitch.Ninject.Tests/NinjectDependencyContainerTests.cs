@@ -1,5 +1,4 @@
-﻿using Ninject;
-using Xunit;
+﻿using Xunit;
 
 namespace FeatureSwitch.Ninject.Tests
 {
@@ -8,7 +7,7 @@ namespace FeatureSwitch.Ninject.Tests
         [Fact]
         public void Container_WhenRegistered_ResolvesMappedType()
         {
-            var container = new NinjectDependencyContainer(new StandardKernel());
+            var container = new NinjectDependencyContainer();
             container.RegisterType(typeof (BaseType), typeof (DerivedType));
 
             var instance = container.Resolve(typeof (BaseType));

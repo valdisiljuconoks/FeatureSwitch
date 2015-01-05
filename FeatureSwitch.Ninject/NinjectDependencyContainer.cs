@@ -12,6 +12,10 @@ namespace FeatureSwitch.Ninject
             _kernel = kernel;
         }
 
+        public NinjectDependencyContainer() : this(new StandardKernel())
+        {
+        }
+
         public void RegisterType(Type requestedType, Type implementation)
         {
             _kernel.Bind(requestedType).To(implementation);
