@@ -33,8 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FeatureSwitch">
-      <HintPath>..\packages\FeatureSwitch.1.3.0\lib\net40\FeatureSwitch.dll</HintPath>
+    <Reference Include="FeatureSwitch, Version=1.3.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\FeatureSwitch.1.3.1\lib\net40\FeatureSwitch.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
@@ -94,6 +95,24 @@
     </Compile>
     <Compile Include="..\FeatureSwitch.AspNet.Mvc5\FeatureSwitchHomeViewModel.cs">
       <Link>FeatureSwitchHomeViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\FeatureSwitch.AspNet.Mvc5\IsLocalRequest.cs">
+      <Link>IsLocalRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\FeatureSwitch.AspNet.Mvc5\IsLocalRequestAttribute.cs">
+      <Link>IsLocalRequestAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\FeatureSwitch.AspNet.Mvc5\IsLocalRequestStrategyImpl.cs">
+      <Link>IsLocalRequestStrategyImpl.cs</Link>
+    </Compile>
+    <Compile Include="..\FeatureSwitch.AspNet.Mvc5\IsRemotelRequestStrategyImpl.cs">
+      <Link>IsRemotelRequestStrategyImpl.cs</Link>
+    </Compile>
+    <Compile Include="..\FeatureSwitch.AspNet.Mvc5\IsRemoteRequest.cs">
+      <Link>IsRemoteRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\FeatureSwitch.AspNet.Mvc5\IsRemoteRequestAttribute.cs">
+      <Link>IsRemoteRequestAttribute.cs</Link>
     </Compile>
     <Compile Include="..\FeatureSwitch.AspNet.Mvc5\ResourceVirtualFile.cs">
       <Link>ResourceVirtualFile.cs</Link>

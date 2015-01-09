@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using FeatureSwitch.Strategies;
 
 namespace FeatureSwitch
 {
@@ -101,7 +102,7 @@ namespace FeatureSwitch
             return IsEnabled(typeof(T));
         }
 
-        internal static bool IsStrategyEnabled<T>()
+        internal static bool IsStrategyEnabled<T>() where T : IStrategy
         {
             TestInstance();
             return _instance.Container.IsStrategyEnabled(typeof(T));

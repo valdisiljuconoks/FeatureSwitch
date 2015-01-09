@@ -22,6 +22,7 @@ namespace FeatureSwitch
                 return _features;
             }
         }
+
         public IDictionary<string, string> ConfigurationErrors { get; private set; }
 
         public void AddFeature<T>() where T : BaseFeature
@@ -150,7 +151,7 @@ namespace FeatureSwitch
             return allStrategies.Any(strategyType.IsInstanceOfType);
         }
 
-        private Tuple<BaseFeature, IList<IStrategy>> GetFeatureWithStrategies(string featureName)
+        internal Tuple<BaseFeature, IList<IStrategy>> GetFeatureWithStrategies(string featureName)
         {
             var featureEntry = _features.FirstOrDefault(f => f.Key != null && f.Key == featureName);
             return featureEntry.Key != null ? featureEntry.Value : null;

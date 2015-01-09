@@ -5,11 +5,11 @@ namespace FeatureSwitch
 {
     public class StrategyConfigurationExpression<TStrategy> where TStrategy : FeatureStrategyAttribute
     {
-        private readonly FeatureContext context;
+        private readonly FeatureContext _context;
 
         public StrategyConfigurationExpression(FeatureContext context)
         {
-            this.context = context;
+            _context = context;
         }
 
         public void Use(Type implementation)
@@ -20,14 +20,14 @@ namespace FeatureSwitch
         public void Use<TImpl>() where TImpl : IStrategy
         {
             var strategyType = typeof(TStrategy);
-            if (this.context.AdditionalStrategies.Keys.Contains(strategyType))
+            if (_context.AdditionalStrategies.Keys.Contains(strategyType))
             {
                 // swap already registered strategy
-                this.context.AdditionalStrategies[strategyType] = typeof(TImpl);
+                _context.AdditionalStrategies[strategyType] = typeof(TImpl);
             }
             else
             {
-                this.context.AdditionalStrategies.Add(strategyType, typeof(TImpl));
+                _context.AdditionalStrategies.Add(strategyType, typeof(TImpl));
             }
         }
     }

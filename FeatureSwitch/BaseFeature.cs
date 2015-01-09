@@ -13,9 +13,9 @@
             }
         }
 
-        internal void MarkAsMisConfigured(bool state)
+        internal void MarkAsNotConfigured()
         {
-            IsProperlyConfigured = state;
+            IsProperlyConfigured = false;
         }
 
         internal void MarkAsModifiable()

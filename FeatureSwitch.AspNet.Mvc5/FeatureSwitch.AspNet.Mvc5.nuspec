@@ -10,7 +10,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
     <releaseNotes>FeatureSwitch integration library for Asp.Net MVC v5</releaseNotes>
-    <copyright>Copyright 2014</copyright>
+    <copyright>$copyright$</copyright>
     <tags>FeatureSwitch Switch Feature Toggle Toggling AspNet Mvc Mvc5</tags>
   </metadata>
 </package>

@@ -56,6 +56,7 @@ namespace FeatureSwitch.Tests
             var container = builder.Build();
 
             Assert.NotNull(container.GetFeature<MySampleDiscoveredFeature>());
+            Assert.True(container.IsEnabled<MySampleDiscoveredFeature>());
         }
     }
 

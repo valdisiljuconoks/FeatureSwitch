@@ -1,4 +1,5 @@
 ﻿@using FeatureSwitch
+@using FeatureSwitch.AspNet.Mvc
 @{
     ViewBag.Title = "Home Page";
 }
@@ -6,8 +7,10 @@
 <div class="jumbotron">
     <h1>ASP.NET</h1>
     <div>
-        DisableScriptOptimization is "@(FeatureContext.IsEnabled<DisableScriptOptimization>() ? "Enabled" : "Disabled")"
-        DisableStyleOptimization is "@(FeatureContext.IsEnabled<DisableStyleOptimization>() ? "Enabled" : "Disabled")"
+        <p>DisableScriptOptimization is "@(FeatureContext.IsEnabled<DisableScriptOptimization>() ? "Enabled" : "Disabled")"</p>
+        <p>DisableStyleOptimization is "@(FeatureContext.IsEnabled<DisableStyleOptimization>() ? "Enabled" : "Disabled")"</p>
+        <p>IsLocalRequest is "@(FeatureContext.IsEnabled<IsLocalRequest>() ? "Yes" : "No")"</p>
+        <p>IsRemoteRequest is "@(FeatureContext.IsEnabled<IsRemoteRequest>() ? "Yes" : "No")"</p>
     </div>
 </div>
 

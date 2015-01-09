@@ -12,8 +12,6 @@ namespace FeatureSwitch
         private readonly Dictionary<Type, Type> _defaultImplementations = new Dictionary<Type, Type>
         {
             { typeof(AppSettings), typeof(AppSettingsStrategyImpl) },
-            { typeof(AlwaysTrue), typeof(AlwaysTrueStrategyImpl) },
-            { typeof(AlwaysFalse), typeof(AlwaysFalseStrategyImpl) },
             { typeof(HttpSession), typeof(HttpSessionStrategyImpl) },
             { typeof(QueryString), typeof(QueryStringStrategyImpl) },
         };
@@ -76,7 +74,7 @@ namespace FeatureSwitch
                 // if configuration expression is present - call it
                 // Need to set AutoDiscoverFeatures to false to avoid semantic breaking change
                 // as the provision of an action previously precluded feature discovery
-                // The action implementor can now decide if the want to set it back to true
+                // The action implementer can now decide if the want to set it back to true
                 context.AutoDiscoverFeatures = false;
                 action(context);
             }
@@ -90,15 +88,28 @@ namespace FeatureSwitch
             return context;
         }
 
-        internal IStrategy GetStrategyImplementation(Type strategyType)
+        internal IStrategy GetStrategyImplementation(FeatureStrategyAttribute strategy)
         {
             Type reader;
-            return _defaultImplementations.TryGetValue(strategyType, out reader) ? (IStrategy)_container.Resolve(reader) : new EmptyStrategy();
+
+            // try to find strategy in default implementation map
+            if(_defaultImplementations.TryGetValue(strategy.GetType(), out reader))
+            {
+                return (IStrategy)_container.Resolve(reader);
+            }
+
+            // try to check strategy itself - maybe default implementation is declared
+            if (strategy.DefaultImplementation != null)
+            {
+                return (IStrategy)_container.Resolve(strategy.DefaultImplementation);
+            }
+
+            return new EmptyStrategy();
         }
 
-        internal IStrategy GetStrategyImplementation<T>()
+        internal IStrategy GetStrategyImplementation<T>() where T : FeatureStrategyAttribute, new()
         {
-            return GetStrategyImplementation(typeof(T));
+            return GetStrategyImplementation(new T());
         }
 
         private void BuildFeatureSet(FeatureContext context)
@@ -121,12 +132,12 @@ namespace FeatureSwitch
                 // test if there are any strategy with equal order
                 if (strategies.GroupBy(a => a.Order).Any(k => k.Count() > 1))
                 {
-                    feature.MarkAsMisConfigured(false);
-                    context.AddConfigurationError(feature, string.Format("Feature {0} has strategies with the same order.", keyValuePair.Key));
+                    feature.MarkAsNotConfigured();
+                    context.AddConfigurationError(feature, string.Format("Feature {0} has some strategies with the same order.", keyValuePair.Key));
                     continue;
                 }
 
-                var strategyImplementations = strategies.Select(s => Tuple.Create(s, GetStrategyImplementation(s.GetType()))).ToList();
+                var strategyImplementations = strategies.Select(s => Tuple.Create(s, GetStrategyImplementation(s))).ToList();
                 keyValuePair.Value.Item2.Clear();
                 strategyImplementations.ForEach(i =>
                                                 {

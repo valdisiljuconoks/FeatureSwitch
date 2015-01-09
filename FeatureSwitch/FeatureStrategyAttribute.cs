@@ -12,7 +12,16 @@ namespace FeatureSwitch
         }
 
         public int Order { get; set; }
+
         public string Key { get; set; }
+
+        public virtual Type DefaultImplementation
+        {
+            get
+            {
+                return null;
+            }
+        }
 
         public ConfigurationContext BuildConfigurationContext(BaseFeature feature, IStrategy strategy)
         {
