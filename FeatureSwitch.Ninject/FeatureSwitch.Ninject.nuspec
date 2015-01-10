@@ -10,7 +10,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
     <releaseNotes>FeatureSwitch helper library to integrate with Ninject</releaseNotes>
-    <copyright>Copyright 2014</copyright>
-    <tags>FeatureToggle Toggle Feature Ninject</tags>
+    <copyright>$copyright$</copyright>
+    <tags>FeatureSwitch Switch Feature Toggle Toggling Ninject IoC</tags>
   </metadata>
 </package>
