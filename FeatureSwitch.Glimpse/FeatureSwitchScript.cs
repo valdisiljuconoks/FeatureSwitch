@@ -2,7 +2,7 @@ using Glimpse.Core.Extensibility;
 
 namespace FeatureSwitch.Glimpse
 {
-    public class QueryClientScript : IStaticClientScript
+    public sealed class FeatureSwitchScript : IDynamicClientScript
     {
         public ScriptOrder Order
         {
@@ -12,9 +12,9 @@ namespace FeatureSwitch.Glimpse
             }
         }
 
-        public string GetUri(string version)
+        public string GetResourceName()
         {
-            return "/FeatureSwitchConfigScript";
+            return "glimpse_featureswitch_script";
         }
     }
 }

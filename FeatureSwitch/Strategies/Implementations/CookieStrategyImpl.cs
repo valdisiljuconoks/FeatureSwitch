@@ -34,7 +34,7 @@ namespace FeatureSwitch.Strategies.Implementations
 
         public override void Write(bool state)
         {
-            var cookie = new HttpCookie(_cookieName, "1") { HttpOnly = true };
+            var cookie = new HttpCookie(_cookieName, state ? "1" : "0") { HttpOnly = true };
 
             if (HttpContext.Current == null)
             {
