@@ -35,9 +35,9 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FeatureSwitch, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="FeatureSwitch, Version=1.3.3.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\FeatureSwitch.1.3.0\lib\net40\FeatureSwitch.dll</HintPath>
+      <HintPath>..\packages\FeatureSwitch.1.3.3\lib\net40\FeatureSwitch.dll</HintPath>
     </Reference>
     <Reference Include="Glimpse.AspNet, Version=1.8.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -101,7 +101,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="FeatureSwitchConfigScript.js" />
+    <None Include="FeatureSwitchConfigScript.js" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="FeatureSwitchConfigScript.min.js">
