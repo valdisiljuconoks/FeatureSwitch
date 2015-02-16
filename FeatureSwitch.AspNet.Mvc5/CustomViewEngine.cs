@@ -8,5 +8,7 @@ namespace FeatureSwitch.AspNet.Mvc
         {
             ViewLocationFormats = new[] { "~/" + Const.ModuleName + "/Views/{1}/{0}.cshtml" };
         }
+
+
     }
 }

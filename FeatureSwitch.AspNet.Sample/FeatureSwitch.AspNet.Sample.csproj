@@ -51,6 +51,14 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="FeatureSwitch, Version=1.3.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\FeatureSwitch.1.3.3\lib\net40\FeatureSwitch.dll</HintPath>
+    </Reference>
+    <Reference Include="FeatureSwitch.AspNet.Mvc5, Version=1.3.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\FeatureSwitch.AspNet.Mvc5.1.3.3\lib\net45\FeatureSwitch.AspNet.Mvc5.dll</HintPath>
+    </Reference>
     <Reference Include="Glimpse.AspNet">
       <HintPath>..\packages\Glimpse.AspNet.1.8.0\lib\net45\Glimpse.AspNet.dll</HintPath>
     </Reference>
@@ -58,10 +66,13 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Glimpse.1.8.2\lib\net45\Glimpse.Core.dll</HintPath>
     </Reference>
+    <Reference Include="Glimpse.Mvc5">
+      <HintPath>..\packages\Glimpse.Mvc5.1.5.3\lib\net45\Glimpse.Mvc5.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.Owin, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.Owin, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Microsoft.Owin.2.0.2\lib\net45\Microsoft.Owin.dll</HintPath>
+      <HintPath>..\packages\Microsoft.Owin.2.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -161,6 +172,10 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WebActivatorEx.2.0.6\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
@@ -185,7 +200,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="App_Start\Startup.FeatureToggle.cs" />
+    <Compile Include="App_Start\Startup.FeatureSwitchSetup.cs" />
+    <Compile Include="Content\App_Start\FeatureSwitchPackageInit.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="GlimpseSecurityPolicy.cs" />
@@ -224,7 +240,10 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Views\featureswitch\Overview.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -257,10 +276,6 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FeatureSwitch.AspNet.Mvc5\FeatureSwitch.AspNet.Mvc5.csproj">
-      <Project>{47b28b12-59e0-493a-b0c7-1b5f808ffa53}</Project>
-      <Name>FeatureSwitch.AspNet.Mvc5</Name>
-    </ProjectReference>
     <ProjectReference Include="..\FeatureSwitch.Glimpse\FeatureSwitch.Glimpse.csproj">
       <Project>{22598820-c464-4c62-a353-4d7d18bc0cf1}</Project>
       <Name>FeatureSwitch.Glimpse</Name>
@@ -272,10 +287,6 @@
     <ProjectReference Include="..\FeatureSwitch.Web.Optimization\FeatureSwitch.Web.Optimization.csproj">
       <Project>{029552de-ea83-4e55-96f3-e65bcd7c2c19}</Project>
       <Name>FeatureSwitch.Web.Optimization</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\FeatureSwitch\FeatureSwitch.csproj">
-      <Project>{2647bfaf-c14f-42ab-ba25-35462c9e3251}</Project>
-      <Name>FeatureSwitch</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

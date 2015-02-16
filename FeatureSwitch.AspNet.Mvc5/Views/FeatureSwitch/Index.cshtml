@@ -1,5 +1,5 @@
-﻿@using FeatureSwitch
-@model FeatureSwitch.AspNet.Mvc.FeatureSwitchViewModel
+﻿@inherits System.Web.Mvc.WebViewPage<FeatureSwitch.AspNet.Mvc.FeatureSwitchViewModel>
+@using FeatureSwitch
 
 @{
     Layout = null;
@@ -8,66 +8,70 @@
 <!DOCTYPE html>
 
 <html>
-    <head>
-        <title>FeatureSwitch Control Panel</title>
-        <style>
-            body {
-                font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-                font-size: 16px;
-            }
+<head>
+    <title>FeatureSwitch Control Panel</title>
+    <style>
+        body {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 16px;
+        }
 
-            table {
-                border-collapse: collapse;
-                padding: 3px;
-            }
+        table {
+            border-collapse: collapse;
+            padding: 3px;
+        }
 
-            table th { font-weight: bold;padding: 5px; }
+        table th {
+            font-weight: bold;
+            padding: 5px;
+            background-color: #d1d1d1;
+        }
 
-            table td, table th { border: 1px solid gray; }
+        table td, table th { border: 1px solid gray; }
 
-            table tr td:first-child {
-                text-align: center;
-                vertical-align: middle;
-            }
+        table tr td:first-child {
+            text-align: center;
+            vertical-align: middle;
+        }
 
-            table td { padding: 5px; }
-        </style>
-    </head>
-    <body>
-        <div>
-            Features:
-            
-            <table>
-                <tr>
-                    <th>Enabled</th>
-                    <th>Name</th>
-                    <th>Type</th>
-                </tr>
-                
-                @foreach (var feature in Model.Features)
-                {
-                    <tr>
+        table td { padding: 5px; }
+    </style>
+</head>
+<body>
+<div>
+    Features:
+    <table>
+        <tr>
+            <th>Enabled</th>
+            <th>Name</th>
+            <th>Type</th>
+        </tr>
+
+        @foreach (var feature in Model.Features)
+        {
+            var featureName = feature.GetType().FullName.Replace(".", "_");
+            <tr>
+                    @using (Html.BeginForm("Update", "FeatureSwitch", FormMethod.Post, new { id = featureName + "_form" })) 
+                    {
                         <td>
-                            @Html.CheckBox(feature.GetType().FullName, FeatureContext.IsEnabled(feature), feature.CanModify ? null : new { disabled = "disabled" })
+                            <input type="checkbox" name="state" data-name="@featureName" @(!feature.CanModify ? "disabled=\"disabled\"" : string.Empty) @(FeatureContext.IsEnabled(feature.GetType()) ? "checked=\"checked\"" : string.Empty)/>
                         </td>
                         <td>@feature.Name</td>
                         <td>@feature.GetType().FullName</td>
-                    </tr>
-                }
-            </table>
-        </div>
+                        @Html.Hidden("name", feature.GetType().FullName)
+                    }
+            </tr>
+        }
+    </table>
+</div>
 
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script type="text/javascript">
-            $(function() {
-                $('table').on('click', 'input:checkbox', function() {
-                    $.ajax({
-                        type: 'POST',
-                        url: '/@Model.RouteName/Update',
-                        data: { name: this.name, state: this.checked }
-                    });
-                });
-            });
-        </script>
-    </body>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript">
+    $(function() {
+        $('table').on('click', 'input:checkbox', function() {
+            $('#' + $(this).data('name') + '_form').submit();
+        });
+    });
+</script>
+</body>
 </html>

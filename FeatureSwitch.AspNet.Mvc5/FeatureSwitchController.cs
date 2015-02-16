@@ -8,16 +8,16 @@ namespace FeatureSwitch.AspNet.Mvc
         public ActionResult Index()
         {
             return View(new FeatureSwitchViewModel
-                        {
-                                Features = FeatureContext.GetFeatures(),
-                                RouteName = RouteConfiguration.RouteName
-                        });
+            {
+                Features = FeatureContext.GetFeatures(),
+                RouteName = RouteConfiguration.RouteName
+            });
         }
 
         [HttpPost]
-        public void Update(string name, bool state)
+        public ActionResult Update(string name, string state)
         {
-            if (state)
+            if (state == "on")
             {
                 FeatureContext.Enable(name);
             }
@@ -25,6 +25,8 @@ namespace FeatureSwitch.AspNet.Mvc
             {
                 FeatureContext.Disable(name);
             }
+
+            return RedirectToAction("Index");
         }
     }
 }

@@ -6,4 +6,9 @@ namespace FeatureSwitch.AspNet.Sample
     public class SampleFeature : BaseFeature
     {
     }
+    
+    [Cookie(Key = "SampleCookie")]
+    public class SampleCookieFeature : BaseFeature
+    {
+    }
 }

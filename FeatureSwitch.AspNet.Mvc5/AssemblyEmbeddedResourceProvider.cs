@@ -20,23 +20,23 @@ namespace FeatureSwitch.AspNet.Mvc
         public override CacheDependency GetCacheDependency(string virtualPath, IEnumerable virtualPathDependencies, DateTime utcStart)
         {
             return ShouldHandle(virtualPath)
-                    ? new CacheDependency((string)null)
-                    : base.GetCacheDependency(virtualPath, virtualPathDependencies, utcStart);
+                       ? null //new CacheDependency((string)null)
+                       : base.GetCacheDependency(virtualPath, virtualPathDependencies, utcStart);
         }
 
         public override VirtualFile GetFile(string virtualPath)
         {
             return ShouldHandle(virtualPath)
-                    ? new ResourceVirtualFile(virtualPath)
-                    : base.GetFile(virtualPath);
+                       ? new ResourceVirtualFile(virtualPath)
+                       : base.GetFile(virtualPath);
         }
 
-        public static string CreateResourceUrl(string type, string resource)
+        internal static string GetResourceName(string virtualPath)
         {
-            return string.Format("{0}.{1}.{2}.{3}", Const.NamespaceName, Const.ModuleName, type, TranslateToResource(resource));
+            return Const.NamespaceName + "." + TranslateToResource(virtualPath).ToLower();
         }
 
-        public static string TranslateToResource(string url)
+        private static string TranslateToResource(string url)
         {
             if (url.StartsWith("~"))
             {
@@ -53,8 +53,12 @@ namespace FeatureSwitch.AspNet.Mvc
 
         private static bool ShouldHandle(string virtualPath)
         {
-            return VirtualPathUtility.ToAppRelative(virtualPath).Contains(Const.ModuleName)
-                   && resources.Contains(Const.NamespaceName + "." + TranslateToResource(virtualPath));
+            var doesUrlContain = VirtualPathUtility.ToAppRelative(virtualPath).ToLower().Contains(Const.ModuleName.ToLower());
+            var doesResourcesContain = resources.Any(r =>
+                                                     r.Equals(GetResourceName(virtualPath),
+                                                              StringComparison.InvariantCultureIgnoreCase));
+
+            return doesUrlContain && doesResourcesContain;
         }
     }
 }

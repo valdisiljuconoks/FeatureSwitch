@@ -88,6 +88,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="WebActivatorEx">
+      <HintPath>..\packages\WebActivatorEx.2.0.6\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\CommonAssemblyInfo.cs">
@@ -97,7 +100,6 @@
     <Compile Include="AuthorizationExtensions.cs" />
     <Compile Include="AuthorizationExtensionsOwin.cs" />
     <Compile Include="Const.cs" />
-    <Compile Include="CustomViewEngine.cs" />
     <Compile Include="AssemblyEmbeddedResourceProvider.cs" />
     <Compile Include="IsLocalRequest.cs" />
     <Compile Include="IsLocalRequestAttribute.cs" />
@@ -115,9 +117,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <Compile Include="RegisterVirtualPathProvider.cs" />
     <None Include="FeatureSwitch.AspNet.Mvc5.nuspec" />
-    <EmbeddedResource Include="Views\Web.config" />
-    <EmbeddedResource Include="Views\FeatureSwitch\Index.cshtml" />
+    <EmbeddedResource Include="views\web.config" />
+    <EmbeddedResource Include="views\featureswitch\index.cshtml" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
