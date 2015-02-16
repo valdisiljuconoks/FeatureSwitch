@@ -19,6 +19,16 @@ namespace FeatureSwitch.Web.Optimization
             }
         }
 
+        public static IHtmlString RenderIf<T>(params string[] paths) where T : BaseFeature
+        {
+            return RenderIfFormat<T>(DefaultTagFormat, paths);
+        }
+
+        public static IHtmlString RenderIfFormat<T>(string tagFromat, params string[] paths) where T : BaseFeature
+        {
+            return FeatureContext.IsEnabled(typeof(T)) ? Render(typeof(T), tagFromat, paths) : new HtmlString(string.Empty);
+        }
+
         public static IHtmlString Render<T>(params string[] paths) where T : BaseFeature
         {
             return RenderFormat<T>(DefaultTagFormat, paths);

@@ -239,6 +239,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\tracking.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Views\featureswitch\Overview.aspx" />
     <Content Include="Web.config">
