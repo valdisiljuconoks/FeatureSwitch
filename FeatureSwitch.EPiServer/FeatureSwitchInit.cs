@@ -18,7 +18,7 @@ namespace FeatureSwitch.EPiServer
                 ctx.AutoDiscoverFeatures = true;
             })
             .WithRoute("modules/FeatureSwitch")
-            .WithRoles("Administrators")
+            .WithRoles("Administrators, WebAdmins, CmsAdmins")
             .ValidateConfiguration();
         }
 
