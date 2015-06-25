@@ -1,4 +1,4 @@
-FeatureToggle
+Feature Switch
 =============
 
 ## Feature Toggling Framework for Various Types of Applications
