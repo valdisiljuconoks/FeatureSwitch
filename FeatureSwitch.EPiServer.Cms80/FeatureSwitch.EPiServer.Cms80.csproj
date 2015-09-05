@@ -179,7 +179,7 @@
     </Compile>
     <Compile Include="FeatureSwitchInit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Strategies\EPiServerDatabase.cs" />
+    <Compile Include="Strategies\EPiServerDatabaseAttribute.cs" />
     <Compile Include="Strategies\EPiServerDatabaseStrategyImpl.cs" />
     <Compile Include="Strategies\EPiServerSiteStrategyImpl.cs" />
     <Compile Include="Strategies\EPiServerSiteAttribute.cs" />
@@ -188,7 +188,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="FeatureSwitch.EPiServer.Cms75.nuspec" />
+    <None Include="FeatureSwitch.EPiServer.Cms75.nuspec.rename" />
     <None Include="FeatureSwitch.EPiServer.Cms80.nuspec" />
     <None Include="packages.config">
       <SubType>Designer</SubType>

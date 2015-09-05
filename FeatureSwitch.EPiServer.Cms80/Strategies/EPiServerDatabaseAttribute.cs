@@ -2,7 +2,7 @@
 
 namespace FeatureSwitch.EPiServer.Strategies
 {
-    public class EPiServerDatabase : FeatureStrategyAttribute
+    public class EPiServerDatabaseAttribute : FeatureStrategyAttribute
     {
         public override Type DefaultImplementation
         {

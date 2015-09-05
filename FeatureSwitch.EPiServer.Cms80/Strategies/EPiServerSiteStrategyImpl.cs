@@ -9,7 +9,7 @@ namespace FeatureSwitch.EPiServer.Strategies
     {
         public override bool Read()
         {
-            var sites = Context.Key.Split(new [] { "," }, StringSplitOptions.RemoveEmptyEntries);
+            var sites = Context.Key.Split(new [] { "," }, StringSplitOptions.RemoveEmptyEntries).Select(s => s.Trim());
             return sites.Contains(SiteDefinition.Current.Name, StringComparer.CurrentCultureIgnoreCase);
         }
     }

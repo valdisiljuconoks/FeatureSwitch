@@ -5,14 +5,15 @@ namespace FeatureSwitch
 {
     public class HttpContextFactory
     {
-        private static HttpContextBase ctx;
+        private static HttpContextBase _ctx;
+
         public static HttpContextBase Current
         {
             get
             {
-                if (ctx != null)
+                if (_ctx != null)
                 {
-                    return ctx;
+                    return _ctx;
                 }
 
                 if (HttpContext.Current == null)
@@ -26,7 +27,7 @@ namespace FeatureSwitch
 
         public static void SetCurrentContext(HttpContextBase context)
         {
-            ctx = context;
+            _ctx = context;
         }
     }
 }
