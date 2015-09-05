@@ -47,6 +47,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeatureSwitch.Ninject.Tests
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeatureSwitch.EPiServer.Cms80", "FeatureSwitch.EPiServer.Cms80\FeatureSwitch.EPiServer.Cms80.csproj", "{E7036489-57C0-40DE-9177-5C7FCC525430}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeatureSwitch.Azure", "FeatureSwitch.Azure\FeatureSwitch.Azure.csproj", "{C07364C8-3940-4015-9838-9DD7FDF48AD5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -144,6 +146,12 @@ Global
 		{E7036489-57C0-40DE-9177-5C7FCC525430}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E7036489-57C0-40DE-9177-5C7FCC525430}.Verify|Any CPU.ActiveCfg = Release|Any CPU
 		{E7036489-57C0-40DE-9177-5C7FCC525430}.Verify|Any CPU.Build.0 = Release|Any CPU
+		{C07364C8-3940-4015-9838-9DD7FDF48AD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C07364C8-3940-4015-9838-9DD7FDF48AD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C07364C8-3940-4015-9838-9DD7FDF48AD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C07364C8-3940-4015-9838-9DD7FDF48AD5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C07364C8-3940-4015-9838-9DD7FDF48AD5}.Verify|Any CPU.ActiveCfg = Release|Any CPU
+		{C07364C8-3940-4015-9838-9DD7FDF48AD5}.Verify|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

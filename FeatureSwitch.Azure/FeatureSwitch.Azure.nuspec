@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <projectUrl>https://github.com/valdisiljuconoks/FeatureSwitch/wiki/Microsoft-Azure-Integration</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>Initial version released of FeatureSwitch.Azure library.</releaseNotes>
+    <copyright>$copyright$</copyright>
+    <tags>FeatureSwitch Switch Feature Toggle Toggling Azure Cloud Configuration</tags>
+  </metadata>
+</package>
