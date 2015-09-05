@@ -177,27 +177,18 @@
     <Compile Include="..\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="..\FeatureSwitch.EPiServer\FeatureSwitchInit.cs">
-      <Link>FeatureSwitchInit.cs</Link>
-    </Compile>
-    <Compile Include="..\FeatureSwitch.EPiServer\ToolsPluginDescriptor.cs">
-      <Link>ToolsPluginDescriptor.cs</Link>
-    </Compile>
-    <Compile Include="..\FeatureSwitch.EPiServer\Strategies\EPiServerDatabase.cs">
-      <Link>Strategies\EPiServerDatabase.cs</Link>
-    </Compile>
-    <Compile Include="..\FeatureSwitch.EPiServer\Strategies\EPiServerDatabaseStrategyImpl.cs">
-      <Link>Strategies\EPiServerDatabaseStrategyImpl.cs</Link>
-    </Compile>
-    <Compile Include="..\FeatureSwitch.EPiServer\Strategies\FeatureState.cs">
-      <Link>Strategies\FeatureState.cs</Link>
-    </Compile>
+    <Compile Include="FeatureSwitchInit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Strategies\EPiServerDatabase.cs" />
+    <Compile Include="Strategies\EPiServerDatabaseStrategyImpl.cs" />
     <Compile Include="Strategies\EPiServerSiteStrategyImpl.cs" />
     <Compile Include="Strategies\EPiServerSiteAttribute.cs" />
+    <Compile Include="Strategies\FeatureState.cs" />
+    <Compile Include="ToolsPluginDescriptor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="FeatureSwitch.EPiServer.Cms75.nuspec" />
     <None Include="FeatureSwitch.EPiServer.Cms80.nuspec" />
     <None Include="packages.config">
       <SubType>Designer</SubType>

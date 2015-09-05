@@ -45,7 +45,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeatureSwitch.Ninject", "Fe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeatureSwitch.Ninject.Tests", "FeatureSwitch.Ninject.Tests\FeatureSwitch.Ninject.Tests.csproj", "{291EE4E4-825E-49D3-877D-EE012CF3785A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeatureSwitch.EPiServer.Cms80", "FeatureSwitch.EPiServer.Cms75\FeatureSwitch.EPiServer.Cms80.csproj", "{E7036489-57C0-40DE-9177-5C7FCC525430}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeatureSwitch.EPiServer.Cms80", "FeatureSwitch.EPiServer.Cms80\FeatureSwitch.EPiServer.Cms80.csproj", "{E7036489-57C0-40DE-9177-5C7FCC525430}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

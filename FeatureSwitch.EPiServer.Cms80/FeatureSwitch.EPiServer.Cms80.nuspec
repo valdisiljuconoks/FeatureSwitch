@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+
+<package>
+  <metadata>
+    <id>FeatureSwitch.EPiServer</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <projectUrl>https://github.com/valdisiljuconoks/FeatureSwitch/wiki/EPiServer-Integration</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <copyright>Copyright 2015</copyright>
+    <tags>FeatureSwitch Switch Feature Toggle Toggling EPiServer CMS CMS7 CMS7.5 CMS8 CMS8.0</tags>
+    <dependencies>
+      <dependency id="EPiServer.CMS.Core" version="8.0.0.0" />
+      <dependency id="EPiServer.Framework" version="8.0.0.0" />
+    </dependencies>
+  </metadata>
+</package>
