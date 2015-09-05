@@ -1,33 +1,26 @@
 ﻿using EPiServer.Framework;
 using EPiServer.Framework.Initialization;
+using EPiServer.ServiceLocation;
 using FeatureSwitch.AspNet.Mvc;
-using FeatureSwitch.EPiServer.Strategies;
 using FeatureSwitch.StructureMap;
 
 namespace FeatureSwitch.EPiServer
 {
     [InitializableModule]
-    public class FeatureSwitchInit : IInitializableModule
+    [ModuleDependency(typeof (ServiceContainerInitialization))]
+    public class FeatureSwitchInit : IConfigurableModule
     {
-        public void Initialize(InitializationEngine context)
+        public void ConfigureContainer(ServiceConfigurationContext context)
         {
-            var builder = new FeatureSetBuilder(new StructureMapDependencyContainer());
-            builder.Build(ctx =>
-            {
-                ctx.ForStrategy<EPiServerDatabase>().Use<EPiServerDatabaseStrategyImpl>();
-                ctx.AutoDiscoverFeatures = true;
-            })
-            .WithRoute("modules/FeatureSwitch")
-            .WithRoles("Administrators, WebAdmins, CmsAdmins")
-            .ValidateConfiguration();
+            var builder = new FeatureSetBuilder(new StructureMapDependencyContainer(context.Container));
+            builder.Build(ctx => { ctx.AutoDiscoverFeatures = true; })
+                .WithRoute("modules/FeatureSwitch")
+                .WithRoles("Administrators, WebAdmins, CmsAdmins")
+                .ValidateConfiguration();
         }
 
-        public void Uninitialize(InitializationEngine context)
-        {
-        }
+        public void Initialize(InitializationEngine context) {}
 
-        public void Preload(string[] parameters)
-        {
-        }
+        public void Uninitialize(InitializationEngine context) {}
     }
 }
