@@ -70,6 +70,16 @@ namespace FeatureSwitch
 
         public bool IsEnabled(Type feature)
         {
+            return GetEnabledStateStrategiesForFeature(feature).Any();
+        }
+
+        public bool IsEnabled<T>() where T : BaseFeature
+        {
+            return IsEnabled(typeof(T));
+        }
+
+        public IEnumerable<IStrategy> GetEnabledStateStrategiesForFeature(Type feature)
+        {
             if (ConfigurationErrors.Keys.Contains(feature.FullName, StringComparer.InvariantCultureIgnoreCase))
             {
                 throw new ConfigurationErrorsException(ConfigurationErrors[feature.FullName]);
@@ -79,23 +89,23 @@ namespace FeatureSwitch
 
             if (f == null)
             {
-                return false;
+                return Enumerable.Empty<IStrategy>();
             }
 
-            var states = f.Item2.Select(s =>
+            var enabledStrategies = f.Item2.Where(s =>
             {
                 // test if strategy implementation is readable
                 var reader = s as IStrategyStorageReader;
                 return reader != null && reader.Read();
-            }).ToList();
+            }).Select(s => s).ToList();
 
             // feature is enabled if any of strategies is telling the truth
-            return states.Any(b => b);
+            return enabledStrategies; 
         }
 
-        public bool IsEnabled<T>() where T : BaseFeature
+        public IEnumerable<IStrategy> GetEnabledStateStrategiesForFeature<T>() where T : BaseFeature
         {
-            return IsEnabled(typeof(T));
+            return GetEnabledStateStrategiesForFeature(typeof(T));
         }
 
         public void ValidateConfiguration()

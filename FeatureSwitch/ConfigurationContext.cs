@@ -2,11 +2,12 @@
 {
     public class ConfigurationContext
     {
-        public ConfigurationContext(string key)
+        public ConfigurationContext(FeatureStrategyAttribute featureStrategyAttribute)
         {
-            Key = key;
+            this.FeatureStrategyAttribute = featureStrategyAttribute;
         }
 
-        public string Key { get; private set; }
+        public FeatureStrategyAttribute FeatureStrategyAttribute { get; private set; }
+        public string Key { get { return FeatureStrategyAttribute.Key; } }
     }
 }
