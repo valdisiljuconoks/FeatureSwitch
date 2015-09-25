@@ -30,7 +30,7 @@ namespace FeatureSwitch
                 throw new ArgumentException("Missing 'Key' parameter for '" + strategy.GetType().Name + "' strategy for '" + feature.Name + "' feature");
             }
 
-            return new ConfigurationContext(Key);
+            return new ConfigurationContext(this);
         }
     }
 }
