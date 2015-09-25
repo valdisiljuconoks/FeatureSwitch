@@ -1,4 +1,5 @@
-﻿using FeatureSwitch.Strategies;
+﻿using System.Linq;
+using FeatureSwitch.Strategies;
 using FeatureSwitch.Strategies.Implementations;
 using FeatureSwitch.Tests.Features;
 using FeatureSwitch.Tests.Strategies;
@@ -57,7 +58,7 @@ namespace FeatureSwitch.Tests
         public void BuilderTest_SwapBuiltInStrategy_ContainerHasSwappedStrategy()
         {
             var builder = new FeatureSetBuilder();
-            var container = builder.Build(ctx =>
+            builder.Build(ctx =>
                           {
                               ctx.AddFeature<MySampleFeature>();
                               ctx.ForStrategy<AppSettings>().Use<AlwaysTrueStrategyImpl>();
@@ -80,6 +81,35 @@ namespace FeatureSwitch.Tests
             var isEnabled = container.IsEnabled<MySampleFeature>();
 
             Assert.True(isEnabled);
+        }
+
+        [Fact]
+        public void BuilderTest_AddFeature_ReturnsEnabledStrategies()
+        {
+            var builder = new FeatureSetBuilder();
+            var container = builder.Build(ctx =>
+            {
+                ctx.AddFeature<MySampleFeature>();
+            });
+
+            var enabledStrategies = container.GetEnabledStateStrategiesForFeature<MySampleFeature>().ToList();
+
+            Assert.True(enabledStrategies.Any());
+            Assert.Equal(typeof(AppSettingsStrategyImpl), enabledStrategies.First().GetType());
+        }
+
+        [Fact]
+        public void BuilderTest_AddFeatureWithoutStrategy_ReturnsNothing()
+        {
+            var builder = new FeatureSetBuilder();
+            var container = builder.Build(ctx =>
+            {
+                ctx.AddFeature<MySampleFeatureWithoutStrategy>();
+            });
+
+            var enabledStrategies = container.GetEnabledStateStrategiesForFeature<MySampleFeatureWithoutStrategy>();
+
+            Assert.False(enabledStrategies.Any());
         }
     }
 }

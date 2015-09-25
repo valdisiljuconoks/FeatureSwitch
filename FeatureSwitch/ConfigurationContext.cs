@@ -4,10 +4,14 @@
     {
         public ConfigurationContext(FeatureStrategyAttribute featureStrategyAttribute)
         {
-            this.FeatureStrategyAttribute = featureStrategyAttribute;
+            FeatureStrategyAttribute = featureStrategyAttribute;
         }
 
-        public FeatureStrategyAttribute FeatureStrategyAttribute { get; private set; }
-        public string Key { get { return FeatureStrategyAttribute.Key; } }
+        public FeatureStrategyAttribute FeatureStrategyAttribute { get; }
+
+        public string Key
+        {
+            get { return FeatureStrategyAttribute.Key; }
+        }
     }
 }
