@@ -102,6 +102,17 @@ namespace FeatureSwitch
             return IsEnabled(typeof(T));
         }
 
+        public static IEnumerable<IStrategy> GetEnabledStrategiesForFeature(Type feature)
+        {
+            TestInstance();
+            return _instance.Container.GetEnabledStateStrategiesForFeature(feature);
+        }
+
+        public static IEnumerable<IStrategy> GetEnabledStrategiesForFeature<T>() where T : BaseFeature
+        {
+            return GetEnabledStrategiesForFeature(typeof(T));
+        }
+
         internal static bool IsStrategyEnabled<T>() where T : IStrategy
         {
             TestInstance();
