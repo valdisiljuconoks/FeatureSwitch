@@ -12,11 +12,11 @@ namespace FeatureSwitch.EPiServer
     {
         public void ConfigureContainer(ServiceConfigurationContext context)
         {
-            var builder = new FeatureSetBuilder(new StructureMapDependencyContainer(context.Container));
-            builder.Build(ctx => { ctx.AutoDiscoverFeatures = true; })
-                .WithRoute("modules/FeatureSwitch")
-                .WithRoles("Administrators, WebAdmins, CmsAdmins")
-                .ValidateConfiguration();
+            //var builder = new FeatureSetBuilder(new StructureMapDependencyContainer(context.Container));
+            //builder.Build(ctx => { ctx.AutoDiscoverFeatures = true; })
+            //    .WithRoute("modules/FeatureSwitch")
+            //    .WithRoles("Administrators, WebAdmins, CmsAdmins")
+            //    .ValidateConfiguration();
         }
 
         public void Initialize(InitializationEngine context) {}

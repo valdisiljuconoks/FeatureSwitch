@@ -9,8 +9,8 @@
     <projectUrl>https://github.com/valdisiljuconoks/FeatureSwitch</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>FeatureSwitch helper library to integrate with StructureMap</releaseNotes>
-    <copyright>Copyright 2014</copyright>
-    <tags>FeatureToggle Toggle Feature StructureMap</tags>
+    <releaseNotes>FeatureSwitch helper library to integrate with StructureMap IoC Container</releaseNotes>
+    <copyright>Copyright 2015</copyright>
+    <tags>FeatureToggle Toggle Feature StructureMap IoC Container</tags>
   </metadata>
 </package>

@@ -11,10 +11,6 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
     <copyright>Copyright 2015</copyright>
-    <tags>FeatureSwitch Switch Feature Toggle Toggling EPiServer CMS CMS7 CMS7.5 CMS8 CMS8.0</tags>
-    <dependencies>
-      <dependency id="EPiServer.CMS.Core" version="8.0.0.0" />
-      <dependency id="EPiServer.Framework" version="8.0.0.0" />
-    </dependencies>
+    <tags>FeatureSwitch Switch Feature Toggle Toggling EPiServer CMS</tags>
   </metadata>
 </package>
