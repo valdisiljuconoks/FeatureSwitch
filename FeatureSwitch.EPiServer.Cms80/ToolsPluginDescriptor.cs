@@ -2,7 +2,7 @@
 
 namespace FeatureSwitch.EPiServer
 {
-    [GuiPlugIn(DisplayName = "FeatureSwitch Control Panel", Url = "~/modules/FeatureSwitch/Index", Area = PlugInArea.AdminMenu)]
+    [GuiPlugIn(DisplayName = "FeatureSwitch Control Panel", Description = "", UrlFromModuleFolder = "index.aspx", Area = PlugInArea.AdminMenu)]
     public class ToolsPluginDescriptor
     {
     }

@@ -13,4 +13,8 @@
     <copyright>Copyright 2015</copyright>
     <tags>FeatureSwitch Switch Feature Toggle Toggling EPiServer CMS</tags>
   </metadata>
+  <files>
+    <file src="FeatureSwitch.EPiServer.zip" target="content\modules\_protected\FeatureSwitch.EPiServer" />
+    <file src="modules\_protected\FeatureSwitch.EPiServer\web.config" target="content\modules\_protected\FeatureSwitch.EPiServer\web.config" />
+  </files>
 </package>
