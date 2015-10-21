@@ -1,7 +1,6 @@
 ﻿using EPiServer.Framework;
 using EPiServer.Framework.Initialization;
 using EPiServer.ServiceLocation;
-using FeatureSwitch.AspNet.Mvc;
 using FeatureSwitch.StructureMap;
 
 namespace FeatureSwitch.EPiServer
@@ -12,15 +11,13 @@ namespace FeatureSwitch.EPiServer
     {
         public void ConfigureContainer(ServiceConfigurationContext context)
         {
-            //var builder = new FeatureSetBuilder(new StructureMapDependencyContainer(context.Container));
-            //builder.Build(ctx => { ctx.AutoDiscoverFeatures = true; })
-            //    .WithRoute("modules/FeatureSwitch")
-            //    .WithRoles("Administrators, WebAdmins, CmsAdmins")
-            //    .ValidateConfiguration();
+            var builder = new FeatureSetBuilder(new StructureMapDependencyContainer(context.Container));
+            builder.Build(ctx => { ctx.AutoDiscoverFeatures = true; })
+                   .ValidateConfiguration();
         }
 
-        public void Initialize(InitializationEngine context) {}
+        public void Initialize(InitializationEngine context) { }
 
-        public void Uninitialize(InitializationEngine context) {}
+        public void Uninitialize(InitializationEngine context) { }
     }
 }
