@@ -9,14 +9,8 @@ namespace FeatureSwitch.Web.Optimization
 
         public static string DefaultTagFormat
         {
-            get
-            {
-                return defaultTagFormat;
-            }
-            set
-            {
-                defaultTagFormat = value;
-            }
+            get { return defaultTagFormat; }
+            set { defaultTagFormat = value; }
         }
 
         public static IHtmlString RenderIf<T>(params string[] paths) where T : BaseFeature
@@ -26,7 +20,7 @@ namespace FeatureSwitch.Web.Optimization
 
         public static IHtmlString RenderIfFormat<T>(string tagFromat, params string[] paths) where T : BaseFeature
         {
-            return FeatureContext.IsEnabled(typeof(T)) ? Render(typeof(T), tagFromat, paths) : new HtmlString(string.Empty);
+            return FeatureContext.IsEnabled(typeof (T)) ? Render(typeof (T), tagFromat, paths) : new HtmlString(string.Empty);
         }
 
         public static IHtmlString Render<T>(params string[] paths) where T : BaseFeature
@@ -36,7 +30,17 @@ namespace FeatureSwitch.Web.Optimization
 
         public static IHtmlString RenderFormat<T>(string tagFormat, params string[] paths) where T : BaseFeature
         {
-            return Render(typeof(T), tagFormat, paths);
+            return Render(typeof (T), tagFormat, paths);
+        }
+
+        public static IHtmlString Render(params string[] paths)
+        {
+            return RenderFormat(DefaultTagFormat, paths);
+        }
+
+        public static IHtmlString RenderFormat(string tagFormat, params string[] paths)
+        {
+            return System.Web.Optimization.Styles.RenderFormat(tagFormat, paths);
         }
 
         private static IHtmlString Render(Type feature, string tagFormat, string[] paths)
