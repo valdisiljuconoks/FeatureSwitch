@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeatureSwitch", "FeatureSwitch\FeatureSwitch.csproj", "{2647BFAF-C14F-42AB-BA25-35462C9E3251}"
 EndProject
@@ -16,6 +16,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0E5E270C-CD78-4635-AAAF-FC28A1144373}"
 	ProjectSection(SolutionItems) = preProject
 		CommonAssemblyInfo.cs = CommonAssemblyInfo.cs
+		global.json = global.json
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{725D9119-A788-478B-965C-1A8930E01F53}"
@@ -48,6 +49,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeatureSwitch.EPiServer.Cms80", "FeatureSwitch.EPiServer.Cms80\FeatureSwitch.EPiServer.Cms80.csproj", "{E7036489-57C0-40DE-9177-5C7FCC525430}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeatureSwitch.Azure", "FeatureSwitch.Azure\FeatureSwitch.Azure.csproj", "{C07364C8-3940-4015-9838-9DD7FDF48AD5}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "FeatureSwitch.Core", "src\FeatureSwitch.Core\FeatureSwitch.Core.xproj", "{1B275228-1C91-40DE-8DB8-4E7F6C3AD941}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -152,6 +155,12 @@ Global
 		{C07364C8-3940-4015-9838-9DD7FDF48AD5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C07364C8-3940-4015-9838-9DD7FDF48AD5}.Verify|Any CPU.ActiveCfg = Release|Any CPU
 		{C07364C8-3940-4015-9838-9DD7FDF48AD5}.Verify|Any CPU.Build.0 = Release|Any CPU
+		{1B275228-1C91-40DE-8DB8-4E7F6C3AD941}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B275228-1C91-40DE-8DB8-4E7F6C3AD941}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B275228-1C91-40DE-8DB8-4E7F6C3AD941}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B275228-1C91-40DE-8DB8-4E7F6C3AD941}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B275228-1C91-40DE-8DB8-4E7F6C3AD941}.Verify|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B275228-1C91-40DE-8DB8-4E7F6C3AD941}.Verify|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
