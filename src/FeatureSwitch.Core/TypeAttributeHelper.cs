@@ -21,7 +21,21 @@ namespace FeatureSwitch
 
         private static IEnumerable<Assembly> GetAssemblies()
         {
-            return DependencyContext.Default.RuntimeLibraries.Select(rtl => Assembly.Load(new AssemblyName(rtl.Name)));
+            var discoveredAssemblies = DependencyContext.Default.RuntimeLibraries;
+            var result = new List<Assembly>();
+
+            foreach (var assembly in discoveredAssemblies.Where(a => !a.Name.StartsWith("Microsoft") || !a.Name.StartsWith("System")))
+            {
+                try
+                {
+                    result.Add(Assembly.Load(new AssemblyName(assembly.Name)));
+                }
+                catch (Exception)
+                {
+                }
+            }
+
+            return result;
         }
 
         private static IEnumerable<Type> GetTypesChildOfInAssembly(Type type, Assembly assembly)
