@@ -1,6 +1,4 @@
 ﻿namespace FeatureSwitch.Strategies
 {
-    public class QueryString : FeatureStrategyAttribute
-    {
-    }
+    public class QueryString : FeatureStrategyAttribute { }
 }

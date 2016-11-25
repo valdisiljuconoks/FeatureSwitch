@@ -11,7 +11,7 @@ namespace ConsoleApp.Sample
             var builder = new FeatureSetBuilder();
             builder.Build();
 
-            var f = FeatureSwitch.FeatureContext.IsEnabled<MyFeature>();
+            var f = FeatureContext.IsEnabled<MyFeature>();
             Console.WriteLine($"Feature {nameof(MyFeature)} is {(f ? "enabled" : "disabled")}.");
         }
     }

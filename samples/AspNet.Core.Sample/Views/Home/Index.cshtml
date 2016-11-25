@@ -1,0 +1,21 @@
+﻿@using AspNet.Core.Sample.Features
+@using FeatureSwitch
+
+@model dynamic
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Title</title>
+</head>
+<body>
+<div>
+    MyFeature: @(FeatureContext.IsEnabled<MyFeature>())
+</div>
+</body>
+</html>

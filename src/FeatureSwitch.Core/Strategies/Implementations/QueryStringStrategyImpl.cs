@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using Microsoft.AspNetCore.Http;
 
 namespace FeatureSwitch.Strategies.Implementations
@@ -19,13 +18,13 @@ namespace FeatureSwitch.Strategies.Implementations
 
             try
             {
-                if (_accessor.HttpContext.Request?.QueryString == null)
+                if(_accessor.HttpContext.Request?.QueryString == null)
                 {
                     return false;
                 }
 
                 var queryString = _accessor.HttpContext.Request.Query;
-                if (!queryString.ContainsKey(key))
+                if(!queryString.ContainsKey(key))
                 {
                     return false;
                 }

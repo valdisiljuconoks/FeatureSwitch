@@ -21,13 +21,9 @@ namespace FeatureSwitch
         public FeatureSetContainer Container { get; private set; }
         public bool AutoDiscoverFeatures { get; set; }
 
-        internal IDictionary<Type, Type> AdditionalStrategies
-        {
-            get
-            {
-                return _additionalStrategies;
-            }
-        }
+        internal IDictionary<Type, Type> AdditionalStrategies => _additionalStrategies;
+
+        internal static IDependencyContainer DependencyContainer { get; set; }
 
         public void AddConfigurationError(BaseFeature feature, string error)
         {

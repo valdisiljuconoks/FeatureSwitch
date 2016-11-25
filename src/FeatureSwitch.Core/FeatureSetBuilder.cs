@@ -26,6 +26,8 @@ namespace FeatureSwitch
 
             _container = container;
         }
+
+        internal IDependencyContainer Container => _container;
         
         public FeatureSetContainer Build(Action<FeatureContext> action = null)
         {
@@ -86,6 +88,7 @@ namespace FeatureSwitch
                 DiscoverFeatures(context);
             }
 
+            FeatureContext.DependencyContainer = _container;
             return context;
         }
 
