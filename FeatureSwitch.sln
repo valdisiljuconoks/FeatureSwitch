@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeatureSwitch", "FeatureSwitch\FeatureSwitch.csproj", "{2647BFAF-C14F-42AB-BA25-35462C9E3251}"
 EndProject
@@ -48,6 +48,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeatureSwitch.EPiServer.Cms80", "FeatureSwitch.EPiServer.Cms80\FeatureSwitch.EPiServer.Cms80.csproj", "{E7036489-57C0-40DE-9177-5C7FCC525430}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeatureSwitch.Azure", "FeatureSwitch.Azure\FeatureSwitch.Azure.csproj", "{C07364C8-3940-4015-9838-9DD7FDF48AD5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{92FE3BE1-F76F-4FB6-BECA-82FB13830B1D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -157,6 +159,8 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{B90FCCBB-9CAE-48E1-83B7-F5C30809EF88} = {92FE3BE1-F76F-4FB6-BECA-82FB13830B1D}
+		{D278DF54-B8D4-44BE-B630-75FF4C56BA26} = {92FE3BE1-F76F-4FB6-BECA-82FB13830B1D}
 		{62EDA675-F73D-4040-92E4-595E200473B1} = {326B800E-CCA2-443A-B688-1969CE0190B9}
 		{273AD480-5E40-42A9-8F79-7C176382CD87} = {326B800E-CCA2-443A-B688-1969CE0190B9}
 		{BAFA25BA-35D0-4C96-BC69-653DC2C4BB9D} = {326B800E-CCA2-443A-B688-1969CE0190B9}
