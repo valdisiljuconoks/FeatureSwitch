@@ -1,3 +1,5 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/clard5agcutb7ctc/branch/master?svg=true)](https://ci.appveyor.com/project/ValdisIljuconoks/featureswitch/branch/master)
+
 Feature Switch
 =============
 
