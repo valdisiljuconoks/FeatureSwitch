@@ -8,12 +8,13 @@
     <authors>$author$</authors>
     <owners>$author$</owners>
     <projectUrl>https://github.com/valdisiljuconoks/FeatureSwitch/wiki/EPiServer-Integration</projectUrl>
+    <licenseUrl>https://github.com/valdisiljuconoks/FeatureSwitch/blob/master/LICENSE</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <copyright>Copyright 2015</copyright>
-    <tags>FeatureSwitch Switch Feature Toggle Toggling EPiServer CMS</tags>
+    <copyright>$copyright$</copyright>
+    <tags>FeatureSwitch Switch Feature FeatureToggle Toggle Toggling EPiServer CMS</tags>
     <dependencies>
-      <dependency id="EPiServer.CMS.UI.Core" version="[9.0.0, 10.0.0)" />
+      <dependency id="EPiServer.CMS.UI.Core" version="10.0.0" />
     </dependencies>
   </metadata>
   <files>

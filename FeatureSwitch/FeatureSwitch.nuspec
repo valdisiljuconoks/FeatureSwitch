@@ -7,6 +7,7 @@
     <authors>$author$</authors>
     <owners>$author$</owners>
     <projectUrl>https://github.com/valdisiljuconoks/FeatureSwitch/</projectUrl>
+    <licenseUrl>https://github.com/valdisiljuconoks/FeatureSwitch/blob/master/LICENSE</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
     <releaseNotes>Initial version released of FeatureSwitch library.</releaseNotes>
