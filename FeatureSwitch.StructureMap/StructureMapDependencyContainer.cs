@@ -14,8 +14,7 @@ namespace FeatureSwitch.StructureMap
 
         public StructureMapDependencyContainer()
         {
-            ObjectFactory.Initialize(init => init.AddRegistry<DefaultDependencyRegistry>());
-            _container = ObjectFactory.Container;
+            _container = new Container(_ => _.AddRegistry<DefaultDependencyRegistry>());
         }
 
         public void Configure(Action<ConfigurationExpression> dependencyConfiguration)

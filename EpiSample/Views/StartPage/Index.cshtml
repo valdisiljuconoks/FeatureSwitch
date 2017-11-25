@@ -1,4 +1,6 @@
 @using EpiSample
 @model PageViewModel<EpiSample.Models.Pages.StartPage>
 
+<div>Feature1 (enabled): @(FeatureSwitch.FeatureContext.IsEnabled<Feature1>())</div>
+
 @Html.PropertyFor(x => x.CurrentPage.MainContentArea, new { CssClass = "row equal-height", tag = Global.ContentAreaTags.FullWidth })

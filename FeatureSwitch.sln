@@ -46,7 +46,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeatureSwitch.Ninject", "Fe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeatureSwitch.Ninject.Tests", "FeatureSwitch.Ninject.Tests\FeatureSwitch.Ninject.Tests.csproj", "{291EE4E4-825E-49D3-877D-EE012CF3785A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeatureSwitch.EPiServer.Cms80", "FeatureSwitch.EPiServer.Cms80\FeatureSwitch.EPiServer.Cms80.csproj", "{E7036489-57C0-40DE-9177-5C7FCC525430}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeatureSwitch.EPiServer", "FeatureSwitch.EPiServer\FeatureSwitch.EPiServer.csproj", "{E7036489-57C0-40DE-9177-5C7FCC525430}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeatureSwitch.Azure", "FeatureSwitch.Azure\FeatureSwitch.Azure.csproj", "{C07364C8-3940-4015-9838-9DD7FDF48AD5}"
 EndProject

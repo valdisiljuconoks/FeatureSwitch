@@ -6,35 +6,21 @@ using EPiServer.PlugIn;
 namespace EpiSample.Models.Properties
 {
     /// <summary>
-    /// Property type for storing a list of strings
+    ///     Property type for storing a list of strings
     /// </summary>
-    /// <remarks>For an example, see <see cref="EpiSample.Models.Pages.SitePageData"/> where this property type is used for the MetaKeywords property</remarks>
+    /// <remarks>
+    ///     For an example, see <see cref="EpiSample.Models.Pages.SitePageData" /> where this property type is used for
+    ///     the MetaKeywords property
+    /// </remarks>
     [EditorHint(Global.SiteUIHints.Strings)]
     [PropertyDefinitionTypePlugIn(Description = "A property for list of strings", DisplayName = "String List")]
     public class PropertyStringList : PropertyLongString
     {
-        protected String Separator = "\n";
+        protected string Separator = "\n";
 
-        public String[] List
-        {
-            get
-            {
-                return (String[])Value;
-            }
-        }
+        public string[] List => (string[]) Value;
 
-        public override Type PropertyValueType
-        {
-            get
-            {
-                return typeof(String[]);
-            }
-        }
-
-        public override object SaveData(PropertyDataCollection properties)
-        {
-            return LongString;
-        }
+        public override Type PropertyValueType => typeof(string[]);
 
         public override object Value
         {
@@ -43,31 +29,27 @@ namespace EpiSample.Models.Properties
                 var value = base.Value as string;
 
                 if (value == null)
-                {
                     return null;
-                }
 
                 return value.Split(Separator.ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
             }
             set
             {
-                if (value is String[])
+                if (value is string[])
                 {
-                    var s = String.Join(Separator, value as String[]);
+                    var s = string.Join(Separator, value as string[]);
                     base.Value = s;
                 }
                 else
                 {
                     base.Value = value;
                 }
-
             }
         }
 
-        public override IPropertyControl CreatePropertyControl()
+        public override object SaveData(PropertyDataCollection properties)
         {
-            //No support for legacy edit mode
-            return null;
+            return LongString;
         }
     }
 }
