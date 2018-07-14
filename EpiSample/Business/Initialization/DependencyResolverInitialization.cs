@@ -1,33 +1,24 @@
 using System.Web.Mvc;
+using EpiSample.Business.Rendering;
 using EPiServer.Framework;
 using EPiServer.Framework.Initialization;
 using EPiServer.ServiceLocation;
-using EpiSample.Business.Rendering;
-using EpiSample.Helpers;
 using EPiServer.Web.Mvc;
 using EPiServer.Web.Mvc.Html;
-using StructureMap;
+using InitializationModule = EPiServer.Web.InitializationModule;
 
 namespace EpiSample.Business.Initialization
 {
     [InitializableModule]
-    [ModuleDependency(typeof(EPiServer.Web.InitializationModule))]
+    [ModuleDependency(typeof(InitializationModule))]
     public class DependencyResolverInitialization : IConfigurableModule
     {
         public void ConfigureContainer(ServiceConfigurationContext context)
         {
-            context.Container.Configure(ConfigureContainer);
+            context.Services.Add<IContentRenderer, ErrorHandlingContentRenderer>(ServiceInstanceScope.Transient);
+            context.Services.Add<ContentAreaRenderer, AlloyContentAreaRenderer>(ServiceInstanceScope.Transient);
 
-            DependencyResolver.SetResolver(new StructureMapDependencyResolver(context.Container));
-        }
-
-        private static void ConfigureContainer(ConfigurationExpression container)
-        {
-            //Swap out the default ContentRenderer for our custom
-            container.For<IContentRenderer>().Use<ErrorHandlingContentRenderer>();
-            container.For<ContentAreaRenderer>().Use<AlloyContentAreaRenderer>();
-
-            //Implementations for custom interfaces can be registered here.
+            DependencyResolver.SetResolver(new StructureMapDependencyResolver(context.StructureMap()));
         }
 
         public void Initialize(InitializationEngine context)

@@ -6,6 +6,17 @@ namespace FeatureSwitch.Tests
     public class FeatureSetBuilderWithoutDependencyContainerConfigured
     {
         [Fact]
+        public void BuilderTest_NoDependencyContainer_UsesDefaultImplementations()
+        {
+            var builder = new FeatureSetBuilder();
+            var container = builder.Build(ctx => ctx.AddFeature<MySampleFeature>());
+
+            var isEnabled = container.IsEnabled<MySampleFeature>();
+
+            Assert.True(isEnabled);
+        }
+
+        [Fact]
         public void BuilderTest_NoDependencyContainerDisabledFeature_UsesDefaultImplementations()
         {
             var builder = new FeatureSetBuilder();
@@ -16,17 +27,6 @@ namespace FeatureSwitch.Tests
             Assert.False(isEnabled);
         }
 
-        [Fact]
-        public void BuilderTest_NoDependencyContainer_UsesDefaultImplementations()
-        {
-            var builder = new FeatureSetBuilder();
-            var container = builder.Build(ctx => ctx.AddFeature<MySampleFeature>());
-
-            var isEnabled = container.IsEnabled<MySampleFeature>();
-
-            Assert.True(isEnabled);
-        }
-        
         [Fact]
         public void BuilderTest_NoDependencyContainerFeatureWithNoKey_UsesDefaultImplementations()
         {

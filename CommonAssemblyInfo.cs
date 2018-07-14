@@ -1,8 +1,8 @@
 ﻿using System.Reflection;
 
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Tech Fellow Consulting")]
+[assembly: AssemblyCompany("Tech Fellow Consulting, https://tech-fellow.net")]
 [assembly: AssemblyProduct("FeatureSwitch")]
-[assembly: AssemblyCopyright("Copyright © 2016 Valdis Iljuconoks, Tech Fellow Consulting")]
+[assembly: AssemblyCopyright("Tech Fellow Consulting, Copyright © 2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

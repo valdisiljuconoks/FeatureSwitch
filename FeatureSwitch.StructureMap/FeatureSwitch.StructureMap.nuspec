@@ -10,7 +10,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
     <releaseNotes>FeatureSwitch helper library to integrate with StructureMap IoC Container</releaseNotes>
-    <copyright>Copyright 2015</copyright>
+    <copyright>$copyright$</copyright>
     <tags>FeatureToggle Toggle Feature StructureMap IoC Container</tags>
   </metadata>
 </package>
