@@ -1,7 +1,10 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/clard5agcutb7ctc/branch/master?svg=true)](https://ci.appveyor.com/project/ValdisIljuconoks/featureswitch/branch/master)
 
-Feature Switch
-=============
+# Feature Switch
+
+## Supporting FeatureSwitch
+
+If you find this library useful, cup of coffee would be awesome! You can support further development of the library via [Paypal](https://paypal.me/valdisiljuconoks).
 
 ## Feature Toggling Framework for Various Types of Applications
 Have you ever wrote the code like following to verify that either you have to disable or enable some functionality base on set of conditions (usually different sources):
