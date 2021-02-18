@@ -2,6 +2,8 @@
 
 # Feature Switch
 
+## .NET5 (WIP)
+
 ## Supporting FeatureSwitch
 
 If you find this library useful, cup of coffee would be awesome! You can support further development of the library via [Paypal](https://paypal.me/valdisiljuconoks).
